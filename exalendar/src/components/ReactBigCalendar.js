@@ -1,4 +1,4 @@
-import React, { useState, useCallback } from "react";
+import React, { useState, useEffect, useCallback } from "react";
 import { Calendar, momentLocalizer } from "react-big-calendar";
 import moment from "moment";
 import events from "./events";
@@ -13,6 +13,28 @@ const DnDCalendar = withDragAndDrop(Calendar)
 
 export default function ReactBigCalendar() {
   const [eventsData, setEventsData] = useState(events);
+
+  function setEvents(eventData) {
+    var data = [];
+    eventData = eventData.results;
+    for(let i=0; i < Object.keys(eventData).length; i++) {
+      data.push({
+        id: eventData[i].class_id,
+        title: eventData[i].event_title,
+        description: eventData[i].event_description,
+        start: new Date(eventData[i].event_date_start),
+        end: new Date(eventData[i].event_date_end)
+      })
+    }
+    setEventsData(data);
+  }
+
+  useEffect(() => {
+    fetch(`http://localhost:4000/`)
+    .then((response) => response.json())
+    .then((actualData) => setEvents(actualData));
+   }, []);
+  
 
   const moveEvent = useCallback(
     ({ event, start, end, isAllDay: droppedOnAllDaySlot = false }) => {
@@ -66,7 +88,7 @@ export default function ReactBigCalendar() {
         events={eventsData}
         style={{ height: "80vh", width: "90vh" }}
         resizable={true}
-        onSelectEvent={(event) => alert(event.title)}
+        onSelectEvent={(event) => alert(event.description)}
         draggableAccessor={(event) => true}
         onEventDrop={moveEvent}
         onEventResize={resizeEvent}

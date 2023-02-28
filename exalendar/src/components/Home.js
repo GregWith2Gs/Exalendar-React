@@ -10,16 +10,20 @@ function Home() {
 
     function submitEvent() {
         console.log(eventName);
-        fetch('http://localhost:4000/', {
+        
+        let postData = {
             method: 'POST',
+            headers:{'Content-Type': 'application/json'},
             body: JSON.stringify({
-                'name': eventName,
-                'type': eventType,
-                'event_description': eventDesc,
-                'event_date_start': eventStart,
-                'event_date_end': eventEnd
+                "name": eventName,
+                "type": eventType,
+                "event_description": eventDesc,
+                "event_date_start": eventStart,
+                "event_date_end": eventEnd
             })
-        })
+        }
+        console.log(postData);
+        fetch('http://localhost:4000/', postData)
         .then((response) => response.json())
         .then((data) => {
             console.log(data);
@@ -53,7 +57,7 @@ function Home() {
                     Event end time:
                     <input type="text" value={eventEnd} onChange={(e)=>setEventEnd(e.target.value)}/>
                 </label>
-                <input type="submit" onSubmit={submitEvent}/>
+                <button onClick={submitEvent}>Submit</button>
             </form>
         </div>
     );

@@ -1,6 +1,11 @@
+import Iframe from './iframe.js';
+
 function Home() {
     return (
-        <h1>Home Page</h1>
+        <div className="App">
+            <h1>Home Page Test</h1>
+            <Iframe source={"./test.html"} />
+        </div>
     );
 }
 

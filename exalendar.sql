@@ -59,4 +59,4 @@ ALTER TABLE `class_admins` ADD FOREIGN KEY (`user_id`) REFERENCES `user_classes`
 
 ALTER TABLE `class_admins` ADD FOREIGN KEY (`class_id`) REFERENCES `classes` (`class_id`);
 
-ALTER USER 'root'@'localhost' IDENTIFIED WITH mysql_native_password BY '12345';
+#ALTER USER 'root'@'localhost' IDENTIFIED WITH mysql_native_password BY '12345';

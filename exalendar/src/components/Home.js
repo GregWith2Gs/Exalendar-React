@@ -1,12 +1,19 @@
 import ReactBigCalendar from './ReactBigCalendar';
 import React, { useState } from "react";
+import DateTimePicker from 'react-datetime-picker';
 
 function Home() {
     const [eventName, setEventName] = useState('');
     const [eventType, setEventType] = useState('');
     const [eventDesc, setEventDesc] = useState('');
-    const [eventStart, setEventStart] = useState('');
-    const [eventEnd, setEventEnd] = useState('');
+    const [eventStart, setEventStart] = useState(null);
+    const handleStartDatetime = (datetime) => {
+        setEventStart(datetime);
+    };
+    const [eventEnd, setEventEnd] = useState(null);
+    const handleEndDatetime = (datetime) => {
+        setEventEnd(datetime);
+    };
 
     function submitEvent() {
         console.log(eventName);
@@ -51,11 +58,11 @@ function Home() {
                 </label>
                 <label>
                     Event start time:
-                    <input type="text" value={eventStart} onChange={(e)=>setEventStart(e.target.value)}/>
+                    <DateTimePicker selected={eventStart} onChange={handleStartDatetime}/>
                 </label>
                 <label>
                     Event end time:
-                    <input type="text" value={eventEnd} onChange={(e)=>setEventEnd(e.target.value)}/>
+                    <DateTimePicker selected={eventEnd} onChange={handleEndDatetime}/>
                 </label>
                 <button onClick={submitEvent}>Submit</button>
             </form>

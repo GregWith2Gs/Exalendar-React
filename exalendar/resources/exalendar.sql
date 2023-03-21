@@ -37,7 +37,8 @@ CREATE TABLE `events` (
   `event_type` varchar(255) NOT NULL,
   `event_title` varchar(255) NOT NULL,
   `event_description` varchar(255),
-  `event_date` datetime NOT NULL
+  `event_date_start` datetime NOT NULL,
+  `event_date_end` datetime NOT NULL
 );
 
 CREATE TABLE `class_admins` (

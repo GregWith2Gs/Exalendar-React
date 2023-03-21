@@ -1,7 +1,6 @@
 import React, { useState, useEffect, useCallback } from "react";
 import { Calendar, momentLocalizer } from "react-big-calendar";
 import moment from "moment";
-import events from "./events";
 import "react-big-calendar/lib/css/react-big-calendar.css";
 import withDragAndDrop from 'react-big-calendar/lib/addons/dragAndDrop'
 import 'react-big-calendar/lib/addons/dragAndDrop/styles.css'
@@ -12,7 +11,7 @@ const localizer = momentLocalizer(moment);
 const DnDCalendar = withDragAndDrop(Calendar)
 
 export default function ReactBigCalendar() {
-  const [eventsData, setEventsData] = useState(events);
+  const [eventsData, setEventsData] = useState();
 
   function setEvents(eventData) {
     var data = [];

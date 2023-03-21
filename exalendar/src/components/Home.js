@@ -1,6 +1,8 @@
 import ReactBigCalendar from './ReactBigCalendar';
 import React, { useState } from "react";
 import DateTimePicker from 'react-datetime-picker';
+import Button from 'react-bootstrap/Button';
+import Form from 'react-bootstrap/Form';
 
 function Home() {
     const [eventName, setEventName] = useState('');
@@ -38,6 +40,29 @@ function Home() {
             <h1>Home Page</h1>
             <ReactBigCalendar />
             <br></br>
+            {/* <Form>
+            <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
+                <Form.Label>Event Name</Form.Label>
+                <Form.Control placeholder="Name of event" />
+            </Form.Group>
+            <Form.Label>Event Type</Form.Label>
+            <Form.Select aria-label="Event Type">
+                <option value="class">class</option>
+                <option value="event">event</option>
+                <option value="test">test</option>
+            </Form.Select>
+            <Form.Group className="mb-3" controlId="exampleForm.ControlTextarea1">
+                <Form.Label>Event Description</Form.Label>
+                <Form.Control as="textarea" rows={3} />
+            </Form.Group>
+            <Form.Group>
+                <Form.Label>Event Start</Form.Label>
+            </Form.Group>
+            <Form.Group>
+                <Form.Label>Event End</Form.Label>
+            </Form.Group>
+            </Form> */}
+
             <form>
                 <label>
                     Event name:

@@ -6,14 +6,9 @@ function Home() {
     const [eventName, setEventName] = useState('');
     const [eventType, setEventType] = useState('');
     const [eventDesc, setEventDesc] = useState('');
-    const [eventStart, setEventStart] = useState(null);
-    const handleStartDatetime = (datetime) => {
-        setEventStart(datetime);
-    };
-    const [eventEnd, setEventEnd] = useState(null);
-    const handleEndDatetime = (datetime) => {
-        setEventEnd(datetime);
-    };
+    const [eventStart, setEventStart] = useState(new Date());
+    const [eventEnd, setEventEnd] = useState(new Date());
+    
 
     function submitEvent() {
         console.log(eventName);
@@ -58,11 +53,39 @@ function Home() {
                 </label>
                 <label>
                     Event start time:
-                    <DateTimePicker selected={eventStart} onChange={handleStartDatetime}/>
+                    <DateTimePicker 
+                    onChange={setEventStart}
+                    value={eventStart}
+                    amPmAriaLabel="Select AM/PM"
+                    calendarAriaLabel="Toggle calendar"
+                    clearAriaLabel="Clear value"
+                    dayAriaLabel="Day"
+                    hourAriaLabel="Hour"
+                    maxDetail="minute"
+                    minuteAriaLabel="Minute"
+                    monthAriaLabel="Month"
+                    nativeInputAriaLabel="Date and time"
+                    secondAriaLabel="Second"
+                    yearAriaLabel="Year"
+                    />
                 </label>
                 <label>
                     Event end time:
-                    <DateTimePicker selected={eventEnd} onChange={handleEndDatetime}/>
+                    <DateTimePicker 
+                    onChange={setEventEnd}
+                    value={eventEnd}
+                    amPmAriaLabel="Select AM/PM"
+                    calendarAriaLabel="Toggle calendar"
+                    clearAriaLabel="Clear value"
+                    dayAriaLabel="Day"
+                    hourAriaLabel="Hour"
+                    maxDetail="minute"
+                    minuteAriaLabel="Minute"
+                    monthAriaLabel="Month"
+                    nativeInputAriaLabel="Date and time"
+                    secondAriaLabel="Second"
+                    yearAriaLabel="Year"
+                    />
                 </label>
                 <button onClick={submitEvent}>Submit</button>
             </form>

@@ -1,5 +1,6 @@
 import ReactBigCalendar from './ReactBigCalendar';
 import React, { useState } from "react";
+import DateTimePicker from 'react-datetime-picker';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 
@@ -7,8 +8,9 @@ function Home() {
     const [eventName, setEventName] = useState('');
     const [eventType, setEventType] = useState('');
     const [eventDesc, setEventDesc] = useState('');
-    const [eventStart, setEventStart] = useState('');
-    const [eventEnd, setEventEnd] = useState('');
+    const [eventStart, setEventStart] = useState(new Date());
+    const [eventEnd, setEventEnd] = useState(new Date());
+    
 
     function submitEvent() {
         console.log(eventName);
@@ -20,8 +22,8 @@ function Home() {
                 "name": eventName,
                 "type": eventType,
                 "event_description": eventDesc,
-                "event_date_start": eventStart,
-                "event_date_end": eventEnd
+                "event_date_start": eventStart.toJSON,
+                "event_date_end": eventEnd.toJSON
             })
         }
         console.log(postData);
@@ -76,11 +78,42 @@ function Home() {
                 </label>
                 <label>
                     Event start time:
-                    <input type="text" value={eventStart} onChange={(e)=>setEventStart(e.target.value)}/>
+                    <DateTimePicker 
+                    onChange={setEventStart}
+                    value={eventStart}
+                    amPmAriaLabel="Select AM/PM"
+                    calendarAriaLabel="Toggle calendar"
+                    clearAriaLabel="Clear value"
+                    dayAriaLabel="Day"
+                    hourAriaLabel="Hour"
+                    maxDetail="minute"
+                    minuteAriaLabel="Minute"
+                    monthAriaLabel="Month"
+                    nativeInputAriaLabel="Date and time"
+                    secondAriaLabel="Second"
+                    yearAriaLabel="Year"
+                    format="yyyy-MM-dd hh:mm a"
+                    />
                 </label>
                 <label>
                     Event end time:
-                    <input type="text" value={eventEnd} onChange={(e)=>setEventEnd(e.target.value)}/>
+                    <DateTimePicker 
+                    onChange={setEventEnd}
+                    value={eventEnd}
+                    minDate={eventStart}
+                    amPmAriaLabel="Select AM/PM"
+                    calendarAriaLabel="Toggle calendar"
+                    clearAriaLabel="Clear value"
+                    dayAriaLabel="Day"
+                    hourAriaLabel="Hour"
+                    maxDetail="minute"
+                    minuteAriaLabel="Minute"
+                    monthAriaLabel="Month"
+                    nativeInputAriaLabel="Date and time"
+                    secondAriaLabel="Second"
+                    yearAriaLabel="Year"
+                    format="yyyy-MM-dd hh:mm a"
+                    />
                 </label>
                 <button onClick={submitEvent}>Submit</button>
             </form>

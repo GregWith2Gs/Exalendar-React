@@ -27,7 +27,7 @@ function Home() {
             })
         }
         console.log(postData);
-        fetch('http://localhost:4000/', postData)
+        fetch('http://localhost:3306/', postData)
         .then((response) => response.json())
         .then((data) => {
             console.log(data);

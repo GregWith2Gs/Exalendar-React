@@ -20,8 +20,8 @@ function Home() {
                 "name": eventName,
                 "type": eventType,
                 "event_description": eventDesc,
-                "event_date_start": eventStart,
-                "event_date_end": eventEnd
+                "event_date_start": eventStart.toJSON,
+                "event_date_end": eventEnd.toJSON
             })
         }
         console.log(postData);
@@ -67,6 +67,7 @@ function Home() {
                     nativeInputAriaLabel="Date and time"
                     secondAriaLabel="Second"
                     yearAriaLabel="Year"
+                    format="yyyy-MM-dd hh:mm a"
                     />
                 </label>
                 <label>
@@ -74,6 +75,7 @@ function Home() {
                     <DateTimePicker 
                     onChange={setEventEnd}
                     value={eventEnd}
+                    minDate={eventStart}
                     amPmAriaLabel="Select AM/PM"
                     calendarAriaLabel="Toggle calendar"
                     clearAriaLabel="Clear value"
@@ -85,6 +87,7 @@ function Home() {
                     nativeInputAriaLabel="Date and time"
                     secondAriaLabel="Second"
                     yearAriaLabel="Year"
+                    format="yyyy-MM-dd hh:mm a"
                     />
                 </label>
                 <button onClick={submitEvent}>Submit</button>

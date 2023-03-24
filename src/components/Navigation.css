@@ -1,17 +1,20 @@
+
+
 .navbar {
     border-bottom: solid 1px #EBEBEB;
     background-color: rgb(255, 69, 69);
-  }
-  .bottom-tab-nav {
+
+}
+.bottom-tab-nav {
     border-top: solid 1px #EBEBEB;
-  }
-  .nav-link,
-  .bottom-nav-link {
-    color: #55575b;
-  }
-  .bottom-nav-link.active {
+}
+.nav-link,
+.bottom-nav-link {
+    color: #5a5b55;
+}
+.bottom-nav-link.active {
     color: #922c88;
-  }
-  .bottom-tab-label {
+}
+.bottom-tab-label {
     font-size: 12px;
-  }
+}

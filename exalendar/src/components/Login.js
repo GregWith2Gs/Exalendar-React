@@ -1,5 +1,6 @@
 import React from 'react';
-import ReactDOM from 'react-dom/client';
+import Button from '@mui/material/Button';
+import TextField from '@mui/material/TextField'
 
 class Login extends React.Component {
   constructor(props) {
@@ -17,30 +18,37 @@ class Login extends React.Component {
   handleSubmit(event) {
     alert('A name was submitted: ' + this.state.user + " "+this.state.pass);
     event.preventDefault();
+	// Post request
+	
   }
 
   render() {
     return (
 	<body>
-		<form onSubmit={this.handleSubmit}>
-			<div>
+	    <a class="logo-href" href="/">
+		<h1 style={centerText}>Exalendar</h1>
+		</a>
+		<form>
+			<div style={centerText}>
 			<label>
-				Username
-				<input name="user" type="text" value={this.state.user} onChange={this.handleChange} />
-			</label>
-			</div>
-			
-			<div>
-			<label>
-				Password
-				<input name="pass" type="text" value={this.state.pass} onChange={this.handleChange} />
-			</label>
-			</div>
-			
-			<div>
-			<label>
-			    <input type="submit" value="Submit" />
+				<TextField id="outlined-basic" name="user" label="Username" variant="outlined" value={this.state.user}
+					onChange={this.handleChange}/>
 				
+			</label>
+			</div>
+			
+			<div style={centerText}>
+			<label>
+				<TextField id="outlined-basic" name="pass" label="Password" variant="outlined" value={this.state.pass}
+					onChange={this.handleChange}/>
+			</label>
+			</div>
+			
+			<div style={centerText}>
+			<label>
+				<Button variant="contained" onClick={() => { this.handleSubmit(); }}>
+				  Submit
+				</Button>
 			</label>
 			</div>
 			
@@ -49,5 +57,12 @@ class Login extends React.Component {
     );
   }
 }
+
+const centerText = {
+	display: 'flex',
+	alignItems: 'center',
+	justifyContent: 'center',
+	paddingBottom: '5px'
+};
 
 export default Login;

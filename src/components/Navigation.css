@@ -1,19 +1,36 @@
-
+@import url(https://fonts.googleapis.com/css2?family=Dancing+Script&display=swap);
 
 .navbar {
     border-bottom: solid 1px #EBEBEB;
     background-color: rgb(255, 69, 69);
 
 }
+
+.navbar-exalendar {
+    color: rgb(255, 255, 255);
+    text-decoration: none;
+    font-size: 27px;
+    font-family: Dancing Script;
+    font-weight: bold;
+}
+
+.navbar-exalendar:hover {
+    color: rgb(255, 255, 255);
+    text-decoration: none;
+}
+
 .bottom-tab-nav {
     border-top: solid 1px #EBEBEB;
 }
 .nav-link,
 .bottom-nav-link {
-    color: #5a5b55;
+    color: #ffffff;
 }
 .bottom-nav-link.active {
-    color: #922c88;
+    color: rgb(255, 255, 255);
+}
+.bottom-nav-link:hover {
+    color: #000000;
 }
 .bottom-tab-label {
     font-size: 12px;

@@ -2,17 +2,21 @@ import React from 'react';
 import { Nav, NavItem} from 'reactstrap';
 import { NavLink } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faSearch, faHome, faUserCircle } from '@fortawesome/free-solid-svg-icons';
+import { faHome, faUserCircle } from '@fortawesome/free-solid-svg-icons';
+import { faGithub } from '@fortawesome/free-brands-svg-icons';
 import './Navigation.css';
+
+
+//home, github, 
 
 const tabs = [{
   route: "/home",
   icon: faHome,
   label: "Home"
 },{
-  route: "/search",
-  icon: faSearch,
-  label: "Search"
+  route: "/github",
+  icon: faGithub,
+  label: "Github"
 },{
   route: "/login",
   icon: faUserCircle,
@@ -27,19 +31,7 @@ const Navigation = (props) => {
     <div>
       <nav className="navbar navbar-expand-md navbar-light sticky-top" 	role="navigation">
         <div className="container-fluid">
-            <a className="navbar-brand" href="/home">Exalendar</a>
-            <Nav className="ml-auto">
-              <NavItem>
-                <NavLink to="/search" className="nav-link">
-                  Search
-                </NavLink>
-              </NavItem>
-              <NavItem>
-                <NavLink to="/login" className="nav-link">
-                  Login
-                </NavLink>
-              </NavItem>
-            </Nav>
+          <a className="navbar-exalendar" href="/home">Exalendar</a>
         </div>
       </nav>
       {/* Bottom Tab Navigator*/}
@@ -49,7 +41,7 @@ const Navigation = (props) => {
             {
               tabs.map((tab, index) =>(
                 <NavItem key={`tab-${index}`}>
-                  <NavLink to={tab.route} className="nav-link bottom-nav-link" activeClassName="active">
+                  <NavLink to={tab.route} className="bottom-nav-link" activeClassName="active">
                     <div className="row d-flex flex-column justify-content-center align-items-center">
                       <FontAwesomeIcon size="lg" icon={tab.icon}/>
                       <div className="bottom-tab-label">{tab.label}</div>

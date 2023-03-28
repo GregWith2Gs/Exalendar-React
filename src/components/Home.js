@@ -1,8 +1,9 @@
 import ReactBigCalendar from './ReactBigCalendar';
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import DateTimePicker from 'react-datetime-picker';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
+import './Home.css';
 
 function Home() {
     const [eventName, setEventName] = useState('');
@@ -10,6 +11,19 @@ function Home() {
     const [eventDesc, setEventDesc] = useState('');
     const [eventStart, setEventStart] = useState(new Date());
     const [eventEnd, setEventEnd] = useState(new Date());
+
+    const [theme, setTheme] = useState('light');
+    const toggleTheme = () => {
+        if (theme === 'light') {
+            setTheme('dark');
+        } else {
+            setTheme('light');
+        }
+    };
+
+    useEffect(() => {
+        document.body.className = theme;
+    }, [theme]);
     
 
     function submitEvent() {
@@ -31,7 +45,6 @@ function Home() {
         .then((response) => response.json())
         .then((data) => {
             console.log(data);
-            // Handle data
         })
     }
 
@@ -40,6 +53,7 @@ function Home() {
             <h1>Home Page</h1>
             <ReactBigCalendar />
             <br></br>
+            <button onClick={toggleTheme}>Toggle Theme</button>
             {/* <Form>
             <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
                 <Form.Label>Event Name</Form.Label>

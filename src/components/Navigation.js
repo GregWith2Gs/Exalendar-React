@@ -27,10 +27,11 @@ const tabs = [{
 
 const Navigation = (props) => {
 	return (
+    /* Top Bar*/
     <div>
-      <nav className="navbar navbar-expand-md navbar-light sticky-top" 	role="navigation">
+      <nav className="navbar" 	role="navigation">
         <div className="container-fluid">
-          <a className="navbar-exalendar" href="/home" >Exalendar</a>
+          <a className="navbar-exalendar m-auto" href="/home" >Exalendar</a>
         </div>
       </nav>
       {/* Bottom Tab Navigator*/}

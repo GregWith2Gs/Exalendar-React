@@ -5,6 +5,7 @@ import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import Navigation from './Navigation';
 import { BrowserRouter }  from "react-router-dom";
+import './Home.css';
 
 function Home() {
     const [eventName, setEventName] = useState('');

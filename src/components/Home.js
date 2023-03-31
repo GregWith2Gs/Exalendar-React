@@ -4,7 +4,7 @@ import DateTimePicker from 'react-datetime-picker';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import Navigation from './Navigation';
-import { BrowserRouter, Switch, Route } from "react-router-dom";
+import { BrowserRouter }  from "react-router-dom";
 
 function Home() {
     const [eventName, setEventName] = useState('');
@@ -45,7 +45,7 @@ function Home() {
                 </BrowserRouter>
             </div>
             <h1>Home Page</h1>
-            <ReactBigCalendar />
+                <ReactBigCalendar />
             <br></br>
             {/* <Form>
             <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">

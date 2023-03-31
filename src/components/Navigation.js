@@ -7,23 +7,22 @@ import { faGithub } from '@fortawesome/free-brands-svg-icons';
 import './Navigation.css';
 
 
-//home, github, 
-
 const tabs = [{
   route: "/home",
   icon: faHome,
-  label: "Home"
+  label: "Home",
+  target: "_self"
 },{
-  route: "/github",
+  route: "https://github.com/NatSR4/Exalendar/wiki/What-is-Exalendar%3F",
   icon: faGithub,
-  label: "Github"
+  label: "Github",
+  target: "_blank"
 },{
   route: "/login",
   icon: faUserCircle,
-  label: "Login"
+  label: "Login",
+  target: "_self"
 }]
-
-
 
 
 const Navigation = (props) => {
@@ -31,7 +30,7 @@ const Navigation = (props) => {
     <div>
       <nav className="navbar navbar-expand-md navbar-light sticky-top" 	role="navigation">
         <div className="container-fluid">
-          <a className="navbar-exalendar" href="/home">Exalendar</a>
+          <a className="navbar-exalendar" href="/home" >Exalendar</a>
         </div>
       </nav>
       {/* Bottom Tab Navigator*/}
@@ -41,7 +40,7 @@ const Navigation = (props) => {
             {
               tabs.map((tab, index) =>(
                 <NavItem key={`tab-${index}`}>
-                  <NavLink to={tab.route} className="bottom-nav-link" activeClassName="active">
+                  <NavLink to={tab.route} target={tab.target} className="bottom-nav-link" activeClassName="active">
                     <div className="row d-flex flex-column justify-content-center align-items-center">
                       <FontAwesomeIcon size="lg" icon={tab.icon}/>
                       <div className="bottom-tab-label">{tab.label}</div>

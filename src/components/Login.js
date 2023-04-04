@@ -18,10 +18,8 @@ class Login extends React.Component {
 
 	handleSubmit(event) {
 
-		alert('A name was submitted: ' + this.state.user + " "+this.state.pass);
-		// event.preventDefault();
 		// Post request
-		var response = fetch('https://localhost:3000', {
+		var response = fetch('http://localhost:4000/login', {
 			method: 'POST',
 			headers: {
 				'Accept': 'application/json',
@@ -52,7 +50,7 @@ class Login extends React.Component {
 				
 				<div style={centerText}>
 				<label>
-					<TextField id="outlined-basic" name="pass" label="Password" variant="outlined" value={this.state.pass}
+					<TextField type="password" id="outlined-password-input" name="pass" label="Password" variant="outlined" value={this.state.pass}
 						onChange={this.handleChange}/>
 				</label>
 				</div>

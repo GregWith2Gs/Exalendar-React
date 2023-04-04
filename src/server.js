@@ -30,6 +30,14 @@ connection.connect(err => {
   }
 });
 
+app.post("/login", (req, res) =>{
+	var user = req.body['user'];
+	var pass = req.body['pass'];
+	
+	console.log("User: "+user);
+	console.log("Pass: "+pass); // RETURN LOGIN TOKEN
+});
+
 app.get("/", (req, res) => {
     const sql_code = "SELECT * FROM events";
     connection.query(sql_code, function (err, results) {
@@ -53,7 +61,6 @@ app.post("/", (req, res) => {
       ${"'"+event_date_start+"'"},
       ${"'"+event_date_end+"'"}
       )`;
-
     connection.query(sql_code, function (err, results) {
         if (err) throw err;
         console.log(results);

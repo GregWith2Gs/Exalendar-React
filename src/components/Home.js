@@ -3,6 +3,9 @@ import React, { useState } from "react";
 import DateTimePicker from 'react-datetime-picker';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
+import Navigation from './Navigation';
+import { BrowserRouter }  from "react-router-dom";
+import '../css/Home.css';
 
 function Home() {
     const [eventName, setEventName] = useState('');
@@ -37,8 +40,13 @@ function Home() {
 
     return (
         <div>
+            <div>
+                <BrowserRouter>
+                    <Navigation />
+                </BrowserRouter>
+            </div>
             <h1>Home Page</h1>
-            <ReactBigCalendar />
+                <ReactBigCalendar />
             <br></br>
             {/* <Form>
             <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">

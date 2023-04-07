@@ -1,70 +1,17 @@
-# Getting Started with Create React App
+Setup:
+1.	Cloning Repository
+a)	Clone the git repository at https://github.com/GregWith2Gs/Exalendar-React into your preferred folder.
+b)	Install node package manager at https://docs.npmjs.com/downloading-and-installing-node-js-and-npm.
+c)	Make sure you are in the local repository folder and run the command ‘npm install’ in your terminal (Powershell on Windows, terminal on MacOS and Linux).
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+2.	MySQL Workbench
+a)	Download MySQL installer from https://dev.mysql.com/downloads/installer/
+b)	Go through installation as normal, installing MySQL server and MySQL Workbench.
+c)	Open MySQL Workbench, then click “Open file” and open up the “exlanedar.sql” that should be in your git repository inside of the “resources” folder. Then click the run query button. This will create the database on your local MySQL server.
 
-## Available Scripts
+3.	Running the Web Application
+a)	If you are using Visual Studio, open up Visual Studio and open the folder in which your repository is cloned and open two terminal instances (Windows Powershell). If you are not using Visual Studio and are on Windows, open up 2 instances of Windows Powershell. 
+b)	Making sure you are in the repository folder, type “npm start” into one of your terminal instances. This should open up an instance of the Exalendar React app that you can access at “http://localhost:3000/”
+c)	Now, using the second terminal window making sure you are in the repository folder, “cd src” to navigate to the src folder. Now enter the command “node server.js.” This will start the backend server allowing its API endpoints to be visible. If you want to test out the API, download a program like Postman or Insomnia, the server’s endpoint is at “http://localhost:4000/”
+d)	The entire web application should now be functional! You should be able to add events and have them added to the database using the form. You should be able to reload the page and keep all existing events that persist from the MySQL database.
 
-In the project directory, you can run:
-
-### `npm start`
-
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
-
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
-
-### `npm test`
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)

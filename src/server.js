@@ -35,7 +35,10 @@ app.post("/login", (req, res) =>{
 	var pass = req.body['pass'];
 	
 	console.log("User: "+user);
-	console.log("Pass: "+pass); // RETURN LOGIN TOKEN
+	console.log("Pass: "+pass); 
+	
+	// RETURN LOGIN SESSION TOKEN	
+	
 });
 
 app.get("/", (req, res) => {

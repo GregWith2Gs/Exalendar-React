@@ -7,7 +7,7 @@ class Footer extends React.Component{
 		return(
 			<div style={centerText}>
 			<List style={footer}>
-				<ListItem style={footerElement}><a style={footerElement} href = "../profile">Home</a></ListItem>
+				<ListItem style={footerElement}><a style={footerElement} href = "../">Home</a></ListItem>
 				<ListItem style={footerElement}><a style={footerElement} href="https://github.com/NatSR4/Exalendar/wiki/What-is-Exalendar%3F" target="_blank">About</a></ListItem>
 				<ListItem style={footerElement}><a style={footerElement} href= "https://rcos.io/" target= "_blank">RCOS</a></ListItem>
 				<ListItem style={footerElement}><a style={footerElement} href= "https://github.com/NatSR4/Exalendar" target = "_blank" id="gitcat" title="GitHub" aria-label="GitHub"><img alt="Github" src="../media/gitcat.svg"/></a></ListItem>

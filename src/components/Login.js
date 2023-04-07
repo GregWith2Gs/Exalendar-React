@@ -28,7 +28,7 @@ class Login extends React.Component {
 			body: JSON.stringify({ "user": this.state.user, "pass": this.state.pass})
 		});
 		
-		// Handel Response
+		// Handle Response
 		console.log(JSON.stringify(response.json()));
 
 	}

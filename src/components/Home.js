@@ -28,6 +28,7 @@ function Home() {
 
     function submitEvent() {
         console.log(eventName);
+        console.log(eventStart);
         
         let postData = {
             method: 'POST',
@@ -36,8 +37,8 @@ function Home() {
                 "name": eventName,
                 "type": eventType,
                 "event_description": eventDesc,
-                "event_date_start": eventStart.toJSON,
-                "event_date_end": eventEnd.toJSON
+                "event_date_start": eventStart.toJSON(),
+                "event_date_end": eventEnd.toJSON()
             })
         }
         console.log(postData);

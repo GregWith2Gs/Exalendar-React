@@ -12,13 +12,13 @@ function Home() {
             <BrowserRouter>
                 <Navigation/>
             </BrowserRouter>
-            <Stack direction="horizontal" gap={5}>
-                <div> </div>
-                <div className="ms-5">
-                    <ReactBigCalendar  />
+            <Stack direction="horizontal" gap={0}>
+                <div className="mx-auto"></div> 
+                <div className="mx-0">
+                    <ReactBigCalendar/>
                 </div>
-                <div className="ms-5">
-                    <Events />
+                <div className="mx-auto">
+                    <Events/>
                 </div>
             </Stack>
         </div>

@@ -1,0 +1,11 @@
+.add-space {
+    margin: 5px;
+}
+
+.Exalendar {
+    background-color: rgb(250, 250, 250);
+    padding: 100px;
+    border: 2px;
+    border-color: rgb(156, 156, 156);
+    border-style: solid;
+}

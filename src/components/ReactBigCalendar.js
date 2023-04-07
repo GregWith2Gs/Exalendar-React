@@ -85,7 +85,7 @@ export default function ReactBigCalendar() {
         defaultDate={new Date()}
         defaultView="month"
         events={eventsData}
-        style={{ height: "85vh", width: "95vh" }}
+        style={{ height: "80vh", width: "90vh" }}
         resizable={true}
         onSelectEvent={(event) => alert(event.description)}
         draggableAccessor={(event) => true}

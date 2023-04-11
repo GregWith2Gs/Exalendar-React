@@ -3,6 +3,8 @@ import React, { useState } from "react";
 import DateTimePicker from 'react-datetime-picker';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
+import { Select } from 'antd';
+
 
 function Home() {
     const [eventName, setEventName] = useState('');
@@ -69,8 +71,37 @@ function Home() {
                     <input type="text" value={eventName} onChange={(e)=>setEventName(e.target.value)}/>
                 </label>
                 <label>
+                <label>
                     Event type:
-                    <input type="text" value={eventType} onChange={(e)=>setEventType(e.target.value)}/>
+                    <Select
+                        showSearch
+                        style={{
+                        width: 160,
+                        }}
+                        value={eventType}
+                        placeholder="Select or type event type"
+                        onChange={(value) => setEventType(value)}
+                        onSearch={(value) => console.log('search:', value)}
+                        filterOption={(input, option) =>
+                        (option?.label ?? '').toLowerCase().includes(input.toLowerCase())
+                        }
+                        options={[
+                        {
+                            value: 'meeting',
+                            label: 'Meeting',
+                        },
+                        {
+                            value: 'lecture',
+                            label: 'Lecture',
+                        },
+                        {
+                            value: 'lab',
+                            label: 'Lab',
+                        },
+                        ]}
+                        allowClear
+                    />
+                    </label>
                 </label>
                 <label>
                     Event description:

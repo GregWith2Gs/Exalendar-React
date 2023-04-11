@@ -56,7 +56,7 @@ function Events() {
                 <Row className='add-space'>
                     <Col>Event Start Time:</Col>
                     <Col>
-                        <DateTimePicker 
+                        <DateTimePicker className='calendar'
                         onChange={setEventStart}
                         value={eventStart}
                         amPmAriaLabel="Select AM/PM"
@@ -73,11 +73,12 @@ function Events() {
                         format="yyyy-MM-dd hh:mm a"
                         />
                     </Col>
+                    <Col></Col>
                 </Row>
                 <Row className='add-space'>
                     <Col>Event End Time:</Col>
                     <Col>
-                        <DateTimePicker 
+                        <DateTimePicker className='calendar'
                         onChange={setEventEnd}
                         value={eventEnd}
                         minDate={eventStart}
@@ -95,9 +96,12 @@ function Events() {
                         format="yyyy-MM-dd hh:mm a"
                         />
                     </Col>
+                    <Col></Col>
                 </Row>
                 <Row className='add-space'>
+                    
                     <button onClick={submitEvent}>Submit</button>
+                    
                 </Row>
             </Container>
         </form>

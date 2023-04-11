@@ -15,7 +15,11 @@ function Home() {
     const [eventDesc, setEventDesc] = useState('');
     const [eventStart, setEventStart] = useState(new Date());
     const [eventEnd, setEventEnd] = useState(new Date());
+    const [theme, setTheme] = useState("light");
+    const handleThemeChange = () => {
+        setTheme( theme === "light" ? "dark" : "light");
     
+    };
 
     function submitEvent() {
         console.log(eventName);
@@ -54,7 +58,8 @@ function Home() {
                     <Form.Control placeholder="Week"/>
                     <Form.Control placeholder="Month"/>
                     <Form.Control placeholder="Agenda"/>
-                    <Form.Control placeholder="light/dar"/>
+                    <Form.Control placeholder="light/dark"/>
+                    <button onClick={handleThemeChange}>light/dark</button>
                 </Col>
                 <Col xs="auto">
                         <ReactBigCalendar />

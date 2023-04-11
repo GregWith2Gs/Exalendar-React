@@ -29,7 +29,7 @@ const Navigation = (props) => {
 	return (
     /* Top Bar*/
     <div>
-      <nav className="navbar fixed-top" 	role="navigation">
+      <nav className="navbar" 	role="navigation">
         <div className="container-fluid">
           <a className="navbar-exalendar m-auto" href="/home" >Exalendar</a>
         </div>
@@ -58,3 +58,5 @@ const Navigation = (props) => {
 };
 
 export default Navigation;
+
+

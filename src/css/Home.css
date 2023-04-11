@@ -2,3 +2,12 @@
 html {
     margin-bottom: 70px;
 }
+.Home {
+    background-color: #fff;
+    color: black;
+}
+
+.Home.dark{
+    background-color: #000;
+    color:#fff;
+} 

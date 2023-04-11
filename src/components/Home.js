@@ -4,6 +4,8 @@ import { BrowserRouter }  from "react-router-dom";
 import Events from './Events';
 import Stack from 'react-bootstrap/Stack';
 import '../css/Home.css';
+import Col from 'react-bootstrap/Col';
+import Row from 'react-bootstrap/Row';
 
 function Home() {
 

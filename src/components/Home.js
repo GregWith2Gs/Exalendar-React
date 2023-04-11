@@ -1,10 +1,8 @@
 import ReactBigCalendar from './ReactBigCalendar';
-import React, { useState } from "react";
-import DateTimePicker from 'react-datetime-picker';
-import Button from 'react-bootstrap/Button';
-import Form from 'react-bootstrap/Form';
 import Navigation from './Navigation';
 import { BrowserRouter }  from "react-router-dom";
+import Events from './Events';
+import Stack from 'react-bootstrap/Stack';
 import '../css/Home.css';
 import Col from 'react-bootstrap/Col';
 import Row from 'react-bootstrap/Row';
@@ -15,11 +13,7 @@ function Home() {
     const [eventDesc, setEventDesc] = useState('');
     const [eventStart, setEventStart] = useState(new Date());
     const [eventEnd, setEventEnd] = useState(new Date());
-    const [theme, setTheme] = useState("light");
-    const handleThemeChange = () => {
-        setTheme( theme === "light" ? "dark" : "light");
     
-    };
 
     function submitEvent() {
         console.log(eventName);
@@ -58,8 +52,7 @@ function Home() {
                     <Form.Control placeholder="Week"/>
                     <Form.Control placeholder="Month"/>
                     <Form.Control placeholder="Agenda"/>
-                    <Form.Control placeholder="light/dark"/>
-                    <button onClick={handleThemeChange}>light/dark</button>
+                    <Form.Control placeholder="light/dar"/>
                 </Col>
                 <Col xs="auto">
                         <ReactBigCalendar />

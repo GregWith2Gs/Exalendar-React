@@ -100,7 +100,7 @@ function Events() {
                 </Row>
                 <Row className='add-space'>
                     
-                    <button onClick={submitEvent}>Submit</button>
+                    <button onClick={submitEvent}>Create New Event</button>
                     
                 </Row>
             </Container>

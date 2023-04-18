@@ -29,7 +29,7 @@ const Navigation = (props) => {
 	return (
     /* Top Bar*/
     <div>
-      <nav className="navbar" 	role="navigation">
+      <nav className="navbar fixed-top" 	role="navigation">
         <div className="container-fluid">
           <a className="navbar-exalendar m-auto" href="/home" >Exalendar</a>
         </div>

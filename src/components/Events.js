@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import DateTimePicker from 'react-datetime-picker';
+import { DateTimePicker } from '@mui/x-date-pickers/DateTimePicker';
 import Stack from 'react-bootstrap/Stack';
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';

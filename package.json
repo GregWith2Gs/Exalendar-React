@@ -5,6 +5,11 @@
   "dependencies": {
     "@emotion/react": "^11.10.6",
     "@emotion/styled": "^11.10.6",
+    "@magic-ext/oauth": "^11.1.1",
+    "@magic-ext/react-native-bare-oauth": "^12.1.1",
+    "@magic-ext/react-native-expo-oauth": "^12.1.1",
+    "@magic-sdk/react-native-bare": "^18.1.1",
+    "@magic-sdk/react-native-expo": "^18.1.1",
     "@mui/material": "^5.11.11",
     "@mui/x-date-pickers": "^6.0.0",
     "@mui/x-date-pickers-pro": "^6.0.0",
@@ -15,6 +20,7 @@
     "cors": "^2.8.5",
     "dayjs": "^1.11.7",
     "express": "^4.18.2",
+    "magic-sdk": "^17.1.1",
     "moment": "^2.29.4",
     "mysql": "^2.18.1",
     "react": "^18.2.0",
@@ -22,6 +28,7 @@
     "react-bootstrap": "^2.7.2",
     "react-datetime-picker": "^4.2.0",
     "react-dom": "^18.2.0",
+    "react-native-inappbrowser-reborn": "^3.7.0",
     "react-scripts": "5.0.1",
     "web-vitals": "^2.1.4"
   },

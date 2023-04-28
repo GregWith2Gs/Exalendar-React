@@ -48,7 +48,7 @@ function Events() {
                     <Col><Select
                             showSearch
                             style={{
-                            width: 160,
+                            width: 190,
                             }}
                             value={eventType}
                             placeholder="Select or type event type"
@@ -79,7 +79,7 @@ function Events() {
                     <Col><Select
                             showSearch
                             style={{
-                            width: 160,
+                            width: 190,
                             }}
                             value={eventType}
                             placeholder="Select or type event type"

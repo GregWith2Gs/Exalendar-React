@@ -1,14 +1,18 @@
 import ReactBigCalendar from './ReactBigCalendar';
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
+
 import DateTimePicker from 'react-datetime-picker';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import Navigation from './Navigation';
 import { BrowserRouter }  from "react-router-dom";
 import '../css/Home.css';
+import "../css/Styles.css";
 import Col from 'react-bootstrap/Col';
 import Row from 'react-bootstrap/Row';
 import Events from './Events';
+
+
 
 function Home() {
     const [eventName, setEventName] = useState('');
@@ -16,12 +20,10 @@ function Home() {
     const [eventDesc, setEventDesc] = useState('');
     const [eventStart, setEventStart] = useState(new Date());
     const [eventEnd, setEventEnd] = useState(new Date());
-    const [theme, setTheme] = useState("light");
-    const handleThemeChange = () => {
-        setTheme( theme === "light" ? "dark" : "light");
+    const [darkMode, setDarkMode] = useState(false);
+    //const [theme, setTheme] = useState('light');
+    const toggleDarkMode = () => setDarkMode(darkMode ? false : true);
     
-    };
-
     function submitEvent() {
         console.log(eventName);
         
@@ -46,29 +48,31 @@ function Home() {
     }
 
     return (
-        <div>
-            <BrowserRouter>
-                <Navigation />
-            </BrowserRouter>
-            <Row>
-                <Col xs="auto">
-                    <Form.Control placeholder="Menu"/>
-                    <Form.Control placeholder="Day"/>
-                    <Form.Control placeholder="Week"/>
-                    <Form.Control placeholder="Month"/>
-                    <Form.Control placeholder="Agenda"/>
-                    <Form.Control placeholder="light/dark"/>
-                    <button onClick={handleThemeChange}>light/dark</button>
-                </Col>
-                <Col xs="auto">
-                        <ReactBigCalendar />
-                    <br></br>
-                </Col>
-                <Col xs="auto">
-                    <Events/>                    
-                </Col>
-            </Row>
-        </div>
+       
+                <div className="Home" data-theme={darkMode ? "dark" : "light"}>
+                    <BrowserRouter>
+                        <Navigation />
+                    </BrowserRouter>
+                    <Row>
+                        <Col xs="auto">
+                            <Form.Control placeholder="Menu"/>
+                            <Form.Control placeholder="Day"/>
+                            <Form.Control placeholder="Week"/>
+                            <Form.Control placeholder="Month"/>
+                            <Form.Control placeholder="Agenda"/>
+                            <Form.Control placeholder="light/dark"/>
+                            <button onClick={toggleDarkMode}>light/dark</button>
+                        </Col>
+                        <Col xs="auto">
+                                <ReactBigCalendar />
+                            <br></br>
+                        </Col>
+                        <Col xs="auto">
+                            <Events/>                    
+                        </Col>
+                    </Row>
+                </div>
+        
     );
 }
 

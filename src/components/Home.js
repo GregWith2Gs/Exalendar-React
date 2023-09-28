@@ -1,4 +1,8 @@
 import ReactBigCalendar from './ReactBigCalendar';
+
+//import 'react-big-calendar/lib/sass/styles';
+//import 'react-big-calendar/lib/addons/dragAndDrop/styles'; // if using DnD
+
 import React, { useEffect, useState } from "react";
 
 import DateTimePicker from 'react-datetime-picker';
@@ -54,7 +58,7 @@ function Home() {
                         <Navigation />
                     </BrowserRouter>
                     <Row>
-                        <Col xs="auto">
+                        <Col xs="2">
                             <Form.Control placeholder="Menu"/>
                             <Form.Control placeholder="Day"/>
                             <Form.Control placeholder="Week"/>
@@ -63,14 +67,12 @@ function Home() {
                             <Form.Control placeholder="light/dark"/>
                             <button onClick={toggleDarkMode}>light/dark</button>
                         </Col>
-                        <Col xs="auto">
-                                <ReactBigCalendar />
+                        <Col xs="10">
+                                <ReactBigCalendar className="MyCalendar"/>
                             <br></br>
                         </Col>
-                        <Col xs="auto">
-                            <Events/>                    
-                        </Col>
                     </Row>
+                    
                 </div>
         
     );

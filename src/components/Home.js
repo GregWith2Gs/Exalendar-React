@@ -19,6 +19,24 @@ import Events from './Events';
 
 
 function Home() {
+    //adding these right now as test for create event popup
+    const [selectedEvent, setSelectedEvent] = useState(undefined)
+    const [modalState, setModalState] = useState(false)
+
+
+
+    const handleSelectedEvent = (event) => {
+        setSelectedEvent(event)
+        setModalState(true)
+    }
+
+    const handleSelected = (event) => {
+        setSelectedEvent(event)
+        setModalState(true)
+    }
+
+
+
     const [eventName, setEventName] = useState('');
     const [eventType, setEventType] = useState('');
     const [eventDesc, setEventDesc] = useState('');
@@ -51,29 +69,37 @@ function Home() {
         })
     }
 
+    const Modal = () => {
+        return (
+           <div>
+            
+              <Events />
+           </div>
+        )
+    }
+
     return (
        
-                <div className="Home" data-theme={darkMode ? "dark" : "light"}>
-                    <BrowserRouter>
-                        <Navigation />
-                    </BrowserRouter>
-                    <Row>
-                        <Col xs="2">
-                            <Form.Control placeholder="Menu"/>
-                            <Form.Control placeholder="Day"/>
-                            <Form.Control placeholder="Week"/>
-                            <Form.Control placeholder="Month"/>
-                            <Form.Control placeholder="Agenda"/>
-                            <Form.Control placeholder="light/dark"/>
-                            <button onClick={toggleDarkMode}>light/dark</button>
-                        </Col>
-                        <Col xs="10">
-                                <ReactBigCalendar className="MyCalendar"/>
-                            <br></br>
-                        </Col>
-                    </Row>
+        <div className="Home" data-theme={darkMode ? "dark" : "light"}>
+            <BrowserRouter>
+                <Navigation />
+            </BrowserRouter>
+            
+            
+
+            {selectedEvent && <Modal />}
+            <ReactBigCalendar
+                onSelectEvent={(event) => handleSelectedEvent(event)}
+                popup
+                //events={myCalendarEvents}
+                startAccessor="start"
+                endAccessor="end"
+                style={{ width: "100%", height: 600 }}
+            />
                     
-                </div>
+            
+            
+        </div>
         
     );
 }

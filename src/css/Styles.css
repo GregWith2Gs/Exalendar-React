@@ -22,9 +22,6 @@
 
 
   .MyCalendar {
-    .rbc-event{
-      background-color: var(--event-bg);
-      color: var(--event-text-color);
-    }
+    margin-left: 10px;
   }
   

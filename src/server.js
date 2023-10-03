@@ -38,6 +38,7 @@ app.get("/", (req, res) => {
     });
 });
 
+// https://forum.freecodecamp.org/t/nodejs-mysql-prepared-statements/426216 <- method to stop injections
 app.post("/", (req, res) => {
     let data = req.body;
     var event_title = data.name;

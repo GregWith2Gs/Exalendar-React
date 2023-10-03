@@ -42,16 +42,27 @@ app.post("/", (req, res) => {
     let data = req.body;
     var event_title = data.name;
     var event_type = data.type;
-    var event_description = data.event_description;
-    var event_date_start = data.event_date_start;
-    var event_date_end = data.event_date_end;
+    var event_description = data.description;
+    var event_location = data.location;
+    var event_start = data.start;
+    var event_end = data.end;
+    var event_freq = data.freq;
+    var event_end_date = data.end_date;
+    var event_interval = data.interval;
+    var event_byday = data.byday;
     res.send('Data Received: ' + JSON.stringify(data));
-    const sql_code = `INSERT INTO events (event_type, event_title, event_description, event_date_start, event_date_end) VALUES (
-      ${"'"+event_type+"'"},
+    const sql_code = `INSERT INTO events (event_title, event_type, event_description, event_location, 
+      event_start, event_end, event_freq, event_end_date, event_interval, event_byday) VALUES (
       ${"'"+event_title+"'"},
+      ${"'"+event_type+"'"},
       ${"'"+event_description+"'"},
-      ${"'"+event_date_start+"'"},
-      ${"'"+event_date_end+"'"}
+      ${"'"+event_location+"'"},
+      ${"'"+event_start+"'"},
+      ${"'"+event_end+"'"},
+      ${"'"+event_freq+"'"},
+      ${"'"+event_end_date+"'"},
+      ${"'"+event_interval+"'"},
+      ${"'"+event_byday+"'"}
       )`;
 
     connection.query(sql_code, function (err, results) {

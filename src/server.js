@@ -41,32 +41,11 @@ app.get("/", (req, res) => {
 // https://forum.freecodecamp.org/t/nodejs-mysql-prepared-statements/426216 <- method to stop injections
 app.post("/", (req, res) => {
     let data = req.body;
-    var event_title = data.name;
-    var event_type = data.type;
-    var event_description = data.description;
-    var event_location = data.location;
-    var event_start = data.start;
-    var event_end = data.end;
-    var event_freq = data.freq;
-    var event_end_date = data.end_date;
-    var event_interval = data.interval;
-    var event_byday = data.byday;
     res.send('Data Received: ' + JSON.stringify(data));
     const sql_code = `INSERT INTO events (event_title, event_type, event_description, event_location, 
-      event_start, event_end, event_freq, event_end_date, event_interval, event_byday) VALUES (
-      ${"'"+event_title+"'"},
-      ${"'"+event_type+"'"},
-      ${"'"+event_description+"'"},
-      ${"'"+event_location+"'"},
-      ${"'"+event_start+"'"},
-      ${"'"+event_end+"'"},
-      ${"'"+event_freq+"'"},
-      ${"'"+event_end_date+"'"},
-      ${"'"+event_interval+"'"},
-      ${"'"+event_byday+"'"}
-      )`;
+      event_start, event_end, event_freq, event_end_date, event_interval, event_byday) VALUES (?,?,?,?,?,?,?,?,?,?)`;
 
-    connection.query(sql_code, function (err, results) {
+    connection.query(sql_code, data.name, data.type, data.description, data.location, data.start, data.end, data.freq, data.end_date, data.interval, data.byday, function (err, results, fields) {
         if (err) throw err;
         console.log(results);
     });

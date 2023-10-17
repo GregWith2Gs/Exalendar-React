@@ -39,8 +39,8 @@ function Events() {
     }
 
     return (
-        <form>
-            <Container fluid className='Exalendar'>
+        <form className='Form'>
+            <div fluid className='MakeEvent'>
                 <Row className='add-space'>
                     <Col>Event Name:</Col>
                     <Col><input type="text" placeholder="Enter text..." value={eventName} onChange={(e)=>setEventName(e.target.value)}/></Col>
@@ -103,7 +103,7 @@ function Events() {
                     <button onClick={submitEvent}>Create New Event</button>
                     
                 </Row>
-            </Container>
+            </div>
         </form>
     );
 }

@@ -1,5 +1,7 @@
 import React, { useState, useEffect, useCallback } from "react";
 import { Calendar, momentLocalizer } from "react-big-calendar";
+import Events from './Events';
+
 import moment from "moment";
 import "react-big-calendar/lib/css/react-big-calendar.css";
 
@@ -13,6 +15,15 @@ const DnDCalendar = withDragAndDrop(Calendar)
 
 export default function ReactBigCalendar() {
   const [eventsData, setEventsData] = useState();
+  const [isOpen, setIsOpen] =useState(false);
+  //const startDate;
+  //const endDate;
+
+  function makeEvent({start, end}) {
+    setIsOpen((isOpen) => !isOpen);
+    
+  }
+
 
   function setEvents(eventData) {
     var data = [];
@@ -64,19 +75,25 @@ export default function ReactBigCalendar() {
   )
 
   const handleSelect = ({ start, end }) => {
+    
     console.log(start);
     console.log(end);
-    const title = window.prompt("New Event name");
-    if (title)
-      setEventsData([
-        ...eventsData,
-        {
-          start,
-          end,
-          title
-        }
-      ]);
+    makeEvent({start, end});
+    //const title = window.prompt("New Event name");
+    
+    //if (title)
+    //  setEventsData([
+    //    ...eventsData,
+    //    {
+    //      start,
+    //      end,
+    //      title
+    //    }
+    //  ]);
   };
+
+
+
   return (
     <div className="App">
       <DnDCalendar
@@ -94,6 +111,10 @@ export default function ReactBigCalendar() {
         onEventResize={resizeEvent}
         onSelectSlot={handleSelect}
       />
+
+      {isOpen && <Events />}
     </div>
+
+    
   );
 }

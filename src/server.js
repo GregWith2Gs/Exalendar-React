@@ -38,14 +38,12 @@ app.get("/", (req, res) => {
     });
 });
 
-// https://forum.freecodecamp.org/t/nodejs-mysql-prepared-statements/426216 <- method to stop injections
 app.post("/", (req, res) => {
     let data = req.body;
     res.send('Data Received: ' + JSON.stringify(data));
-    const sql_code = `INSERT INTO events (event_title, event_type, event_description, event_location, 
-      event_start, event_end, event_freq, event_end_date, event_interval, event_byday) VALUES (?,?,?,?,?,?,?,?,?,?)`;
+    const sql_code = `INSERT INTO events (event_title, event_type, event_description, event_location, event_start, event_end, event_freq, event_end_date, event_interval, event_byday) VALUES (?,?,?,?,?,?,?,?,?,?)`;
 
-    connection.query(sql_code, data.name, data.type, data.description, data.location, data.start, data.end, data.freq, data.end_date, data.interval, data.byday, function (err, results, fields) {
+    connection.query(sql_code, [data.name, data.type, data.description, data.location, data.start, data.end, data.freq, data.end_date, data.interval, data.byday], function (err, results, fields) {
         if (err) throw err;
         console.log(results);
     });

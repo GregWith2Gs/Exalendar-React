@@ -52,8 +52,15 @@ function Home() {
             
             
 
-            
-            <ReactBigCalendar/>
+            {selectedEvent && <Modal />}
+            <ReactBigCalendar
+                onSelectEvent={(event) => handleSelectedEvent(event)}
+                popup
+                //events={myCalendarEvents}
+                startAccessor="start"
+                endAccessor="end"
+                style={{ width: "100%", height: 600 }}
+            />
                     
             
             

@@ -16,11 +16,15 @@ const DnDCalendar = withDragAndDrop(Calendar)
 export default function ReactBigCalendar() {
   const [eventsData, setEventsData] = useState();
   const [isOpen, setIsOpen] =useState(false);
+  const [eventStart, setEventStart] = useState(new Date());
+  const [eventEnd, setEventEnd] = useState(new Date());
   //const startDate;
   //const endDate;
 
   function makeEvent({start, end}) {
     setIsOpen((isOpen) => !isOpen);
+    setEventStart(start)
+    setEventEnd(end)
     
   }
 
@@ -112,7 +116,7 @@ export default function ReactBigCalendar() {
         onSelectSlot={handleSelect}
       />
 
-      {isOpen && <Events />}
+      {isOpen && <Events start={eventStart} end={eventEnd} />}
     </div>
 
     

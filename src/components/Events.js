@@ -8,7 +8,7 @@ import Col from 'react-bootstrap/Col';
 // import Form from 'react-bootstrap/Form';
 import '../css/Event.css';
 
-function Events() {
+function Events({start, end}) {
     const [eventName, setEventName] = useState('');
     const [eventType, setEventType] = useState('');
     const [eventDesc, setEventDesc] = useState('');
@@ -58,7 +58,7 @@ function Events() {
                     <Col>
                         <DateTimePicker className='calendar'
                         onChange={setEventStart}
-                        value={eventStart}
+                        value={start}
                         amPmAriaLabel="Select AM/PM"
                         calendarAriaLabel="Toggle calendar"
                         clearAriaLabel="Clear value"
@@ -80,7 +80,7 @@ function Events() {
                     <Col>
                         <DateTimePicker className='calendar'
                         onChange={setEventEnd}
-                        value={eventEnd}
+                        value={end}
                         minDate={eventStart}
                         amPmAriaLabel="Select AM/PM"
                         calendarAriaLabel="Toggle calendar"

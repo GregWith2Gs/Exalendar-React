@@ -78,23 +78,24 @@ export default function ReactBigCalendar() {
     [setEventsData]
   )
 
+  function changeHours(date, hours){
+    date.setHours(date.getHours() + hours);
+    return date;
+  }
+
   const handleSelect = ({ start, end }) => {
     
     console.log(start);
     console.log(end);
-    makeEvent({start, end});
-    //const title = window.prompt("New Event name");
+    //makeEvent({start, end});
+    setEventStart(changeHours(start,12))
+    setEventEnd(changeHours(end,-12))
+
+    setIsOpen((isOpen) => !isOpen);
+
     
-    //if (title)
-    //  setEventsData([
-    //    ...eventsData,
-    //    {
-    //      start,
-    //      end,
-    //      title
-    //    }
-    //  ]);
   };
+
 
 
 

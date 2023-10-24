@@ -1,5 +1,6 @@
 import React, { useState } from "react";
-import DateTimePicker from 'react-datetime-picker';
+import {DateTimePicker} from '@mui/x-date-pickers';
+import dayjs from 'dayjs';
 import Stack from 'react-bootstrap/Stack';
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
@@ -53,50 +54,45 @@ function Events({start, end}) {
                     <Col>Event Description:</Col>
                     <Col><input type="text" placeholder="Enter text..." value={eventDesc} onChange={(e)=>setEventDesc(e.target.value)}/></Col>
                 </Row>
-                <Row className='add-space'>
-                    <Col>Event Start Time:</Col>
+
+                <Row className='add-space'></Row>
+
+                <Row className='date-form'>
+                    
                     <Col>
-                        <DateTimePicker className='calendar'
-                        onChange={setEventStart}
-                        value={start}
-                        amPmAriaLabel="Select AM/PM"
-                        calendarAriaLabel="Toggle calendar"
-                        clearAriaLabel="Clear value"
-                        dayAriaLabel="Day"
-                        hourAriaLabel="Hour"
-                        maxDetail="minute"
-                        minuteAriaLabel="Minute"
-                        monthAriaLabel="Month"
-                        nativeInputAriaLabel="Date and time"
-                        secondAriaLabel="Second"
-                        yearAriaLabel="Year"
-                        format="yyyy-MM-dd hh:mm a"
+                        <DateTimePicker
+                            label="Start Date"
+                            value={dayjs(start)}
+                            onChange={(eventStart) => setEventStart(eventStart)}
+                            viewRenderers={{
+                                hours: null,
+                                minutes: null,
+                                seconds: null,
+                            }}
                         />
+
                     </Col>
-                    <Col></Col>
+                    
                 </Row>
-                <Row className='add-space'>
-                    <Col>Event End Time:</Col>
+
+                <Row className='date-form'>
+                    
                     <Col>
-                        <DateTimePicker className='calendar'
-                        onChange={setEventEnd}
-                        value={end}
-                        minDate={start}
-                        amPmAriaLabel="Select AM/PM"
-                        calendarAriaLabel="Toggle calendar"
-                        clearAriaLabel="Clear value"
-                        dayAriaLabel="Day"
-                        hourAriaLabel="Hour"
-                        maxDetail="minute"
-                        minuteAriaLabel="Minute"
-                        monthAriaLabel="Month"
-                        nativeInputAriaLabel="Date and time"
-                        secondAriaLabel="Second"
-                        yearAriaLabel="Year"
-                        format="yyyy-MM-dd hh:mm a"
+                        <DateTimePicker
+                            label="End Date"
+                            value={dayjs(end)}
+                            onChange={(eventEnd) => setEventEnd(eventEnd)}
+                            viewRenderers={{
+                                hours: null,
+                                minutes: null,
+                                seconds: null,
+                            }}
                         />
+
                     </Col>
-                    <Col></Col>
+                
+                    
+                    
                 </Row>
                 <Row className='add-space'>
                     

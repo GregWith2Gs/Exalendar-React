@@ -1,15 +1,19 @@
 import Home from './Home.js'
 import Login from './Login.js';
+import { LocalizationProvider } from '@mui/x-date-pickers';
+import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs'
 
 function App() {
   return (
-    
-    <div className="App">
-      <header className="App-header">
+    <LocalizationProvider dateAdapter={AdapterDayjs}>
+      <div className="App">
+        <header className="App-header">
         {/* <Login/> */}
-        <Home/>
-      </header>
-    </div>
+          <Home/>
+        </header>
+      </div>
+    </LocalizationProvider>
+    
   );
 }
 

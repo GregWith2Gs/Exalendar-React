@@ -2,6 +2,12 @@
     margin: 5px;
 }
 
+.date-form {
+    margin: 15px;
+    height: auto;
+    width: auto;
+}
+
 .Form {
     width: 100px;
 }

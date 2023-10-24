@@ -81,7 +81,7 @@ function Events({start, end}) {
                         <DateTimePicker className='calendar'
                         onChange={setEventEnd}
                         value={end}
-                        minDate={eventStart}
+                        minDate={start}
                         amPmAriaLabel="Select AM/PM"
                         calendarAriaLabel="Toggle calendar"
                         clearAriaLabel="Clear value"

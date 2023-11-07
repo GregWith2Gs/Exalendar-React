@@ -43,29 +43,45 @@ function Events({start, end}) {
     return (
         <form className='Form'>
             <div fluid className='MakeEvent'>
-                <div className='rowspace'>
-                    <div className='columnspace'>
-                        Event Name:
+                <div className='lefthalf'>
+                    <div className='rowspace'>
+                        <div className='columnspace'>
+                            Event Name:
+                        </div>
+                        <div className='columnspace'>
+                            <input type="text" placeholder="Enter text..." value={eventName} onChange={(e)=>setEventName(e.target.value)}/>  
+                        </div>
+                        
+                        <div className='exit'>
+                            <img style={{ width: '100%', height: '100%'}} src={exit} alt="Logo" />
+                        </div>
+
                     </div>
-                    <div className='columnspace'>
-                        <input type="text" placeholder="Enter text..." value={eventName} onChange={(e)=>setEventName(e.target.value)}/>  
+                    <div className='rowspace'>
+                        thing
+
                     </div>
-                    
-                    <div className='exit'>
-                        <img style={{ width: '100%', height: '100%'}} src={exit} alt="Logo" />
+                    <div className='rowspace'>
+                        thing
+
+                        
                     </div>
 
-                </div>
-                <div className='rowspace'>
-                    thing
-
-                </div>
-                <div className='rowspace'>
-                    thing
-
-                    
                 </div>
                 
+                <div className='righthalf'>
+                    <DateTimePicker
+                        label="End Date"
+                        value={dayjs(end)}
+                        onChange={(eventEnd) => setEventEnd(eventEnd)}
+                        viewRenderers={{
+                            hours: null,
+                            minutes: null,
+                            seconds: null,
+                        }}
+                    />
+
+                </div>
                 
             </div>
         </form>

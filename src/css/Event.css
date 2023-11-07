@@ -12,6 +12,17 @@
     width: 100px;
 }
 
+.lefthalf {
+    width: 60%;
+    height: 100%;
+}
+
+.righthalf {
+    width: 30%;
+    height: 100%;
+    background-color: blue;
+}
+
 .rowspace {
     
     display: flex;
@@ -34,7 +45,7 @@
 .MakeEvent {
     position: absolute;
     display: block;
-    top: 33%;
+    top: 225px;
     left: 50%;
     transform: translate(-50%, -50%);
     width: 600px;

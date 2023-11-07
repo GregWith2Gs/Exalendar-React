@@ -12,8 +12,8 @@ import Navigation from './Navigation';
 import { BrowserRouter }  from "react-router-dom";
 import '../css/Home.css';
 import "../css/Styles.css";
-import Col from 'react-bootstrap/Col';
-import Row from 'react-bootstrap/Row';
+//import Col from 'react-bootstrap/Col';
+//import Row from 'react-bootstrap/Row';
 import Events from './Events';
 
 

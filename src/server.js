@@ -16,7 +16,7 @@ app.use(bodyParser.json());
 var connection = mysql.createConnection({
   host: "localhost",
   user: "root",
-  password: "MacD3Marco?",
+  password: "12345",
   database: "exalendar",
   port: 3306,
   charset: "utf8mb4"
@@ -40,21 +40,12 @@ app.get("/", (req, res) => {
 
 app.post("/", (req, res) => {
     let data = req.body;
-    var event_title = data.name;
-    var event_type = data.type;
-    var event_description = data.event_description;
-    var event_date_start = data.event_date_start;
-    var event_date_end = data.event_date_end;
     res.send('Data Received: ' + JSON.stringify(data));
-    const sql_code = `INSERT INTO events (event_type, event_title, event_description, event_date_start, event_date_end) VALUES (
-      ${"'"+event_type+"'"},
-      ${"'"+event_title+"'"},
-      ${"'"+event_description+"'"},
-      ${"'"+event_date_start+"'"},
-      ${"'"+event_date_end+"'"}
-      )`;
+    const sql_code = `INSERT INTO events (event_title, event_type, event_description, event_location, 
+      event_start, event_end, event_freq, event_end_date, event_interval, event_byday) VALUES (?,?,?,?,?,?,?,?,?,?)`;
 
-    connection.query(sql_code, function (err, results) {
+      connection.query(sql_code, [data.name, data.type, data.description, data.location, data.start, data.end, 
+        data.freq, data.end_date, data.interval, data.byday], function (err, results, fields) {
         if (err) throw err;
         console.log(results);
     });

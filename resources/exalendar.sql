@@ -37,8 +37,13 @@ CREATE TABLE `events` (
   `event_type` varchar(255) NOT NULL,
   `event_title` varchar(255) NOT NULL,
   `event_description` varchar(255),
-  `event_date_start` datetime NOT NULL,
-  `event_date_end` datetime NOT NULL
+  `event_location` varchar(255),
+  `event_start` datetime NOT NULL,
+  `event_end` datetime NOT NULL,
+  `event_freq` varchar(255), -- DAILY, WEEKLY, MONTHLY, YEARLY
+  `event_end_date` datetime, 
+  `event_interval` int, -- happens every x days, weeks, months, years
+  `event_byday` varchar(255) -- SU, MO, TU, WE, TH, FR, SA
 );
 
 CREATE TABLE `class_admins` (

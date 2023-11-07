@@ -7,6 +7,7 @@ import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 // import Button from 'react-bootstrap/Button';
 // import Form from 'react-bootstrap/Form';
+import exit from '../media/icons8-x-60.png';
 import '../css/Event.css';
 
 function Events({start, end}) {
@@ -42,66 +43,35 @@ function Events({start, end}) {
     return (
         <form className='Form'>
             <div fluid className='MakeEvent'>
-                <Row className='add-space'>
-                    <Col>Event Name:</Col>
-                    <Col><input type="text" placeholder="Enter text..." value={eventName} onChange={(e)=>setEventName(e.target.value)}/></Col>
-                </Row>
-                <Row className='add-space'>
-                    <Col>Event Type:</Col>
-                    <Col><input type="text" placeholder="Enter text..." value={eventType} onChange={(e)=>setEventType(e.target.value)}/></Col>
-                </Row >
-                <Row className='add-space'>
-                    <Col>Event Description:</Col>
-                    <Col><input type="text" placeholder="Enter text..." value={eventDesc} onChange={(e)=>setEventDesc(e.target.value)}/></Col>
-                </Row>
-
-                <Row className='add-space'></Row>
-
-                <Row className='date-form'>
+                <div className='rowspace'>
+                    <div className='columnspace'>
+                        Event Name:
+                    </div>
+                    <div className='columnspace'>
+                        <input type="text" placeholder="Enter text..." value={eventName} onChange={(e)=>setEventName(e.target.value)}/>  
+                    </div>
                     
-                    <Col>
-                        <DateTimePicker
-                            label="Start Date"
-                            value={dayjs(start)}
-                            onChange={(eventStart) => setEventStart(eventStart)}
-                            viewRenderers={{
-                                hours: null,
-                                minutes: null,
-                                seconds: null,
-                            }}
-                        />
+                    <div className='exit'>
+                        <img style={{ width: '100%', height: '100%'}} src={exit} alt="Logo" />
+                    </div>
 
-                    </Col>
+                </div>
+                <div className='rowspace'>
+                    thing
+
+                </div>
+                <div className='rowspace'>
+                    thing
+
                     
-                </Row>
-
-                <Row className='date-form'>
-                    
-                    <Col>
-                        <DateTimePicker
-                            label="End Date"
-                            value={dayjs(end)}
-                            onChange={(eventEnd) => setEventEnd(eventEnd)}
-                            viewRenderers={{
-                                hours: null,
-                                minutes: null,
-                                seconds: null,
-                            }}
-                        />
-
-                    </Col>
+                </div>
                 
-                    
-                    
-                </Row>
-                <Row className='add-space'>
-                    
-                    <button onClick={submitEvent}>Create New Event</button>
-                    
-                </Row>
+                
             </div>
         </form>
     );
 }
+
+
 
 export default Events;

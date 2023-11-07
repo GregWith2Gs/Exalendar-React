@@ -1,8 +1,4 @@
 import ReactBigCalendar from './ReactBigCalendar';
-
-//import 'react-big-calendar/lib/sass/styles';
-//import 'react-big-calendar/lib/addons/dragAndDrop/styles'; // if using DnD
-
 import React, { useEffect, useState } from "react";
 
 import DateTimePicker from 'react-datetime-picker';
@@ -21,18 +17,18 @@ import Events from './Events';
 function Home() {
     //adding these right now as test for create event popup
     const [selectedEvent, setSelectedEvent] = useState(undefined)
-    const [modalState, setModalState] = useState(false)
+    
 
 
 
     const handleSelectedEvent = (event) => {
         setSelectedEvent(event)
-        setModalState(true)
+        
     }
 
     const handleSelected = (event) => {
         setSelectedEvent(event)
-        setModalState(true)
+        
     }
 
 
@@ -42,9 +38,8 @@ function Home() {
     const [eventDesc, setEventDesc] = useState('');
     const [eventStart, setEventStart] = useState(new Date());
     const [eventEnd, setEventEnd] = useState(new Date());
-    const [darkMode, setDarkMode] = useState(false);
-    //const [theme, setTheme] = useState('light');
-    const toggleDarkMode = () => setDarkMode(darkMode ? false : true);
+    
+    
     
     function submitEvent() {
         console.log(eventName);
@@ -69,18 +64,9 @@ function Home() {
         })
     }
 
-    const Modal = () => {
-        return (
-           <div>
-            
-              <Events />
-           </div>
-        )
-    }
-
     return (
        
-        <div className="Home" data-theme={darkMode ? "dark" : "light"}>
+        <div className="Home">
             <BrowserRouter>
                 <Navigation />
             </BrowserRouter>

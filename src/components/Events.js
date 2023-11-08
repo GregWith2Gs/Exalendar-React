@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 import {DateTimePicker} from '@mui/x-date-pickers';
+import TextField from '@mui/material/TextField';
+import Button from '@mui/material/Button';
 import dayjs from 'dayjs';
 import Stack from 'react-bootstrap/Stack';
 import Container from 'react-bootstrap/Container';
@@ -46,11 +48,9 @@ function Events({start, end}) {
                 <div className='lefthalf'>
                     <div className='rowspace'>
                         <div className='columnspace'>
-                            Event Name:
+                            <TextField id="standard-basic" label="Event Name" variant="standard" />
                         </div>
-                        <div className='columnspace'>
-                            <input type="text" placeholder="Enter text..." value={eventName} onChange={(e)=>setEventName(e.target.value)}/>  
-                        </div>
+                        
                         
                         <div className='exit'>
                             <img style={{ width: '100%', height: '100%'}} src={exit} alt="Logo" />
@@ -58,18 +58,36 @@ function Events({start, end}) {
 
                     </div>
                     <div className='rowspace'>
-                        thing
+                        <div className='columnspace'>
+                            <TextField id="standard-basic" label="Event Type" variant="standard" />
+                        </div>
 
                     </div>
                     <div className='rowspace'>
-                        thing
-
+                         <div className='columnspace'>
+                            <TextField id="standard-basic" label="Description" variant="standard" />
+                        </div>
                         
                     </div>
 
                 </div>
                 
                 <div className='righthalf'>
+                    <div className='rowspace'>
+                    <DateTimePicker
+                        label="Start Date"
+                        value={dayjs(start)}
+                        onChange={(eventStart) => setEventStart(eventStart)}
+                        viewRenderers={{
+                            hours: null,
+                            minutes: null,
+                            seconds: null,
+                        }}
+                    />
+                    </div>
+                    <div className='rowspace'>
+
+                    
                     <DateTimePicker
                         label="End Date"
                         value={dayjs(end)}
@@ -80,7 +98,11 @@ function Events({start, end}) {
                             seconds: null,
                         }}
                     />
+                    </div>
+                </div>
 
+                <div className='makebutton'>
+                    <Button variant='contained'>Success</Button>
                 </div>
                 
             </div>

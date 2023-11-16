@@ -12,6 +12,8 @@ import Col from 'react-bootstrap/Col';
 import exit from '../media/icons8-x-60.png';
 import '../css/Event.css';
 
+
+
 function Events({start, end}) {
     const [eventName, setEventName] = useState('');
     const [eventType, setEventType] = useState('');
@@ -48,24 +50,34 @@ function Events({start, end}) {
                 <div className='lefthalf'>
                     <div className='rowspace'>
                         <div className='columnspace'>
-                            <TextField id="standard-basic" label="Event Name" variant="standard" />
+                            <TextField id="standard-basic" label="Event Name" variant="standard" fullwidth={true} />
                         </div>
                         
                         
                         <div className='exit'>
-                            <img style={{ width: '100%', height: '100%'}} src={exit} alt="Logo" />
+                        
+                            <Button 
+                                variant='contained' 
+                                fullWidth={true}
+                                sx={{maxWidth:10, padding:0, margin:0}}
+                                >
+                                <img style={{ width: '10px', height: '10px'}} src={exit} alt="Logo" />
+                            </Button>
+                            
+
                         </div>
+                        
 
                     </div>
                     <div className='rowspace'>
                         <div className='columnspace'>
-                            <TextField id="standard-basic" label="Event Type" variant="standard" />
+                            <TextField id="standard-basic" label="Event Type" variant="standard" fullwidth={true}/>
                         </div>
 
                     </div>
                     <div className='rowspace'>
                          <div className='columnspace'>
-                            <TextField id="standard-basic" label="Description" variant="standard" />
+                            <TextField id="standard-basic" label="Description" variant="standard" fullwidth={true}/>
                         </div>
                         
                     </div>
@@ -75,6 +87,7 @@ function Events({start, end}) {
                 <div className='righthalf'>
                     <div className='rowspace'>
                     <DateTimePicker
+                        body= 'secondary'
                         label="Start Date"
                         value={dayjs(start)}
                         onChange={(eventStart) => setEventStart(eventStart)}

@@ -31,7 +31,7 @@ connection.connect(err => {
 });
 
 app.get("/", (req, res) => {
-    const sql_code = "SELECT * FROM events";
+    const sql_code = "SELECT * FROM classes";
     connection.query(sql_code, function (err, results) {
         if (err) throw err;
         res.json({results});

@@ -18,16 +18,6 @@ export default function ReactBigCalendar() {
   const [isOpen, setIsOpen] =useState(false);
   const [eventStart, setEventStart] = useState(new Date());
   const [eventEnd, setEventEnd] = useState(new Date());
-  //const startDate;
-  //const endDate;
-
-  function makeEvent({start, end}) {
-    setIsOpen((isOpen) => !isOpen);
-    setEventStart(start)
-    setEventEnd(end)
-    
-  }
-
 
   function setEvents(eventData) {
     var data = [];
@@ -87,7 +77,6 @@ export default function ReactBigCalendar() {
     
     console.log(start);
     console.log(end);
-    //makeEvent({start, end});
     setEventStart(changeHours(start,12))
     setEventEnd(changeHours(end,-12))
 

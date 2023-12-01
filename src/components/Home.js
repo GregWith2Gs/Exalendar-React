@@ -1,35 +1,16 @@
 import ReactBigCalendar from './ReactBigCalendar';
 import React, { useEffect, useState } from "react";
 
-import DateTimePicker from 'react-datetime-picker';
-import Button from 'react-bootstrap/Button';
-import Form from 'react-bootstrap/Form';
 import Navigation from './Navigation';
 import { BrowserRouter }  from "react-router-dom";
 import '../css/Home.css';
 import "../css/Styles.css";
-import Col from 'react-bootstrap/Col';
-import Row from 'react-bootstrap/Row';
-import Events from './Events';
+//import Events from './Events';
 
 
 
 function Home() {
-    //adding these right now as test for create event popup
-    const [selectedEvent, setSelectedEvent] = useState(undefined)
     
-
-
-
-    const handleSelectedEvent = (event) => {
-        setSelectedEvent(event)
-        
-    }
-
-    const handleSelected = (event) => {
-        setSelectedEvent(event)
-        
-    }
 
 
 

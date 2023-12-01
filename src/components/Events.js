@@ -3,12 +3,6 @@ import {DateTimePicker} from '@mui/x-date-pickers';
 import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
 import dayjs from 'dayjs';
-import Stack from 'react-bootstrap/Stack';
-import Container from 'react-bootstrap/Container';
-import Row from 'react-bootstrap/Row';
-import Col from 'react-bootstrap/Col';
-// import Button from 'react-bootstrap/Button';
-// import Form from 'react-bootstrap/Form';
 import exit from '../media/icons8-x-60.png';
 import '../css/Event.css';
 
@@ -59,7 +53,7 @@ function Events({start, end}) {
                             <Button
                                 variant='contained' 
                                 
-                                sx={{width:30, minWidth:0, mindHeight:0, padding:0, margin:0}}
+                                sx={{width:30, minWidth:0, minHeight:0, padding:0, margin:0}}
                                 >
                                 <img style={{ width: '30px', height: '30px'}} src={exit} alt="Logo" />
                             </Button>

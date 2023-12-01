@@ -56,12 +56,12 @@ function Events({start, end}) {
                         
                         <div className='exit'>
                         
-                            <Button 
+                            <Button
                                 variant='contained' 
-                                fullWidth={true}
-                                sx={{maxWidth:10, padding:0, margin:0}}
+                                
+                                sx={{width:30, minWidth:0, mindHeight:0, padding:0, margin:0}}
                                 >
-                                <img style={{ width: '10px', height: '10px'}} src={exit} alt="Logo" />
+                                <img style={{ width: '30px', height: '30px'}} src={exit} alt="Logo" />
                             </Button>
                             
 

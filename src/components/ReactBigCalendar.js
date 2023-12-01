@@ -85,6 +85,9 @@ export default function ReactBigCalendar() {
     
   };
 
+  const closeEvents = () => {
+    setIsOpen((isOpen) => !isOpen);
+  }
 
 
 
@@ -106,7 +109,7 @@ export default function ReactBigCalendar() {
         onSelectSlot={handleSelect}
       />
 
-      {isOpen && <Events start={eventStart} end={eventEnd} />}
+      {isOpen && <Events start={eventStart} end={eventEnd} onExit={() => closeEvents()} />}
     </div>
 
     

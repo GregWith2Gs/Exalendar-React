@@ -6,17 +6,32 @@ import dayjs from 'dayjs';
 import exit from '../media/icons8-x-60.png';
 import '../css/Event.css';
 
+//setEventsData([
+    //...eventsData,
+    //{
+      //start,
+      //end,
+      //title
+    //}
+  //]);
 
 
-function Events({start, end}) {
+
+function Events({start, end, onExit}) {
     const [eventName, setEventName] = useState('');
     const [eventType, setEventType] = useState('');
     const [eventDesc, setEventDesc] = useState('');
     const [eventStart, setEventStart] = useState(new Date());
     const [eventEnd, setEventEnd] = useState(new Date());
+    
+
+    
+    
 
     function submitEvent() {
         console.log(eventName);
+
+        onExit();
         
         let postData = {
             method: 'POST',
@@ -49,15 +64,17 @@ function Events({start, end}) {
                 <div className='lefthalf'>
                     <div className='rowspace'>
                         <div className='columnspace'>
-                            <TextField id="standard-basic" label="Event Name" variant="standard" fullwidth={true} />
+                            <TextField inputRef={eventName} id="standard-basic" label="Event Name" variant="standard" fullwidth={true} />
                         </div>
                         
                         
                         <div className='exit'>
                         
-                            <Button
+                            <Button 
+                                onClick={() => {
+                                    onExit();
+                                }}
                                 variant='contained' 
-                                
                                 sx={{width:30, minWidth:0, minHeight:0, padding:0, margin:0}}
                                 >
                                 <img style={{ width: '30px', height: '30px'}} src={exit} alt="Logo" />
@@ -70,13 +87,13 @@ function Events({start, end}) {
                     </div>
                     <div className='rowspace'>
                         <div className='columnspace'>
-                            <TextField id="standard-basic" label="Event Type" variant="standard" fullwidth={true}/>
+                            <TextField inputRef={eventType} id="standard-basic" label="Event Type" variant="standard" fullwidth={true}/>
                         </div>
 
                     </div>
                     <div className='rowspace'>
                          <div className='columnspace'>
-                            <TextField id="standard-basic" label="Description" variant="standard" fullwidth={true}/>
+                            <TextField inputRef={eventDesc} id="standard-basic" label="Description" variant="standard" fullwidth={true}/>
                         </div>
                         
                     </div>
@@ -114,7 +131,11 @@ function Events({start, end}) {
                 </div>
 
                 <div className='makebutton'>
-                    <Button variant='contained'>Success</Button>
+                    <Button 
+                        onClick={() => {
+                            submitEvent();
+                        }} 
+                        variant='contained'>Submit</Button>
                 </div>
                 
             </div>

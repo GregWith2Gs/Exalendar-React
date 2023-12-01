@@ -4,6 +4,10 @@ const port = 4000;
 const cors = require('cors');
 app.use(cors())
 
+const routes = require('./routes');
+
+app.use('/api', routes);
+
 var mysql = require("mysql");
 var bodyParser = require('body-parser');
 
@@ -40,6 +44,7 @@ app.get("/", (req, res) => {
 
 app.post("/", (req, res) => {
     let data = req.body;
+    console.log data.
     res.send('Data Received: ' + JSON.stringify(data));
     const sql_code = `INSERT INTO events (event_title, event_type, event_description, event_location, event_start, event_end, event_freq, event_end_date, event_interval, event_byday) VALUES (?,?,?,?,?,?,?,?,?,?)`;
 

@@ -9,6 +9,8 @@ import '../css/Event.css';
 
 
 function Events({start, end}) {
+    let classes = [];
+
     const [eventName, setEventName] = useState('');
     const [eventType, setEventType] = useState('');
     const [classID, setClassID] = useState('');
@@ -88,6 +90,11 @@ function Events({start, end}) {
                         </div>
                         
                     </div>
+
+                    <select className='classID' onChange={setClassID}>
+                        <option value='Select affiliated class, club, etc.'></option>
+
+                    </select>
 
                 </div>
                 

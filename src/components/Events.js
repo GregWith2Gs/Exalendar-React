@@ -24,9 +24,14 @@ function Events({start, end}) {
             body: JSON.stringify({
                 "name": eventName,
                 "type": eventType,
-                "event_description": eventDesc,
-                "event_date_start": eventStart.toJSON,
-                "event_date_end": eventEnd.toJSON
+                "description": eventDesc,
+                "location": null, // todo: add field - for building/room #, hyperlinks, etc
+                "start": eventStart.toJSON,
+                "end": eventEnd.toJSON,
+                "freq": null, // todo: add field - DAILY, WEEKLY, MONTHLY, or YEARLY
+                "end_date": null, // todo: add field - date to end repetition
+                "interval": null, // todo: add field - int; repeat every 'x'th Day, Week, Month, or Year
+                "byday": null // todo: add field - array containing any combo of SU, MO, TU, WE, TH, FR, SA
             })
         }
         console.log(postData);

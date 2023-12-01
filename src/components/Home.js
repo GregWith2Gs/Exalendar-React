@@ -5,14 +5,9 @@ import Navigation from './Navigation';
 import { BrowserRouter }  from "react-router-dom";
 import '../css/Home.css';
 import "../css/Styles.css";
-//import Events from './Events';
-
-
 
 function Home() {
     
-
-
 
     const [eventName, setEventName] = useState('');
     const [eventType, setEventType] = useState('');

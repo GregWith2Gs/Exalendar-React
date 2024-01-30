@@ -4,6 +4,8 @@ const port = 4000;
 const cors = require('cors');
 app.use(cors())
 
+const prompt = require("prompt-sync")({ sigint: true });
+
 var mysql = require("mysql");
 var bodyParser = require('body-parser');
 
@@ -13,12 +15,10 @@ app.use(bodyParser.urlencoded({
 
 app.use(bodyParser.json());
 
-const { _DBPW } = require('./secrets.js')
-
 var connection = mysql.createConnection({
   host: "localhost",
   user: "root",
-  password: _DBPW(),
+  password: prompt("DB Password:"),
   database: "exalendar",
   port: 3306,
   charset: "utf8mb4"

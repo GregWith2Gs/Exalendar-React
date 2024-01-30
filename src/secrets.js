@@ -1,5 +1,5 @@
 function _DBPW() {
-    return "123a45"
+    return "12345"
 }
 module.exports = {
     _DBPW

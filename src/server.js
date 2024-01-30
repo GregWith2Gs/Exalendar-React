@@ -14,7 +14,6 @@ app.use(bodyParser.urlencoded({
 app.use(bodyParser.json());
 
 const { _DBPW } = require('./secrets.js')
-console.log(_DBPW)
 
 var connection = mysql.createConnection({
   host: "localhost",

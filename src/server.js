@@ -13,10 +13,13 @@ app.use(bodyParser.urlencoded({
 
 app.use(bodyParser.json());
 
+const { _DBPW } = require('./secrets.js')
+console.log(_DBPW)
+
 var connection = mysql.createConnection({
   host: "localhost",
   user: "root",
-  password: "12345",
+  password: _DBPW(),
   database: "exalendar",
   port: 3306,
   charset: "utf8mb4"

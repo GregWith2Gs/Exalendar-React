@@ -17,14 +17,15 @@
     "@testing-library/user-event": "^13.5.0",
     "bootstrap": "^5.2.3",
     "cors": "^2.8.5",
-    "dayjs": "^1.11.7",
+    "dayjs": "^1.11.10",
     "express": "^4.18.2",
     "moment": "^2.29.4",
     "mysql": "^2.18.1",
+    "prompt-sync": "^4.2.0",
     "react": "^18.2.0",
-    "react-big-calendar": "^1.6.3",
-    "react-bootstrap": "^2.7.2",
-    "react-datetime-picker": "^4.2.0",
+    "react-big-calendar": "^1.8.4",
+    "react-bootstrap": "^2.9.0",
+    "react-datetime-picker": "^5.5.2",
     "react-dom": "^18.2.0",
     "react-router": "^6.9.0",
     "react-router-dom": "^6.9.0",
@@ -32,6 +33,9 @@
     "reactstrap": "^9.1.6",
     "styled-components": "^6.0.8",
     "web-vitals": "^2.1.4"
+  },
+  "devDependencies": {
+    "react-scripts": "4.0.3"
   },
   "scripts": {
     "start": "react-scripts start",
@@ -41,8 +45,7 @@
   },
   "eslintConfig": {
     "extends": [
-      "react-app",
-      "react-app/jest"
+      "react-app"
     ]
   },
   "browserslist": {

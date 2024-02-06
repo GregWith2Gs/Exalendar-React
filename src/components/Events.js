@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import {DateTimePicker} from '@mui/x-date-pickers';
 import TextField from '@mui/material/TextField';
+import Select from 'react-select';
 import Button from '@mui/material/Button';
 import dayjs from 'dayjs';
 import exit from '../media/icons8-x-60.png';
@@ -13,8 +14,18 @@ function Events({start, end, onExit}) {
     const [eventDesc, setEventDesc] = useState('');
     const [eventStart, setEventStart] = useState(new Date());
     const [eventEnd, setEventEnd] = useState(new Date());
+    const [classID, setClassID] = useState('');
     
+    const options = [
+        {value: 'CSCI-1100', label: 'CSCI-1100'},
+        {value: 'CSCI-1200', label: 'CSCI-1200'},
+        {value: 'CSCI-2200', label: 'CSCI-2200'},
+        {value: 'CSCI-2500', label: 'CSCI-2500'}
+    ]
 
+    const handleSelectorChange = (selectedClass) => {
+        setClassID(selectedClass.value);
+    }
     
     
 
@@ -27,6 +38,8 @@ function Events({start, end, onExit}) {
             method: 'POST',
             headers:{'Content-Type': 'application/json'},
             body: JSON.stringify({
+                "classID": classID,
+                "name": eventName,
                 "type": eventType,
                 "title": eventName,
                 "description": eventDesc,
@@ -47,7 +60,7 @@ function Events({start, end, onExit}) {
             // Handle data
         })
     }
-
+    
     return (
         <form className='Form'>
             <div fluid className='MakeEvent'>
@@ -65,7 +78,7 @@ function Events({start, end, onExit}) {
                                     onExit();
                                 }}
                                 variant='contained' 
-                                sx={{width:30, minWidth:0, minHeight:0, padding:0, margin:0}}
+                                sx={{width:30, minWidth:0, minHeight:0, padding:0, margin:0, backgroundColor:'#db1d3d', "&:hover":{backgroundColor:'#5c0816'}}}
                                 >
                                 <img style={{ width: '30px', height: '30px'}} src={exit} alt="Logo" />
                             </Button>
@@ -118,6 +131,10 @@ function Events({start, end, onExit}) {
                         }}
                     />
                     </div>
+
+                    <div className='rowspace'>
+                    <Select options={options} onChange={handleSelectorChange} defaultValue={{label: "Select a course", value: ""}}/>
+                    </div>
                 </div>
 
                 <div className='makebutton'>
@@ -125,7 +142,7 @@ function Events({start, end, onExit}) {
                         onClick={() => {
                             submitEvent();
                         }} 
-                        variant='contained'>Submit</Button>
+                        variant='contained' sx={{backgroundColor:'#db1d3d', textTransform:'none', "&:hover":{backgroundColor:'#5c0816'}}}>Submit</Button>
                 </div>
                 
             </div>

@@ -39,6 +39,7 @@
     display: block;
     height: 30px;
     width: 100%;
+    margin-top: 1rem;
 }
 
 
@@ -67,12 +68,14 @@
     flex-wrap: wrap;
     top: 200px;
     left: 50%;
-    transform: translate(-50%, -50%);
+    transform: translate(-50%, -45%);
     width: 600px;
     padding: 15px;
     
     border-radius: 10px;
-    background-color: rgb(174, 174, 174);
+    border: solid 0.5px black;
+    background-color: rgb(255,255,255);
+    box-shadow: 10px 10px 10px -2px lightslategray;
     z-index: 10;
 }
 

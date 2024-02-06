@@ -1,12 +1,10 @@
 import ReactBigCalendar from './ReactBigCalendar';
-import React, { useState } from "react";
-import Form from 'react-bootstrap/Form';
+import React, { useEffect, useState } from "react";
+
 import Navigation from './Navigation';
 import { BrowserRouter }  from "react-router-dom";
 import '../css/Home.css';
-import Col from 'react-bootstrap/Col';
-import Row from 'react-bootstrap/Row';
-import Events from './Events';
+import "../css/Styles.css";
 
 function Home() {
     const [theme, setTheme] = useState("light");
@@ -16,29 +14,21 @@ function Home() {
     };
 
     return (
-        <div>
+       
+        <div className="Home">
             <BrowserRouter>
                 <Navigation />
             </BrowserRouter>
-            <Row>
-                <Col xs="auto">
-                    <Form.Control placeholder="Menu"/>
-                    <Form.Control placeholder="Day"/>
-                    <Form.Control placeholder="Week"/>
-                    <Form.Control placeholder="Month"/>
-                    <Form.Control placeholder="Agenda"/>
-                    <Form.Control placeholder="light/dark"/>
-                    <button onClick={handleThemeChange}>light/dark</button>
-                </Col>
-                <Col xs="auto">
-                        <ReactBigCalendar />
-                    <br></br>
-                </Col>
-                <Col xs="auto">
-                    <Events/>                    
-                </Col>
-            </Row>
+            
+            
+
+            
+            <ReactBigCalendar/>
+                    
+            
+            
         </div>
+        
     );
 }
 

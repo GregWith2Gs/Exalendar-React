@@ -1,14 +1,19 @@
 
 html {
-    margin-bottom: 70px;
-    margin-top: 70px;
+    
+    overflow: auto;
+    height: 100%;
+    padding-top: 56px;
+    padding-bottom: 80px;
 }
+
 .Home {
+    padding-top: 10px;
+    overflow: auto;
+    padding-left: 25px;
+    height: 100%;
+    padding-bottom: 10px;
+    
     background-color: #fff;
     color: black;
 }
-
-.Home.dark{
-    background-color: #000;
-    color:#fff;
-} 

@@ -2,8 +2,9 @@
 
 
 .navbar {
-    border-bottom: solid 1px #EBEBEB;
-    background-color: rgb(255, 69, 69);
+    
+    background-color: rgb(219, 29, 60);
+    overflow-x: hidden;
 
 }
 
@@ -21,7 +22,7 @@
 }
 
 .bottom-tab-nav {
-    border-top: solid 1px #EBEBEB;
+
 }
 .nav-link,
 .bottom-nav-link {

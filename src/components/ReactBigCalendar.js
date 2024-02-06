@@ -1,7 +1,10 @@
 import React, { useState, useEffect, useCallback } from "react";
 import { Calendar, momentLocalizer } from "react-big-calendar";
+import Events from './Events';
+
 import moment from "moment";
 import "react-big-calendar/lib/css/react-big-calendar.css";
+
 import withDragAndDrop from 'react-big-calendar/lib/addons/dragAndDrop'
 import 'react-big-calendar/lib/addons/dragAndDrop/styles.css'
 
@@ -12,6 +15,9 @@ const DnDCalendar = withDragAndDrop(Calendar)
 
 export default function ReactBigCalendar() {
   const [eventsData, setEventsData] = useState();
+  const [isOpen, setIsOpen] =useState(false);
+  const [eventStart, setEventStart] = useState(new Date());
+  const [eventEnd, setEventEnd] = useState(new Date());
 
   function setEvents(eventData) {
     var data = [];
@@ -62,20 +68,29 @@ export default function ReactBigCalendar() {
     [setEventsData]
   )
 
+  function changeHours(date, hours){
+    date.setHours(date.getHours() + hours);
+    return date;
+  }
+
   const handleSelect = ({ start, end }) => {
+    
     console.log(start);
     console.log(end);
-    const title = window.prompt("New Event name");
-    if (title)
-      setEventsData([
-        ...eventsData,
-        {
-          start,
-          end,
-          title
-        }
-      ]);
+    setEventStart(changeHours(start,12))
+    setEventEnd(changeHours(end,-12))
+
+    setIsOpen((isOpen) => !isOpen);
+
+    
   };
+
+  const closeEvents = () => {
+    setIsOpen((isOpen) => !isOpen);
+  }
+
+
+
   return (
     <div className="App">
       <DnDCalendar
@@ -85,7 +100,7 @@ export default function ReactBigCalendar() {
         defaultDate={new Date()}
         defaultView="month"
         events={eventsData}
-        style={{ height: "80vh", width: "90vh" }}
+        style={{ height: "78.5vh", width: "98%"}}
         resizable={true}
         onSelectEvent={(event) => alert(event.description)}
         draggableAccessor={(event) => true}
@@ -93,6 +108,10 @@ export default function ReactBigCalendar() {
         onEventResize={resizeEvent}
         onSelectSlot={handleSelect}
       />
+
+      {isOpen && <Events start={eventStart} end={eventEnd} onExit={() => closeEvents()} />}
     </div>
+
+    
   );
 }

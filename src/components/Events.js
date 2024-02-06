@@ -1,22 +1,27 @@
 import React, { useState } from "react";
-import DateTimePicker from 'react-datetime-picker';
-//import Stack from 'react-bootstrap/Stack';
-import Container from 'react-bootstrap/Container';
-import Row from 'react-bootstrap/Row';
-import Col from 'react-bootstrap/Col';
-// import Button from 'react-bootstrap/Button';
-// import Form from 'react-bootstrap/Form';
+import {DateTimePicker} from '@mui/x-date-pickers';
+import TextField from '@mui/material/TextField';
+import Button from '@mui/material/Button';
+import dayjs from 'dayjs';
+import exit from '../media/icons8-x-60.png';
 import '../css/Event.css';
 
-function Events() {
+
+function Events({start, end, onExit}) {
     const [eventName, setEventName] = useState('');
     const [eventType, setEventType] = useState('');
     const [eventDesc, setEventDesc] = useState('');
     const [eventStart, setEventStart] = useState(new Date());
     const [eventEnd, setEventEnd] = useState(new Date());
+    
+
+    
+    
 
     function submitEvent() {
         console.log(eventName);
+
+        onExit();
         
         let postData = {
             method: 'POST',
@@ -44,73 +49,90 @@ function Events() {
     }
 
     return (
-        <form>
-            <Container fluid className='Exalendar'>
-                <Row className='add-space'>
-                    <Col>Event Name:</Col>
-                    <Col><input type="text" placeholder="Enter text..." value={eventName} onChange={(e)=>setEventName(e.target.value)}/></Col>
-                </Row>
-                <Row className='add-space'>
-                    <Col>Event Type:</Col>
-                    <Col><input type="text" placeholder="Enter text..." value={eventType} onChange={(e)=>setEventType(e.target.value)}/></Col>
-                </Row >
-                <Row className='add-space'>
-                    <Col>Event Description:</Col>
-                    <Col><input type="text" placeholder="Enter text..." value={eventDesc} onChange={(e)=>setEventDesc(e.target.value)}/></Col>
-                </Row>
-                <Row className='add-space'>
-                    <Col>Event Start Time:</Col>
-                    <Col>
-                        <DateTimePicker className='calendar'
-                        onChange={setEventStart}
-                        value={eventStart}
-                        amPmAriaLabel="Select AM/PM"
-                        calendarAriaLabel="Toggle calendar"
-                        clearAriaLabel="Clear value"
-                        dayAriaLabel="Day"
-                        hourAriaLabel="Hour"
-                        maxDetail="minute"
-                        minuteAriaLabel="Minute"
-                        monthAriaLabel="Month"
-                        nativeInputAriaLabel="Date and time"
-                        secondAriaLabel="Second"
-                        yearAriaLabel="Year"
-                        format="yyyy-MM-dd hh:mm a"
-                        />
-                    </Col>
-                    <Col></Col>
-                </Row>
-                <Row className='add-space'>
-                    <Col>Event End Time:</Col>
-                    <Col>
-                        <DateTimePicker className='calendar'
-                        onChange={setEventEnd}
-                        value={eventEnd}
-                        minDate={eventStart}
-                        amPmAriaLabel="Select AM/PM"
-                        calendarAriaLabel="Toggle calendar"
-                        clearAriaLabel="Clear value"
-                        dayAriaLabel="Day"
-                        hourAriaLabel="Hour"
-                        maxDetail="minute"
-                        minuteAriaLabel="Minute"
-                        monthAriaLabel="Month"
-                        nativeInputAriaLabel="Date and time"
-                        secondAriaLabel="Second"
-                        yearAriaLabel="Year"
-                        format="yyyy-MM-dd hh:mm a"
-                        />
-                    </Col>
-                    <Col></Col>
-                </Row>
-                <Row className='add-space'>
+        <form className='Form'>
+            <div fluid className='MakeEvent'>
+                <div className='lefthalf'>
+                    <div className='rowspace'>
+                        <div className='columnspace'>
+                            <TextField inputRef={eventName} id="standard-basic" label="Event Name" variant="standard" fullwidth={true} />
+                        </div>
+                        
+                        
+                        <div className='exit'>
+                        
+                            <Button 
+                                onClick={() => {
+                                    onExit();
+                                }}
+                                variant='contained' 
+                                sx={{width:30, minWidth:0, minHeight:0, padding:0, margin:0}}
+                                >
+                                <img style={{ width: '30px', height: '30px'}} src={exit} alt="Logo" />
+                            </Button>
+                            
+
+                        </div>
+                        
+
+                    </div>
+                    <div className='rowspace'>
+                        <div className='columnspace'>
+                            <TextField inputRef={eventType} id="standard-basic" label="Event Type" variant="standard" fullwidth={true}/>
+                        </div>
+
+                    </div>
+                    <div className='rowspace'>
+                         <div className='columnspace'>
+                            <TextField inputRef={eventDesc} id="standard-basic" label="Description" variant="standard" fullwidth={true}/>
+                        </div>
+                        
+                    </div>
+
+                </div>
+                
+                <div className='righthalf'>
+                    <div className='rowspace'>
+                    <DateTimePicker
+                        body= 'secondary'
+                        label="Start Date"
+                        value={dayjs(start)}
+                        onChange={(eventStart) => setEventStart(eventStart)}
+                        viewRenderers={{
+                            hours: null,
+                            minutes: null,
+                            seconds: null,
+                        }}
+                    />
+                    </div>
+                    <div className='rowspace'>
+
                     
-                    <button onClick={submitEvent}>Create New Event</button>
-                    
-                </Row>
-            </Container>
+                    <DateTimePicker
+                        label="End Date"
+                        value={dayjs(end)}
+                        onChange={(eventEnd) => setEventEnd(eventEnd)}
+                        viewRenderers={{
+                            hours: null,
+                            minutes: null,
+                            seconds: null,
+                        }}
+                    />
+                    </div>
+                </div>
+
+                <div className='makebutton'>
+                    <Button 
+                        onClick={() => {
+                            submitEvent();
+                        }} 
+                        variant='contained'>Submit</Button>
+                </div>
+                
+            </div>
         </form>
     );
 }
+
+
 
 export default Events;

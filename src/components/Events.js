@@ -7,16 +7,6 @@ import dayjs from 'dayjs';
 import exit from '../media/icons8-x-60.png';
 import '../css/Event.css';
 
-//setEventsData([
-    //...eventsData,
-    //{
-      //start,
-      //end,
-      //title
-    //}
-  //]);
-
-
 
 function Events({start, end, onExit}) {
     const [eventName, setEventName] = useState('');
@@ -51,6 +41,7 @@ function Events({start, end, onExit}) {
                 "classID": classID,
                 "name": eventName,
                 "type": eventType,
+                "title": eventName,
                 "description": eventDesc,
                 "location": null, // todo: add field - for building/room #, hyperlinks, etc
                 "start": eventStart.toJSON,

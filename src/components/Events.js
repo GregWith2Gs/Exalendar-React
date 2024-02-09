@@ -9,12 +9,12 @@ import '../css/Event.css';
 
 
 function Events({start, end, onExit}) {
-    const [eventName, setEventName] = useState('');
-    const [eventType, setEventType] = useState('');
-    const [eventDesc, setEventDesc] = useState('');
-    const [eventStart, setEventStart] = useState(new Date());
-    const [eventEnd, setEventEnd] = useState(new Date());
-    const [classID, setClassID] = useState('');
+    const [eName, setEName] = useState('');
+    const [eType, setEType] = useState('');
+    const [eDescription, setEDescription] = useState('');
+    const [eStart, setEStart] = useState(new Date());
+    const [eEnd, setEEnd] = useState(new Date());
+    const [className, setClassName] = useState('');
     
     const options = [
         {value: 'CSCI-1100', label: 'CSCI-1100'},
@@ -24,13 +24,13 @@ function Events({start, end, onExit}) {
     ]
 
     const handleSelectorChange = (selectedClass) => {
-        setClassID(selectedClass.value);
+        setClassName(selectedClass.value);
     }
     
     
 
     function submitEvent() {
-        console.log(eventName);
+        console.log(eName);
 
         onExit();
         
@@ -38,14 +38,13 @@ function Events({start, end, onExit}) {
             method: 'POST',
             headers:{'Content-Type': 'application/json'},
             body: JSON.stringify({
-                "classID": classID,
-                "name": eventName,
-                "type": eventType,
-                "title": eventName,
-                "description": eventDesc,
+                "className": className,
+                "name": eName,
+                "type": eType,
+                "description": eDescription,
                 "location": null, // todo: add field - for building/room #, hyperlinks, etc
-                "start": eventStart.toJSON,
-                "end": eventEnd.toJSON,
+                "start": eStart.toJSON,
+                "end": eEnd.toJSON,
                 "freq": null, // todo: add field - DAILY, WEEKLY, MONTHLY, or YEARLY
                 "end_date": null, // todo: add field - date to end repetition
                 "interval": null, // todo: add field - int; repeat every 'x'th Day, Week, Month, or Year
@@ -67,7 +66,7 @@ function Events({start, end, onExit}) {
                 <div className='lefthalf'>
                     <div className='rowspace'>
                         <div className='columnspace'>
-                            <TextField inputRef={eventName} id="standard-basic" label="Event Name" variant="standard" fullwidth={true} />
+                            <TextField inputRef={eName} id="standard-basic" label="Event Name" variant="standard" fullwidth={true} />
                         </div>
                         
                         
@@ -90,13 +89,13 @@ function Events({start, end, onExit}) {
                     </div>
                     <div className='rowspace'>
                         <div className='columnspace'>
-                            <TextField inputRef={eventType} id="standard-basic" label="Event Type" variant="standard" fullwidth={true}/>
+                            <TextField inputRef={eType} id="standard-basic" label="Event Type" variant="standard" fullwidth={true}/>
                         </div>
 
                     </div>
                     <div className='rowspace'>
                          <div className='columnspace'>
-                            <TextField inputRef={eventDesc} id="standard-basic" label="Description" variant="standard" fullwidth={true}/>
+                            <TextField inputRef={eDescription} id="standard-basic" label="Description" variant="standard" fullwidth={true}/>
                         </div>
                         
                     </div>
@@ -109,7 +108,7 @@ function Events({start, end, onExit}) {
                         body= 'secondary'
                         label="Start Date"
                         value={dayjs(start)}
-                        onChange={(eventStart) => setEventStart(eventStart)}
+                        onChange={(eventStart) => setEStart(eventStart)}
                         viewRenderers={{
                             hours: null,
                             minutes: null,
@@ -123,7 +122,7 @@ function Events({start, end, onExit}) {
                     <DateTimePicker
                         label="End Date"
                         value={dayjs(end)}
-                        onChange={(eventEnd) => setEventEnd(eventEnd)}
+                        onChange={(eventEnd) => setEEnd(eventEnd)}
                         viewRenderers={{
                             hours: null,
                             minutes: null,

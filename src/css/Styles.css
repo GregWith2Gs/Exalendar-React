@@ -3,21 +3,25 @@
     --text-color: #000;
     --event-text-color: #000;
   }
+
+  html[data-theme='light'] {
+    --bg-color: #fff;
+    --text-color: #000;
+    --calendar-header-bg: #fff; /* Background color of the calendar header */
+    --event-bg: #fff; /* Background color of events */
+    --event-text-color: #000;
+  }
   
-  [data-theme="dark"] {
+  html[data-theme='dark'] {
     --bg-color: #3F3F3F;
     --text-color: #fff;
     --calendar-header-bg: #2F2F2F; /* Background color of the calendar header */
     --event-bg: #454545; /* Background color of events */
     --event-text-color: #fff;
   }
-  
-  .Home {
-    overflow-x: hidden;
-    font-family: sans-serif;
-    text-align: center;
-    background-color: var(--bg-color);
-    color: var(--text-color);
+
+  body {
+    background-color: var(--bg-color) !important;
   }
 
 

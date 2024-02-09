@@ -43,9 +43,9 @@ app.get("/", (req, res) => {
 app.post("/", (req, res) => {
     let data = req.body;
     res.send('Data Received: ' + JSON.stringify(data));
-    const sql_code = `INSERT INTO events (class_id, event_title, event_type, event_description, event_location, event_start, event_end, event_freq, event_end_date, event_interval, event_byday) VALUES (?,?,?,?,?,?,?,?,?,?,?)`;
+    const sql_code = `INSERT INTO events (class_name, event_title, event_type, event_description, event_location, event_start, event_end, event_freq, event_end_date, event_interval, event_byday) VALUES (?,?,?,?,?,?,?,?,?,?,?)`;
 
-      connection.query(sql_code, [data.classID, data.eName, data.eType, data.eDescription, data.eLocation, data.eStart, data.eEnd, 
+      connection.query(sql_code, [data.className, data.eName, data.eType, data.eDescription, data.eLocation, data.eStart, data.eEnd, 
         data.eFreq, data.eEndDate, data.eInterval, data.eByDay], function (err, results, fields) {
         if (err) throw err;
         console.log(results);

@@ -66,7 +66,7 @@ function Events({start, end, onExit}) {
                 <div className='lefthalf'>
                     <div className='rowspace'>
                         <div className='columnspace'>
-                            <TextField inputRef={eName} id="standard-basic" label="Event Name" variant="standard" fullwidth={true} />
+                            <TextField inputRef={eName} onChange={setEName(eName)} id="standard-basic" label="Event Name" variant="standard" fullwidth={true} />
                         </div>
                         
                         
@@ -139,6 +139,8 @@ function Events({start, end, onExit}) {
                 <div className='makebutton'>
                     <Button 
                         onClick={() => {
+                            setEType(eType);
+                            setEDescription(eDescription);
                             submitEvent();
                         }} 
                         variant='contained' sx={{backgroundColor:'#db1d3d', textTransform:'none', "&:hover":{backgroundColor:'#5c0816'}}}>Submit</Button>

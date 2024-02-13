@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useRef, useState } from "react";
 import {DateTimePicker} from '@mui/x-date-pickers';
 import TextField from '@mui/material/TextField';
 import Select from 'react-select';
@@ -9,7 +9,7 @@ import '../css/Event.css';
 
 
 function Events({start, end, onExit}) {
-    const [eName, setEName] = useState('');
+    const eName = useRef();
     const [eType, setEType] = useState('');
     const [eDescription, setEDescription] = useState('');
     const [eStart, setEStart] = useState(new Date());
@@ -39,7 +39,7 @@ function Events({start, end, onExit}) {
             headers:{'Content-Type': 'application/json'},
             body: JSON.stringify({
                 "className": className,
-                "name": eName,
+                "name": eName.current.value,
                 "type": eType,
                 "description": eDescription,
                 "location": null, // todo: add field - for building/room #, hyperlinks, etc
@@ -66,7 +66,11 @@ function Events({start, end, onExit}) {
                 <div className='lefthalf'>
                     <div className='rowspace'>
                         <div className='columnspace'>
-                            <TextField inputRef={eName} onChange={setEName(eName)} id="standard-basic" label="Event Name" variant="standard" fullwidth={true} />
+                            <TextField 
+                            inputRef={eName}
+                            id="standard-basic"
+                            label="Event Name"
+                            variant="standard" fullwidth={true} />
                         </div>
                         
                         
@@ -89,13 +93,21 @@ function Events({start, end, onExit}) {
                     </div>
                     <div className='rowspace'>
                         <div className='columnspace'>
-                            <TextField inputRef={eType} id="standard-basic" label="Event Type" variant="standard" fullwidth={true}/>
+                            <TextField 
+                            inputRef={eType} 
+                            id="standard-basic" 
+                            label="Event Type" 
+                            variant="standard" 
+                            fullwidth={true}/>
                         </div>
 
                     </div>
                     <div className='rowspace'>
                          <div className='columnspace'>
-                            <TextField inputRef={eDescription} id="standard-basic" label="Description" variant="standard" fullwidth={true}/>
+                            <TextField 
+                            inputRef={eDescription} 
+                            id="standard-basic" 
+                            label="Description" variant="standard" fullwidth={true}/>
                         </div>
                         
                     </div>
@@ -139,8 +151,6 @@ function Events({start, end, onExit}) {
                 <div className='makebutton'>
                     <Button 
                         onClick={() => {
-                            setEType(eType);
-                            setEDescription(eDescription);
                             submitEvent();
                         }} 
                         variant='contained' sx={{backgroundColor:'#db1d3d', textTransform:'none', "&:hover":{backgroundColor:'#5c0816'}}}>Submit</Button>

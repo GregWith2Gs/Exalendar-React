@@ -1,4 +1,4 @@
-import React, { useRef, useState } from "react";
+import React, { useState } from "react";
 import {DateTimePicker} from '@mui/x-date-pickers';
 import TextField from '@mui/material/TextField';
 import Select from 'react-select';
@@ -9,9 +9,12 @@ import '../css/Event.css';
 
 
 function Events({start, end, onExit}) {
-    const eName = useRef();
+    const [eName, setEName] = useState("");
+    const onNameChange = (e: any) => setEName(e.target.value);
     const [eType, setEType] = useState('');
+    const onTypeChange = (t: any) => setEType(t.target.value);
     const [eDescription, setEDescription] = useState('');
+    const onDescChange = (d: any) => setEDescription(d.target.value);
     const [eStart, setEStart] = useState(new Date());
     const [eEnd, setEEnd] = useState(new Date());
     const [className, setClassName] = useState('');
@@ -30,7 +33,9 @@ function Events({start, end, onExit}) {
     
 
     function submitEvent() {
+
         console.log(eName);
+
 
         onExit();
         
@@ -39,7 +44,7 @@ function Events({start, end, onExit}) {
             headers:{'Content-Type': 'application/json'},
             body: JSON.stringify({
                 "className": className,
-                "name": eName.current.value,
+                "name": eName,
                 "type": eType,
                 "description": eDescription,
                 "location": null, // todo: add field - for building/room #, hyperlinks, etc
@@ -66,8 +71,9 @@ function Events({start, end, onExit}) {
                 <div className='lefthalf'>
                     <div className='rowspace'>
                         <div className='columnspace'>
-                            <TextField 
-                            inputRef={eName}
+                            <TextField
+                            value={eName} 
+                            onChange={onNameChange}
                             id="standard-basic"
                             label="Event Name"
                             variant="standard" fullwidth={true} />
@@ -94,7 +100,8 @@ function Events({start, end, onExit}) {
                     <div className='rowspace'>
                         <div className='columnspace'>
                             <TextField 
-                            inputRef={eType} 
+                            value={eType}
+                            onChange={onTypeChange}
                             id="standard-basic" 
                             label="Event Type" 
                             variant="standard" 
@@ -105,7 +112,8 @@ function Events({start, end, onExit}) {
                     <div className='rowspace'>
                          <div className='columnspace'>
                             <TextField 
-                            inputRef={eDescription} 
+                            value={eDescription}
+                            onChange={onDescChange}
                             id="standard-basic" 
                             label="Description" variant="standard" fullwidth={true}/>
                         </div>

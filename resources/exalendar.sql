@@ -31,6 +31,8 @@ CREATE TABLE `classes` (
   `class_name` varchar(255) UNIQUE NOT NULL
 );
 
+insert into classes (class_name) values ('CSCI-1100'), ('CSCI-1200'), ('CSCI-2200'), ('CSCI-2500');
+
 CREATE TABLE `events` (
   `class_name` varchar(255) UNIQUE NOT NULL,
   `event_id` int PRIMARY KEY NOT NULL AUTO_INCREMENT,

@@ -3,7 +3,7 @@ import {DateTimePicker} from '@mui/x-date-pickers';
 import TextField from '@mui/material/TextField';
 import Select from 'react-select';
 import Button from '@mui/material/Button';
-import dayjs from 'dayjs';
+import dayjs, { Dayjs } from 'dayjs';
 import exit from '../media/icons8-x-60.png';
 import '../css/Event.css';
 
@@ -15,8 +15,8 @@ function Events({start, end, onExit}) {
     const onTypeChange = (t: any) => setEType(t.target.value);
     const [eDescription, setEDescription] = useState('');
     const onDescChange = (d: any) => setEDescription(d.target.value);
-    const [eStart, setEStart] = useState(new Date());
-    const [eEnd, setEEnd] = useState(new Date());
+    const [eStart, setEStart] = useState(Dayjs);
+    const [eEnd, setEEnd] = useState(Dayjs);
     const [className, setClassName] = useState('');
     
     const options = [
@@ -34,7 +34,7 @@ function Events({start, end, onExit}) {
 
     function submitEvent() {
 
-        console.log(eName);
+        console.log(eEnd.toISOString().slice(0, 19).replace('T', ' '));
 
 
         onExit();
@@ -48,8 +48,8 @@ function Events({start, end, onExit}) {
                 "type": eType,
                 "description": eDescription,
                 "location": null, // todo: add field - for building/room #, hyperlinks, etc
-                "start": eStart.toJSON,
-                "end": eEnd.toJSON,
+                "start": eStart.toISOString().slice(0, 19).replace('T', ' '),
+                "end": eEnd.toISOString().slice(0, 19).replace('T', ' '),
                 "freq": null, // todo: add field - DAILY, WEEKLY, MONTHLY, or YEARLY
                 "end_date": null, // todo: add field - date to end repetition
                 "interval": null, // todo: add field - int; repeat every 'x'th Day, Week, Month, or Year

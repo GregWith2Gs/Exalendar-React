@@ -1,0 +1,23 @@
+.rbc-btn-group{
+    background-color: var(--bg-color);
+}
+
+.rbc-btn-group *{
+    color: var(--text-color) !important;
+}
+
+.rbc-btn-group *:hover, .rbc-btn-group *:focus{
+    background-color: var(--day-today-color) !important;
+}
+
+.rbc-off-range-bg{
+    background-color: var(--day-outside-month-range-color);
+}
+
+.rbc-today{
+    background-color: var(--day-today-color);
+}
+
+.rbc-active{
+    background-color: var(--toolbar-selected-color) !important;
+}

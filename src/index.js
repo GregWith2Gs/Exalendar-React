@@ -8,7 +8,6 @@ if (localStorage.getItem('theme') === "dark")
     document.documentElement.setAttribute('data-theme', "dark")
 else
     document.documentElement.setAttribute('data-theme',"light")
-document.documentElement.setAttribute('data-theme',"dark");
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(

@@ -5,6 +5,8 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faHome, faUserCircle } from '@fortawesome/free-solid-svg-icons';
 import { faGithub } from '@fortawesome/free-brands-svg-icons';
 import '../css/Navigation.css';
+import DarkLightToggle from './DarkLightToggle'; 
+
 
 
 const tabs = [{
@@ -32,6 +34,7 @@ const Navigation = (props) => {
       <nav className="navbar fixed-top" 	role="navigation">
         <div className="container-fluid">
           <a className="navbar-exalendar m-auto" href="/home" >Exalendar</a>
+          <DarkLightToggle/>
         </div>
       </nav>
       {/* Bottom Tab Navigator*/}
@@ -56,6 +59,9 @@ const Navigation = (props) => {
     </div>
   )
 };
+
+
+
 
 export default Navigation;
 

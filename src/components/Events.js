@@ -67,7 +67,7 @@ function Events({start, end, onExit}) {
                 <div className='lefthalf'>
                     <div className='rowspace'>
                         <div className='columnspace'>
-                            <TextField inputRef={eventName} id="standard-basic" label="Event Name" variant="standard" fullwidth={true} />
+                            <TextField inputRef={eventName} id="standard-basic" label="Event Name" variant="standard" fullwidth={true}/>
                         </div>
                         
                         

@@ -6,6 +6,7 @@ import Button from '@mui/material/Button';
 import dayjs from 'dayjs';
 import exit from '../media/icons8-x-60.png';
 import '../css/Event.css';
+import { green } from "@mui/material/colors";
 
 
 function Events({start, end, onExit}) {
@@ -67,7 +68,7 @@ function Events({start, end, onExit}) {
                 <div className='lefthalf'>
                     <div className='rowspace'>
                         <div className='columnspace'>
-                            <TextField inputRef={eventName} id="standard-basic" label="Event Name" variant="standard" fullwidth={true}/>
+                            <TextField inputRef={eventName} id="standard-basic" label="Event Name" variant="standard" fullwidth={true} sx={{input: {color: 'var(--text-color)'}}}/>
                         </div>
                         
                         
@@ -90,13 +91,13 @@ function Events({start, end, onExit}) {
                     </div>
                     <div className='rowspace'>
                         <div className='columnspace'>
-                            <TextField inputRef={eventType} id="standard-basic" label="Event Type" variant="standard" fullwidth={true}/>
+                            <TextField inputRef={eventType} id="standard-basic" label="Event Type" variant="standard" fullwidth={true} sx={{input: {color: 'var(--text-color)'}}}/>
                         </div>
 
                     </div>
                     <div className='rowspace'>
                          <div className='columnspace'>
-                            <TextField inputRef={eventDesc} id="standard-basic" label="Description" variant="standard" fullwidth={true}/>
+                            <TextField inputRef={eventDesc} id="standard-basic" label="Description" variant="standard" fullwidth={true} sx={{input: {color: 'var(--text-color)'}}}/>
                         </div>
                         
                     </div>

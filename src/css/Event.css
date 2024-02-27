@@ -76,6 +76,7 @@
     border: solid 0.5px;
     border-color: var(--event-border-color);
     background-color: var(--event-bg);
+    color: var(--text-color);
     box-shadow: 10px 10px 10px -2px lightslategray;
     z-index: 10;
 }
@@ -132,3 +133,24 @@
     margin-left: 24px;
 }
 
+.MuiInputBase-input, .MuiFormLabel-root{
+    color: var(--text-color) !important;
+}
+
+
+.MuiInputBase-root, .MuiOutlinedInput-root{
+    border-color: green !important;
+}
+
+.css-b62m3t-container *{    
+    background-color: var(--event-bg) !important;
+    color: var(--text-color) !important;
+}
+
+.css-tj5bde-Svg:hover{
+    background-color: var(--day-outside-month-range-color) !important;
+}
+
+.css-1dimb5e-singleValue{
+    color: green !important;
+}

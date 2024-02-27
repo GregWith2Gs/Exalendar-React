@@ -13,7 +13,7 @@ const tabs = [{
   label: "Home",
   target: "_self"
 },{
-  route: "https://github.com/NatSR4/Exalendar/wiki/What-is-Exalendar%3F",
+  route: "https://github.com/GregWith2Gs/Exalendar-React/wiki/What-is-Exalendar",
   icon: faGithub,
   label: "Github",
   target: "_blank"

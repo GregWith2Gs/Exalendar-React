@@ -22,7 +22,7 @@ const tabs = [{
   route: "/Login",
   icon: faUserCircle,
   label: "Login",
-  target: "/Login",
+  target: "_self",
 }]
 
 

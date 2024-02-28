@@ -16,17 +16,8 @@ function Home() {
     return (
        
         <div className="Home">
-            <BrowserRouter>
-                <Navigation />
-            </BrowserRouter>
-            
-            
-
-            
-            <ReactBigCalendar/>
-                    
-            
-            
+            <Navigation />
+            <ReactBigCalendar />        
         </div>
         
     );

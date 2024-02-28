@@ -1,8 +1,9 @@
 import Home from './Home.js'
-//import Login from './Login.js';
+import Login from './Login.js';
 import { LocalizationProvider } from '@mui/x-date-pickers';
 import { ThemeProvider, createTheme } from "@mui/material/styles";
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs'
+import { Routes, Route } from 'react-router-dom';
 
 const theme = createTheme({
   palette: {
@@ -22,8 +23,11 @@ function App() {
       <ThemeProvider theme={theme}>
         <div className="App">
         <header className="App-header">
-        {/* <Login/> */}
-          <Home/>
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/login" element={<Login />} />
+          </Routes>
+          
         </header>
       </div>
       </ThemeProvider>

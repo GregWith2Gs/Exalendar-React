@@ -4,11 +4,12 @@ import { NavLink } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faHome, faUserCircle } from '@fortawesome/free-solid-svg-icons';
 import { faGithub } from '@fortawesome/free-brands-svg-icons';
+import Login from './Login';
 import '../css/Navigation.css';
 
 
 const tabs = [{
-  route: "/home",
+  route: "/",
   icon: faHome,
   label: "Home",
   target: "_self"
@@ -18,10 +19,10 @@ const tabs = [{
   label: "Github",
   target: "_blank"
 },{
-  route: "/login",
+  route: "/Login",
   icon: faUserCircle,
   label: "Login",
-  target: "_self"
+  target: "_self",
 }]
 
 

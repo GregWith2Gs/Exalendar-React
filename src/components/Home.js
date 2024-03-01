@@ -2,7 +2,6 @@ import ReactBigCalendar from './ReactBigCalendar';
 import React, { useEffect, useState } from "react";
 
 import Navigation from './Navigation';
-import { BrowserRouter }  from "react-router-dom";
 import '../css/Home.css';
 import "../css/Styles.css";
 
@@ -16,17 +15,8 @@ function Home() {
     return (
        
         <div className="Home">
-            <BrowserRouter>
-                <Navigation />
-            </BrowserRouter>
-            
-            
-
-            
-            <ReactBigCalendar/>
-                    
-            
-            
+            <Navigation />
+            <ReactBigCalendar />        
         </div>
         
     );

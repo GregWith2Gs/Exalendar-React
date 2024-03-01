@@ -1,6 +1,7 @@
 import React from "react";
 import {Button, Form} from 'react-bootstrap';
 import logo from "../media/1.png";
+import Navigation from './Navigation';
 
 function Login() {
     function submit() {
@@ -9,6 +10,7 @@ function Login() {
 
     return (
         <Form>
+            <Navigation />
             <img src={logo} alt="logo"/>
             <Form.Group className="mb-3" controlId="formBasicEmail">
                 <Form.Label>Email address</Form.Label>

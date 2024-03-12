@@ -3,22 +3,54 @@ import {DateTimePicker} from '@mui/x-date-pickers';
 import TextField from '@mui/material/TextField';
 import Select from 'react-select';
 import Button from '@mui/material/Button';
+import Radio from '@mui/material/Radio';
+import RadioGroup from '@mui/material/RadioGroup';
+import FormControlLabel from '@mui/material/FormControlLabel';
+import FormControl from '@mui/material/FormControl';
+import FormLabel from '@mui/material/FormLabel';
 import dayjs, { Dayjs } from 'dayjs';
 import exit from '../media/icons8-x-60.png';
 import '../css/Event.css';
 
 
 function Events({start, end, onExit}) {
+    //Initialize Event variables and add reactivity
+
+    //Name
     const [eName, setEName] = useState("");
     const onNameChange = (e: any) => setEName(e.target.value);
+    //Type
     const [eType, setEType] = useState('');
     const onTypeChange = (t: any) => setEType(t.target.value);
+    //Description
     const [eDescription, setEDescription] = useState('');
     const onDescChange = (d: any) => setEDescription(d.target.value);
+    //Location
+    const [eLocation, setELocation] = useState('');
+    const onLocationChange = (l: any) => setELocation(l.target.value);
+    //Start Date
     const [eStart, setEStart] = useState(Dayjs);
+    //End Date
     const [eEnd, setEEnd] = useState(Dayjs);
+    //Class Name
     const [className, setClassName] = useState('');
-    
+    const handleSelectorChange = (selectedClass) => {
+        setClassName(selectedClass.value);
+    }
+    //Frequence
+    const [eFreq, setEFreq] = useState('no-repeat');
+    function freqChange(event){
+        setEFreq(event.target.value);
+    }
+    //Interval
+    const [eInterval, setEInterval] = useState();
+    const onIntervalChange = (i) => {
+        if(!isNaN(parseInt(i.target.value)))
+            setEInterval(parseInt(i.target.value))        
+        else
+            setEInterval(0);
+    }
+
     const options = [
         {value: 'CSCI-1100', label: 'CSCI-1100'},
         {value: 'CSCI-1200', label: 'CSCI-1200'},
@@ -26,9 +58,7 @@ function Events({start, end, onExit}) {
         {value: 'CSCI-2500', label: 'CSCI-2500'}
     ]
 
-    const handleSelectorChange = (selectedClass) => {
-        setClassName(selectedClass.value);
-    }
+
     
     
 
@@ -47,12 +77,12 @@ function Events({start, end, onExit}) {
                 "name": eName,
                 "type": eType,
                 "description": eDescription,
-                "location": null, // todo: add field - for building/room #, hyperlinks, etc
+                "location": eLocation,
                 "start": eStart.toISOString().slice(0, 19).replace('T', ' '),
                 "end": eEnd.toISOString().slice(0, 19).replace('T', ' '),
-                "freq": null, // todo: add field - DAILY, WEEKLY, MONTHLY, or YEARLY
+                "freq": eFreq,
                 "end_date": null, // todo: add field - date to end repetition
-                "interval": null, // todo: add field - int; repeat every 'x'th Day, Week, Month, or Year
+                "interval": eInterval,
                 "byday": null // todo: add field - array containing any combo of SU, MO, TU, WE, TH, FR, SA
             })
         }
@@ -120,6 +150,24 @@ function Events({start, end, onExit}) {
                         
                     </div>
 
+                    <div className='rowspace'>
+                         <div className='columnspace'>
+                            <TextField 
+                            value={eLocation}
+                            onChange={onLocationChange}
+                            id="standard-basic" 
+                            label="Location" variant="standard" fullwidth={true}/>
+                        </div>
+                    </div>
+                    <div className='rowspace'>
+                         <div className='columnspace'>
+                            <TextField 
+                            value={eInterval}
+                            onChange={onIntervalChange}
+                            id="standard-basic" 
+                            label="Interval" variant="standard" fullwidth={true}/>
+                        </div>
+                    </div>
                 </div>
                 
                 <div className='righthalf'>
@@ -153,8 +201,28 @@ function Events({start, end, onExit}) {
 
                     <div className='rowspace'>
                     <Select options={options} onChange={handleSelectorChange} defaultValue={{label: "Select a course", value: ""}}/>
-                    </div>
+                    </div>  
+                        
                 </div>
+                <div className="rowspace">
+                    <FormControl>
+
+                        <FormLabel id="demo-row-radio-buttons-group-label">Frequency</FormLabel>
+                        <RadioGroup
+                            row
+                            aria-labelledby="demo-row-radio-buttons-group-label"
+                            name="row-radio-buttons-group"
+                            onChange={freqChange}
+                            defaultValue="no-repeat"
+                        >
+                            <FormControlLabel value="no-repeat" control={<Radio />} label="One time" />
+                            <FormControlLabel value="day" control={<Radio />} label="Day" />
+                            <FormControlLabel value="week" control={<Radio />} label="Week" />
+                            <FormControlLabel value="month" control={<Radio />} label="Month" />
+                            <FormControlLabel value="year" control={<Radio />} label="Year" />
+                        </RadioGroup>
+                    </FormControl>
+                    </div>  
 
                 <div className='makebutton'>
                     <Button 

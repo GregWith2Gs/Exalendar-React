@@ -10,6 +10,7 @@ import FormControl from '@mui/material/FormControl';
 import FormLabel from '@mui/material/FormLabel';
 import dayjs, { Dayjs } from 'dayjs';
 import exit from '../media/icons8-x-60.png';
+import {Modal} from "react-bootstrap";
 import '../css/Event.css';
 
 
@@ -43,13 +44,12 @@ function Events({start, end, onExit}) {
         setEFreq(event.target.value);
     }
     //Interval
-    const [eInterval, setEInterval] = useState();
+    const [eInterval, setEInterval] = useState('');
     const onIntervalChange = (i) => {
-        if(!isNaN(parseInt(i.target.value)))
-            setEInterval(parseInt(i.target.value))        
-        else
-            setEInterval(0);
+        setEInterval(i.target.value)        
     }
+
+    const [showRepeats,setShowRepeats] = useState(false);
 
     const options = [
         {value: 'CSCI-1100', label: 'CSCI-1100'},
@@ -82,7 +82,7 @@ function Events({start, end, onExit}) {
                 "end": eEnd.toISOString().slice(0, 19).replace('T', ' '),
                 "freq": eFreq,
                 "end_date": null, // todo: add field - date to end repetition
-                "interval": eInterval,
+                "interval": parseInt(eInterval),
                 "byday": null // todo: add field - array containing any combo of SU, MO, TU, WE, TH, FR, SA
             })
         }
@@ -159,15 +159,7 @@ function Events({start, end, onExit}) {
                             label="Location" variant="standard" fullwidth={true}/>
                         </div>
                     </div>
-                    <div className='rowspace'>
-                         <div className='columnspace'>
-                            <TextField 
-                            value={eInterval}
-                            onChange={onIntervalChange}
-                            id="standard-basic" 
-                            label="Interval" variant="standard" fullwidth={true}/>
-                        </div>
-                    </div>
+
                 </div>
                 
                 <div className='righthalf'>
@@ -204,26 +196,13 @@ function Events({start, end, onExit}) {
                     </div>  
                         
                 </div>
-                <div className="rowspace">
-                    <FormControl>
-
-                        <FormLabel id="demo-row-radio-buttons-group-label">Frequency</FormLabel>
-                        <RadioGroup
-                            row
-                            aria-labelledby="demo-row-radio-buttons-group-label"
-                            name="row-radio-buttons-group"
-                            onChange={freqChange}
-                            defaultValue="no-repeat"
-                        >
-                            <FormControlLabel value="no-repeat" control={<Radio />} label="One time" />
-                            <FormControlLabel value="day" control={<Radio />} label="Day" />
-                            <FormControlLabel value="week" control={<Radio />} label="Week" />
-                            <FormControlLabel value="month" control={<Radio />} label="Month" />
-                            <FormControlLabel value="year" control={<Radio />} label="Year" />
-                        </RadioGroup>
-                    </FormControl>
-                    </div>  
-
+                <div className='makebutton'>
+                    <Button 
+                        onClick={() => {
+                            setShowRepeats(true);
+                        }} 
+                        variant='contained' sx={{backgroundColor:'#db1d3d', textTransform:'none', "&:hover":{backgroundColor:'#5c0816'}}}>Event Repeats</Button>
+                </div>
                 <div className='makebutton'>
                     <Button 
                         onClick={() => {
@@ -233,6 +212,59 @@ function Events({start, end, onExit}) {
                 </div>
                 
             </div>
+            <div className>
+                <Modal show={showRepeats} onHide={() => setShowRepeats(false)}>
+                    <Modal.Header closeButton>
+                    <Modal.Title>Repeating Event</Modal.Title>
+                    </Modal.Header>
+                    <Modal.Body className="modal2">
+                        <div className='grid-item-1'>                            
+                        <TextField 
+                            value={eInterval}
+                            onChange={onIntervalChange}
+                            id="standard-basic" 
+                            label="Interval" variant="standard" fullwidth={false}/>
+                        </div>
+                        <div className="grid-item-2">
+                        <TextField 
+                            value={eInterval}
+                            onChange={onIntervalChange}
+                            id="standard-basic" 
+                            label="Interval" variant="standard" fullwidth={false}/>
+                        </div>
+                        <div className="grid-item-3">
+                        <TextField 
+                            value={eInterval}
+                            onChange={onIntervalChange}
+                            id="standard-basic" 
+                            label="Interval" variant="standard" fullwidth={false}/>
+                        </div>
+                        <div className="rowspace grid-item-4">
+                            <FormControl>
+
+                                <FormLabel id="demo-row-radio-buttons-group-label">Frequency</FormLabel>
+                                <RadioGroup
+                                    aria-labelledby="demo-row-radio-buttons-group-label"
+                                    name="row-radio-buttons-group"
+                                    onChange={freqChange}
+                                    defaultValue="no-repeat"
+                                >
+                                    <FormControlLabel value="day" control={<Radio />} label="Daily" />
+                                    <FormControlLabel value="week" control={<Radio />} label="Weekly" />
+                                    <FormControlLabel value="month" control={<Radio />} label="Monthly" />
+                                    <FormControlLabel value="year" control={<Radio />} label="Yearly" />
+                                </RadioGroup>
+                            </FormControl>
+                        </div>  
+                    </Modal.Body>
+                    <Modal.Footer>
+                        <Button variant="danger" onClick={() => setShowRepeats(false)}>
+                            Submit
+                        </Button>
+                    </Modal.Footer>
+                </Modal>
+            </div>
+            
         </form>
     );
 }

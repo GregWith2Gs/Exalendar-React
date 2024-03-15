@@ -1,5 +1,4 @@
-import Home from './Home.js'
-//import Login from './Login.js';
+import Layout from './Layout.js'
 import { LocalizationProvider } from '@mui/x-date-pickers';
 import { ThemeProvider, createTheme } from "@mui/material/styles";
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs'
@@ -22,8 +21,7 @@ function App() {
       <ThemeProvider theme={theme}>
         <div className="App">
         <header className="App-header">
-        {/* <Login/> */}
-          <Home/>
+          <Layout/>
         </header>
       </div>
       </ThemeProvider>

@@ -18,7 +18,7 @@ app.use(bodyParser.json());
 var connection = mysql.createConnection({
   host: "localhost",
   user: "root",
-  password: prompt("DB Password:"),
+  password: prompt("DB Password:", {echo: ''}),
   database: "exalendar",
   port: 3306,
   charset: "utf8mb4"

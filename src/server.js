@@ -1,4 +1,5 @@
-const express = require("express");
+const express=require('express');
+const axios=require('axios');
 const app = express();
 const port = 4000;
 const cors = require('cors');
@@ -51,6 +52,59 @@ app.post("/", (req, res) => {
         console.log(results);
     });
 });
+
+
+app.get('/login',(req,res)=>{
+  console.log("login time")
+  res.send(`
+      <div style="margin: 300px auto;
+      max-width: 400px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      font-family: sans-serif;"
+      >
+          <h3>Welcome to Discord OAuth NodeJS App</h3>
+          <p>Click on the below button to get started!</p>
+          <a 
+              href="https://discord.com/oauth2/authorize?client_id=1217203680294469695&response_type=code&redirect_uri=http%3A%2F%2Flocalhost%3A4000%2Fauth%2Fdiscord&scope=identify+email"
+              style="outline: none;
+              padding: 10px;
+              border: none;
+              font-size: 20px;
+              margin-top: 20px;
+              border-radius: 8px;
+              background: #6D81CD;
+              cursor:pointer;
+              text-decoration: none;
+              color: white;"
+          >
+          Login with Discord</a>
+      </div>
+  `)
+})
+
+app.get('/auth/discord',async(req,res)=>{
+  const code=req.query.code;
+  const params = new URLSearchParams();
+  let user;
+  params.append('client_id', process.env.CLIENT_ID);
+  params.append('client_secret', process.env.CLIENT_SECRET);
+  params.append('grant_type', 'authorization_code');
+  params.append('code', code);
+  params.append('redirect_uri', "http://localhost:4000/auth/discord");
+  try{
+      const response=await axios.post('https://discord.com/api/oauth2/token',params)
+      const { access_token,token_type}=response.data;
+      
+  }catch(error){
+      console.log('Error',error)
+      return res.send('Some error occurred! ')
+  }
+})
+
+
+
 
 app.listen(port, () => {
   console.log(`Example app listening at http://localhost:${port}`);

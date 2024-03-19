@@ -54,6 +54,9 @@ app.post("/", (req, res) => {
 });
 
 app.get('/auth/discord',async(req,res)=>{
+  console.log("served");
+  //im not getting here somehow
+  //needs to be fixed, something with discord
   const code=req.query.code;
   const params = new URLSearchParams();
   let user;
@@ -61,7 +64,7 @@ app.get('/auth/discord',async(req,res)=>{
   params.append('client_secret', process.env.CLIENT_SECRET);
   params.append('grant_type', 'authorization_code');
   params.append('code', code);
-  params.append('redirect_uri', "http://localhost:4000/auth/discord");
+  params.append('redirect_uri', "http://localhost:3000/auth/discord");
   try{
       const response=await axios.post('https://discord.com/api/oauth2/token',params)
       const { access_token,token_type}=response.data;
@@ -78,7 +81,7 @@ app.get('/auth/discord',async(req,res)=>{
 
         }
         return res.send(
-            <div 
+            `<div 
             style={{margin: '300px auto',
             'max-width': '400px',
             display: 'flex',
@@ -90,7 +93,7 @@ app.get('/auth/discord',async(req,res)=>{
                 <span>Email: ${user.email}</span>
                 
                 <img src="${user.avatar}"/>
-            </div>
+            </div>`
         )
       
   }catch(error){

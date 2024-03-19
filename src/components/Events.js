@@ -12,6 +12,7 @@ import dayjs, { Dayjs } from 'dayjs';
 import exit from '../media/icons8-x-60.png';
 import {Modal} from "react-bootstrap";
 import '../css/Event.css';
+import { Checkbox, FormGroup } from "@mui/material";
 
 
 function Events({start, end, onExit}) {
@@ -38,7 +39,7 @@ function Events({start, end, onExit}) {
     const handleSelectorChange = (selectedClass) => {
         setClassName(selectedClass.value);
     }
-    //Frequence
+    //Frequency
     const [eFreq, setEFreq] = useState('no-repeat');
     function freqChange(event){
         setEFreq(event.target.value);
@@ -48,19 +49,32 @@ function Events({start, end, onExit}) {
     const onIntervalChange = (i) => {
         setEInterval(i.target.value)        
     }
+    //Byday
+    const [byDay, setByDay] = useState({
+        c1: false,
+        c2: false,
+        c3: false,
+        c4: false,
+        c5: false,
+        c6: false,
+        c7: false
+    });
+    const handleByDayChange = (selectedDays) => {
+        setByDay({
+            ...byDay,
+            [selectedDays.target.name]: selectedDays.target.checked,
+        })
+    }
 
     const [showRepeats,setShowRepeats] = useState(false);
 
-    const options = [
+    const classOptions = [
         {value: 'CSCI-1100', label: 'CSCI-1100'},
         {value: 'CSCI-1200', label: 'CSCI-1200'},
         {value: 'CSCI-2200', label: 'CSCI-2200'},
         {value: 'CSCI-2500', label: 'CSCI-2500'}
     ]
 
-
-    
-    
 
     function submitEvent() {
 
@@ -83,7 +97,7 @@ function Events({start, end, onExit}) {
                 "freq": eFreq,
                 "end_date": null, // todo: add field - date to end repetition
                 "interval": parseInt(eInterval),
-                "byday": null // todo: add field - array containing any combo of SU, MO, TU, WE, TH, FR, SA
+                "byday": byDay // todo: add field - array containing any combo of SU, MO, TU, WE, TH, FR, SA
             })
         }
         console.log(postData);
@@ -192,7 +206,7 @@ function Events({start, end, onExit}) {
                     </div>
 
                     <div className='rowspace'>
-                    <Select options={options} onChange={handleSelectorChange} defaultValue={{label: "Select a course", value: ""}}/>
+                    <Select options={classOptions} onChange={handleSelectorChange} defaultValue={{label: "Select a course", value: ""}}/>
                     </div>  
                         
                 </div>
@@ -226,11 +240,16 @@ function Events({start, end, onExit}) {
                             label="Interval" variant="standard" fullwidth={false}/>
                         </div>
                         <div className="grid-item-2">
-                        <TextField 
-                            value={eInterval}
-                            onChange={onIntervalChange}
-                            id="standard-basic" 
-                            label="Interval" variant="standard" fullwidth={false}/>
+                        <FormLabel>Select Repeat Days</FormLabel>
+                        <FormGroup row>
+                            <FormControlLabel control={<Checkbox/>} label="Mon" checked={byDay.c1} onChange={handleByDayChange} name="c1"/>
+                            <FormControlLabel control={<Checkbox/>} label="Tue" checked={byDay.c2} onChange={handleByDayChange} name="c2"/>
+                            <FormControlLabel control={<Checkbox/>} label="Wed" checked={byDay.c3} onChange={handleByDayChange} name="c3"/>
+                            <FormControlLabel control={<Checkbox/>} label="Thu" checked={byDay.c4} onChange={handleByDayChange} name="c4"/>
+                            <FormControlLabel control={<Checkbox/>} label="Fri" checked={byDay.c5} onChange={handleByDayChange} name="c5"/>
+                            <FormControlLabel control={<Checkbox/>} label="Sat" checked={byDay.c6} onChange={handleByDayChange} name="c6"/>
+                            <FormControlLabel control={<Checkbox/>} label="Sun" checked={byDay.c7} onChange={handleByDayChange} name="c7"/>
+                        </FormGroup>
                         </div>
                         <div className="grid-item-3">
                         <TextField 

@@ -34,7 +34,7 @@ CREATE TABLE `classes` (
 insert into classes (class_name) values ('CSCI-1100'), ('CSCI-1200'), ('CSCI-2200'), ('CSCI-2500');
 
 CREATE TABLE `events` (
-  `class_name` varchar(255) UNIQUE NOT NULL,
+  `class_name` varchar(255) NOT NULL,
   `event_id` int PRIMARY KEY NOT NULL AUTO_INCREMENT,
   `event_type` varchar(255) NOT NULL,
   `event_title` varchar(255) NOT NULL,
@@ -67,6 +67,6 @@ ALTER TABLE `class_admins` ADD FOREIGN KEY (`user_id`) REFERENCES `user_classes`
 
 ALTER TABLE `class_admins` ADD FOREIGN KEY (`class_id`) REFERENCES `classes` (`class_id`);
 
-DROP TABLE `events`;
+#DROP TABLE `events`;
 
 #ALTER USER 'root'@'localhost' IDENTIFIED WITH mysql_native_password BY '12345';

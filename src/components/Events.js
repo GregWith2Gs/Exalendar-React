@@ -10,13 +10,15 @@ import '../css/Event.css';
 
 function Events({start, end, onExit}) {
     const [eName, setEName] = useState("");
-    const onNameChange = (e: any) => setEName(e.target.value);
+    const onNameChange = (n: any) => setEName(n.target.value);
     const [eType, setEType] = useState('');
     const onTypeChange = (t: any) => setEType(t.target.value);
     const [eDescription, setEDescription] = useState('');
     const onDescChange = (d: any) => setEDescription(d.target.value);
     const [eStart, setEStart] = useState(Dayjs);
+    const onStartChange = (s: any) => setEStart(s);
     const [eEnd, setEEnd] = useState(Dayjs);
+    const onEndChange = (e: any) => setEEnd(e);
     const [className, setClassName] = useState('');
     
     const options = [
@@ -128,7 +130,7 @@ function Events({start, end, onExit}) {
                         body= 'secondary'
                         label="Start Date"
                         value={dayjs(start)}
-                        onChange={(eventStart) => setEStart(eventStart)}
+                        onChange={onStartChange}
                         viewRenderers={{
                             hours: null,
                             minutes: null,
@@ -142,7 +144,7 @@ function Events({start, end, onExit}) {
                     <DateTimePicker
                         label="End Date"
                         value={dayjs(end)}
-                        onChange={(eventEnd) => setEEnd(eventEnd)}
+                        onChange={onEndChange}
                         viewRenderers={{
                             hours: null,
                             minutes: null,

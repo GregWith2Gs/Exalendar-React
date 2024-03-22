@@ -16,9 +16,7 @@ function Events({start, end, onExit}) {
     const [eDescription, setEDescription] = useState('');
     const onDescChange = (d: any) => setEDescription(d.target.value);
     const [eStart, setEStart] = useState(Dayjs);
-    const onStartChange = (s: any) => setEStart(s);
     const [eEnd, setEEnd] = useState(Dayjs);
-    const onEndChange = (e: any) => setEEnd(e);
     const [className, setClassName] = useState('');
     
     const options = [
@@ -129,8 +127,8 @@ function Events({start, end, onExit}) {
                     <DateTimePicker
                         body= 'secondary'
                         label="Start Date"
-                        value={dayjs(start)}
-                        onChange={onStartChange}
+                        value={dayjs(eStart)}
+                        onChange={(newStart) => setEStart(newStart)}
                         viewRenderers={{
                             hours: null,
                             minutes: null,
@@ -143,8 +141,8 @@ function Events({start, end, onExit}) {
                     
                     <DateTimePicker
                         label="End Date"
-                        value={dayjs(end)}
-                        onChange={onEndChange}
+                        value={dayjs(eEnd)}
+                        onChange={(newEnd) => setEEnd(newEnd)}
                         viewRenderers={{
                             hours: null,
                             minutes: null,

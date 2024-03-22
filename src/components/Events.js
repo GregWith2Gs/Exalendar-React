@@ -128,7 +128,7 @@ function Events({start, end, onExit}) {
                         body= 'secondary'
                         label="Start Date"
                         value={dayjs(start)}
-                        onChange={(eventStart) => setEStart(eventStart)}
+                        onChange={(eStart) => setEStart(eStart)}
                         viewRenderers={{
                             hours: null,
                             minutes: null,

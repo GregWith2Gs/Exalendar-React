@@ -65,6 +65,10 @@ function Events({start, end, onExit}) {
             [selectedDays.target.name]: selectedDays.target.checked,
         })
     }
+    //End Date
+    const [eEndDate, setEEndDate] = useState(Dayjs);
+    //All Day
+    const [allDay,setAllDay] = useState(false);
 
     const [showRepeats,setShowRepeats] = useState(false);
 
@@ -95,9 +99,9 @@ function Events({start, end, onExit}) {
                 "start": eStart.toISOString().slice(0, 19).replace('T', ' '),
                 "end": eEnd.toISOString().slice(0, 19).replace('T', ' '),
                 "freq": eFreq,
-                "end_date": null, // todo: add field - date to end repetition
+                "end_date": eEndDate.toISOString().slice(0, 19).replace('T', ' '),
                 "interval": parseInt(eInterval),
-                "byday": byDay // todo: add field - array containing any combo of SU, MO, TU, WE, TH, FR, SA
+                "byday": byDay
             })
         }
         console.log(postData);
@@ -211,18 +215,22 @@ function Events({start, end, onExit}) {
                         
                 </div>
                 <div className='makebutton'>
+                    <FormControlLabel control={<Checkbox 
+                        style={{color: "white",}} />} 
+                        label="All day" id="all-day-checkbox" 
+                        onChange={(checkVal) => {setAllDay(checkVal.target.checked)}}/>
                     <Button 
                         onClick={() => {
                             setShowRepeats(true);
                         }} 
-                        variant='contained' sx={{backgroundColor:'#db1d3d', textTransform:'none', "&:hover":{backgroundColor:'#5c0816'}}}>Event Repeats</Button>
-                </div>
-                <div className='makebutton'>
+                        variant='contained' sx={{backgroundColor:'#db1d3d', textTransform:'none', "&:hover":{backgroundColor:'#5c0816'}}}>Event Repeats
+                    </Button>
                     <Button 
                         onClick={() => {
                             submitEvent();
                         }} 
-                        variant='contained' sx={{backgroundColor:'#db1d3d', textTransform:'none', "&:hover":{backgroundColor:'#5c0816'}}}>Submit</Button>
+                        variant='contained' sx={{backgroundColor:'#db1d3d', textTransform:'none', "&:hover":{backgroundColor:'#5c0816'}}}>Submit
+                    </Button>
                 </div>
                 
             </div>
@@ -252,11 +260,17 @@ function Events({start, end, onExit}) {
                         </FormGroup>
                         </div>
                         <div className="grid-item-3">
-                        <TextField 
-                            value={eInterval}
-                            onChange={onIntervalChange}
-                            id="standard-basic" 
-                            label="Interval" variant="standard" fullwidth={false}/>
+                            <DateTimePicker
+                                body= 'secondary'
+                                label="End Date"
+                                value={dayjs(start)}
+                                onChange={(endDate) => setEEndDate(endDate)}
+                                viewRenderers={{
+                                    hours: null,
+                                    minutes: null,
+                                    seconds: null,
+                                }}
+                            />
                         </div>
                         <div className="rowspace grid-item-4">
                             <FormControl>

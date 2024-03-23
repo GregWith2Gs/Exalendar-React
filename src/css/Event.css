@@ -36,7 +36,10 @@
 }
 
 .makebutton {
-    display: block;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    gap: 0.5rem;
     height: 30px;
     width: 100%;
     margin-top: 1rem;
@@ -126,9 +129,16 @@
     border-style: solid;
 }
 
-
 .calendar {
     margin-left: 24px;
+}
+
+#all-day-checkbox{
+    margin: 0;
+    padding-right: 10px;
+    background-color: #db1d3d;
+    color: white;
+    border-radius: 5px;
 }
 
 .modal2 {
@@ -162,4 +172,5 @@
     grid-row-end: 3;
     margin: 0;
 }
+
 

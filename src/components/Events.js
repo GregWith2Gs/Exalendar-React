@@ -6,6 +6,7 @@ import Button from '@mui/material/Button';
 import dayjs, { Dayjs } from 'dayjs';
 import exit from '../media/icons8-x-60.png';
 import '../css/Event.css';
+import { Day } from "react-big-calendar";
 
 
 function Events({start, end, onExit}) {
@@ -15,8 +16,8 @@ function Events({start, end, onExit}) {
     const onTypeChange = (t: any) => setEType(t.target.value);
     const [eDescription, setEDescription] = useState('');
     const onDescChange = (d: any) => setEDescription(d.target.value);
-    const [eStart, setEStart] = useState(Dayjs);
-    const [eEnd, setEEnd] = useState(Dayjs);
+    const [eStart, setEStart] = useState(dayjs(start));
+    const [eEnd, setEEnd] = useState(dayjs(start));
     const [className, setClassName] = useState('');
     
     const options = [
@@ -125,6 +126,7 @@ function Events({start, end, onExit}) {
                 <div className='righthalf'>
                     <div className='rowspace'>
                     <DateTimePicker
+                        //defaultValue={dayjs(start)}
                         body= 'secondary'
                         label="Start Date"
                         value={dayjs(eStart)}
@@ -140,6 +142,7 @@ function Events({start, end, onExit}) {
 
                     
                     <DateTimePicker
+                        //defaultValue={dayjs(end)}
                         label="End Date"
                         value={dayjs(eEnd)}
                         onChange={(newEnd) => setEEnd(newEnd)}

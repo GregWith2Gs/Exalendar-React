@@ -2,6 +2,8 @@ import Layout from './Layout.js'
 import { LocalizationProvider } from '@mui/x-date-pickers';
 import { ThemeProvider, createTheme } from "@mui/material/styles";
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs'
+import { useEffect, useState } from "react";
+import axios from "axios";
 
 const theme = createTheme({
   palette: {
@@ -16,6 +18,31 @@ const theme = createTheme({
 
 
 function App() {
+  const [loggedIn, setLoggedIn] = useState(false);
+  const [user, setUser] = useState(null);
+
+  useEffect(() => {
+    const token = new URLSearchParams(window.location.search).get(
+      "access_token"
+    );
+
+    axios
+      .get("http://localhost:8010/proxy/user", {
+        headers: {
+          Authorization: "token " + token,
+        },
+      })
+      .then((res) => {
+        setUser(res.data);
+        localStorage.setItem('user, res.data');
+        setLoggedIn(true);
+        localStorage.setItem('loggedIn', true)
+      })
+      .catch((error) => {
+        console.log("error " + error);
+      });
+  }, []);
+  
   return (
     <LocalizationProvider dateAdapter={AdapterDayjs}>
       <ThemeProvider theme={theme}>

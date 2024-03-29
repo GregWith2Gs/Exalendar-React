@@ -6,17 +6,18 @@ import Button from '@mui/material/Button';
 import dayjs, { Dayjs } from 'dayjs';
 import exit from '../media/icons8-x-60.png';
 import '../css/Event.css';
+import { Day } from "react-big-calendar";
 
 
 function Events({start, end, onExit}) {
     const [eName, setEName] = useState("");
-    const onNameChange = (e: any) => setEName(e.target.value);
+    const onNameChange = (n: any) => setEName(n.target.value);
     const [eType, setEType] = useState('');
     const onTypeChange = (t: any) => setEType(t.target.value);
     const [eDescription, setEDescription] = useState('');
     const onDescChange = (d: any) => setEDescription(d.target.value);
-    const [eStart, setEStart] = useState(Dayjs);
-    const [eEnd, setEEnd] = useState(Dayjs);
+    const [eStart, setEStart] = useState(dayjs(start));
+    const [eEnd, setEEnd] = useState(dayjs(start));
     const [className, setClassName] = useState('');
     
     const options = [
@@ -125,10 +126,11 @@ function Events({start, end, onExit}) {
                 <div className='righthalf'>
                     <div className='rowspace'>
                     <DateTimePicker
+                        //defaultValue={dayjs(start)}
                         body= 'secondary'
                         label="Start Date"
-                        value={dayjs(start)}
-                        onChange={(eventStart) => setEStart(eventStart)}
+                        value={dayjs(eStart)}
+                        onChange={(newStart) => setEStart(newStart)}
                         viewRenderers={{
                             hours: null,
                             minutes: null,
@@ -140,9 +142,10 @@ function Events({start, end, onExit}) {
 
                     
                     <DateTimePicker
+                        //defaultValue={dayjs(end)}
                         label="End Date"
-                        value={dayjs(end)}
-                        onChange={(eventEnd) => setEEnd(eventEnd)}
+                        value={dayjs(eEnd)}
+                        onChange={(newEnd) => setEEnd(newEnd)}
                         viewRenderers={{
                             hours: null,
                             minutes: null,

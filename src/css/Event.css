@@ -133,6 +133,11 @@
     margin-left: 24px;
 }
 
+/*Text Field styling*/
+.MuiTextField-root{
+    border-color: var(--text-color) !important;
+}
+
 .MuiInputBase-input, .MuiFormLabel-root{
     color: var(--text-color) !important;
 }
@@ -142,6 +147,7 @@
     border-color: green !important;
 }
 
+/*Calendar styling*/
 .css-b62m3t-container *{    
     background-color: var(--event-bg) !important;
     color: var(--text-color) !important;
@@ -151,6 +157,24 @@
     background-color: var(--day-outside-month-range-color) !important;
 }
 
-.css-1dimb5e-singleValue{
-    color: green !important;
+.MuiDateCalendar-root{
+    color: var(--text-color);
+    background-color: var(--bg-color);
+}
+
+.MuiDayCalendar-weekDayLabel{
+    color: var(--text-color) !important;
+}
+
+/*Day-Date picker styling*/
+.MuiPickersDay-root{
+    color: var(--text-color) !important;
+}
+
+.MuiPickersDay-root:hover{
+    background-color: var(--day-outside-month-range-color) !important;
+}
+
+.Mui-selected{
+    background-color: #db1d3d !important;
 }

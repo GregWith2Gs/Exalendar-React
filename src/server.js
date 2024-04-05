@@ -111,6 +111,14 @@ var session  = require('express-session');
 var scopes = ['identify', 'email'];
 var ppprompt = 'consent';
   
+
+passport.serializeUser(function(user, done) {
+  done(null, user);
+});
+passport.deserializeUser(function(obj, done) {
+  done(null, obj);
+});
+
 passport.use(new Strategy({
     clientID: '',
     clientSecret: '',

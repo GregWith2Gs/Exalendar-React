@@ -9,7 +9,7 @@ const WebRoutes = () => {
     <Routes>
       <Route path='/' element={<Splash />} />
       <Route path='/calendar' element={<ReactBigCalendar />} />
-      <Route path='/login' element={<Login />}/>
+      <Route path='/auth/discord' element={<Login />}/>
     </Routes>
   );
 }

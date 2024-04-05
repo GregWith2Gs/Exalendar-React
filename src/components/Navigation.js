@@ -8,7 +8,7 @@ import '../css/Navigation.css';
 
 
 const tabs = [{
-  route: "/",
+  route: "/calendar",
   icon: faHome,
   label: "Home",
   target: "_self"
@@ -18,7 +18,7 @@ const tabs = [{
   label: "Github",
   target: "_blank"
 },{
-  route: "/login",
+  route: "/",
   icon: faUserCircle,
   label: "Login",
   target: "_self"

@@ -103,7 +103,8 @@ app.get('/auth/discord',async(req,res)=>{
 })
 
 
-//passport stuff
+//passport stuff-----------
+/*
 var DiscordStrategy = require('passport-discord').Strategy;
 var passport = require('passport');
 var session  = require('express-session');
@@ -146,8 +147,8 @@ app.get('/logout', function(req, res) {
 });
 
 
-
-
+*/
+//-----------
 
 app.listen(port, () => {
   console.log(`Example app listening at http://localhost:${port}`);

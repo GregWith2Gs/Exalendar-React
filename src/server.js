@@ -102,6 +102,30 @@ app.get('/auth/discord',async(req,res)=>{
   }
 })
 
+
+//passport stuff
+var DiscordStrategy = require('passport-discord').Strategy;
+
+var scopes = ['identify', 'email', 'guilds', 'guilds.join'];
+var passport = require('passport')
+  , Strategy = require('/').Strategy
+
+var scopes = ['identify', 'email'];
+var ppprompt = 'consent';
+  
+passport.use(new Strategy({
+    clientID: '',
+    clientSecret: '',
+    callbackURL: 'http://localhost:5000/callback',
+    scope: scopes,
+    prompt: prompt
+}, function(accessToken, refreshToken, profile, done) {
+    process.nextTick(function() {
+        return done(null, profile);
+    });
+}));
+  
+
 app.listen(port, () => {
   console.log(`Example app listening at http://localhost:${port}`);
 });

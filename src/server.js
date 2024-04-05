@@ -106,7 +106,6 @@ app.get('/auth/discord',async(req,res)=>{
 //passport stuff
 var DiscordStrategy = require('passport-discord').Strategy;
 var passport = require('passport');
-var Strategy = require('/').Strategy;
 var session  = require('express-session');
 var scopes = ['identify', 'email'];
 var ppprompt = 'consent';
@@ -119,7 +118,7 @@ passport.deserializeUser(function(obj, done) {
   done(null, obj);
 });
 
-passport.use(new Strategy({
+passport.use(new DiscordStrategy({
     clientID: '',
     clientSecret: '',
     callbackURL: 'http://localhost:5000/callback',

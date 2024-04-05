@@ -105,11 +105,9 @@ app.get('/auth/discord',async(req,res)=>{
 
 //passport stuff
 var DiscordStrategy = require('passport-discord').Strategy;
-
-var scopes = ['identify', 'email', 'guilds', 'guilds.join'];
-var passport = require('passport')
-  , Strategy = require('/').Strategy
-
+var passport = require('passport');
+var Strategy = require('/').Strategy;
+var session  = require('express-session');
 var scopes = ['identify', 'email'];
 var ppprompt = 'consent';
   
@@ -118,13 +116,31 @@ passport.use(new Strategy({
     clientSecret: '',
     callbackURL: 'http://localhost:5000/callback',
     scope: scopes,
-    prompt: prompt
+    prompt: ppprompt
 }, function(accessToken, refreshToken, profile, done) {
     process.nextTick(function() {
         return done(null, profile);
     });
 }));
-  
+app.use(session({
+  secret: 'keyboard cat',
+  resave: false,
+  saveUninitialized: false
+}));
+app.use(passport.initialize());
+app.use(passport.session());
+app.get('/', passport.authenticate('discord', { scope: scopes, prompt: prompt }), function(req, res) {});
+app.get('/callback',
+  passport.authenticate('discord', { failureRedirect: '/' }), function(req, res) { res.redirect('/info') } // auth success
+);
+app.get('/logout', function(req, res) {
+  req.logout();
+  res.redirect('/');
+});
+
+
+
+
 
 app.listen(port, () => {
   console.log(`Example app listening at http://localhost:${port}`);

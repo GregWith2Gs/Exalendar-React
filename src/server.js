@@ -124,8 +124,8 @@ passport.deserializeUser(function(obj, done) {
 });
 
 passport.use(new DiscordStrategy({
-    clientID: process.env.CLIENT_ID,
-    clientSecret: process.env.CLIENT_SECRET,
+    clientID: process.env['CLIENT_ID'],
+    clientSecret: process.env['CLIENT_SECRET'],
     callbackURL: 'http://localhost:3000/auth/discord',
     scope: scopes,
     prompt: ppprompt

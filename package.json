@@ -24,6 +24,7 @@
     "express-session": "^1.18.0",
     "moment": "^2.29.4",
     "mysql": "^2.18.1",
+    "node-fetch": "^3.3.2",
     "passport": "^0.7.0",
     "passport-discord": "^0.1.4",
     "passport-oauth2-refresh": "^2.2.0",

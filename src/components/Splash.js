@@ -6,6 +6,9 @@ import '../css/Splash.css';
 
 
 function Splash(){
+  function login() {
+    fetch('localhost:4000/login/discord');
+  }
       return (
     
     
@@ -17,7 +20,7 @@ function Splash(){
           <h3>Welcome to Exalendar's Discord OAuth!</h3>
           <p>Click on the below button to get started!</p>
           <a className="Login-box"
-              href="/login/discord"
+              onClick={login}
           >
           Login with Discord</a>
       </div>

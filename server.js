@@ -61,6 +61,20 @@ app.post("/", (req, res) => {
     });
 });
 
+passport.use(new DiscordStrategy({
+  clientID: process.env['CLIENT_ID'],
+  clientSecret: process.env['CLIENT_SECRET'],
+  callbackURL: 'http://localhost:3000/auth/discord',
+  scope: scopes,
+  prompt: ppprompt
+}, function(accessToken, refreshToken, profile, done) {
+  process.nextTick(function() {
+      return done(null, profile);
+  });
+}));
+
+app.use(passport.initialize());
+
 app.get('/login/discord', passport.authenticate('discord'));
 
 app.get('/auth/discord',async(req,res)=>{
@@ -122,17 +136,8 @@ passport.deserializeUser(function(obj, done) {
   done(null, obj);
 });
 
-passport.use(new DiscordStrategy({
-    clientID: process.env['CLIENT_ID'],
-    clientSecret: process.env['CLIENT_SECRET'],
-    callbackURL: 'http://localhost:3000/auth/discord',
-    scope: scopes,
-    prompt: ppprompt
-}, function(accessToken, refreshToken, profile, done) {
-    process.nextTick(function() {
-        return done(null, profile);
-    });
-}));
+
+
 app.use(session({
   secret: 'keyboard cat',
   resave: false,
@@ -154,5 +159,4 @@ app.get('/logout', function(req, res) {
 
 app.listen(port, () => {
   console.log(`Example app listening at http://localhost:${port}`);
-  console.log(process.env['TEST_VALUE'])
 });

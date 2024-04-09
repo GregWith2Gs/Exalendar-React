@@ -5,6 +5,8 @@ const port = 4000;
 const cors = require('cors');
 app.use(cors())
 
+require('dotenv').config();
+
 const prompt = require("prompt-sync")({ sigint: true });
 
 var mysql = require("mysql");
@@ -115,7 +117,7 @@ app.get('/auth/discord',async(req,res)=>{
 
 
   
-
+/*
 passport.serializeUser(function(user, done) {
   done(null, user);
 });
@@ -152,7 +154,9 @@ app.get('/logout', function(req, res) {
 
 
 //-----------
+*/
 
 app.listen(port, () => {
   console.log(`Example app listening at http://localhost:${port}`);
+  console.log(process.env['TEST_VALUE'])
 });

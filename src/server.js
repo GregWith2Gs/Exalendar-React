@@ -10,6 +10,12 @@ const prompt = require("prompt-sync")({ sigint: true });
 var mysql = require("mysql");
 var bodyParser = require('body-parser');
 
+var DiscordStrategy = require('passport-discord').Strategy;
+var passport = require('passport');
+var session  = require('express-session');
+var scopes = ['identify', 'email'];
+var ppprompt = 'consent';
+
 app.use(bodyParser.urlencoded({
   extended: false
 }));
@@ -52,6 +58,8 @@ app.post("/", (req, res) => {
         console.log(results);
     });
 });
+
+app.get('/login/discord', passport.authenticate('discord'));
 
 app.get('/auth/discord',async(req,res)=>{
   console.log("served");
@@ -104,12 +112,8 @@ app.get('/auth/discord',async(req,res)=>{
 
 
 //passport stuff-----------
-/*
-var DiscordStrategy = require('passport-discord').Strategy;
-var passport = require('passport');
-var session  = require('express-session');
-var scopes = ['identify', 'email'];
-var ppprompt = 'consent';
+
+
   
 
 passport.serializeUser(function(user, done) {
@@ -147,7 +151,6 @@ app.get('/logout', function(req, res) {
 });
 
 
-*/
 //-----------
 
 app.listen(port, () => {

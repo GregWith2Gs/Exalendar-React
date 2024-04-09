@@ -1,12 +1,11 @@
 import React, { useState } from "react";
 import {DateTimePicker} from '@mui/x-date-pickers';
 import TextField from '@mui/material/TextField';
-import Select from 'react-select';
+import Autocomplete from '@mui/material/Autocomplete';
 import Button from '@mui/material/Button';
 import dayjs from 'dayjs';
 import exit from '../media/icons8-x-60.png';
 import '../css/Event.css';
-import { green } from "@mui/material/colors";
 
 
 function Events({start, end, onExit}) {
@@ -18,10 +17,7 @@ function Events({start, end, onExit}) {
     const [classID, setClassID] = useState('');
     
     const options = [
-        {value: 'CSCI-1100', label: 'CSCI-1100'},
-        {value: 'CSCI-1200', label: 'CSCI-1200'},
-        {value: 'CSCI-2200', label: 'CSCI-2200'},
-        {value: 'CSCI-2500', label: 'CSCI-2500'}
+        'CSCI-1200','CSCI-4970','ECSE-1100',"PHIL-2100"
     ]
 
     const handleSelectorChange = (selectedClass) => {
@@ -67,13 +63,7 @@ function Events({start, end, onExit}) {
             <div fluid className='MakeEvent'>
                 <div className='lefthalf'>
                     <div className='rowspace'>
-                        <div className='columnspace'>
-                            <TextField inputRef={eventName} id="standard-basic" label="Event Name" variant="standard" fullwidth={true} sx={{input: {color: 'var(--text-color)'}}}/>
-                        </div>
-                        
-                        
                         <div className='exit'>
-                        
                             <Button 
                                 onClick={() => {
                                     onExit();
@@ -83,21 +73,79 @@ function Events({start, end, onExit}) {
                                 >
                                 <img style={{ width: '30px', height: '30px'}} src={exit} alt="Logo" />
                             </Button>
-                            
-
                         </div>
-                        
-
                     </div>
                     <div className='rowspace'>
                         <div className='columnspace'>
-                            <TextField inputRef={eventType} id="standard-basic" label="Event Type" variant="standard" fullwidth={true} sx={{input: {color: 'var(--text-color)'}}}/>
+                            <TextField
+                            label="Event name" inputRef={eventName} variant="outlined" id="standard-basic"
+                            sx={{
+                                "& .MuiOutlinedInput-root": {
+                                    "& .MuiOutlinedInput-notchedOutline": {
+                                        borderColor: "var(--text-color)",
+                                    },
+                                    "&.Mui-focused": {
+                                        "& .MuiOutlinedInput-notchedOutline": {
+                                            borderColor: "var(--text-color)",
+                                        }
+                                    },
+                                    "&:hover:not(.Mui-focused)": {
+                                        "& .MuiOutlinedInput-notchedOutline": {
+                                            borderColor: "var(--text-color)",
+                                        }
+                                    }
+                                },
+                            }}
+                            />
+                        </div>
+                    </div>
+                    <div className='rowspace'>
+                        <div className='columnspace'>
+                            <TextField
+                            label="Event Type" inputRef={eventType} variant="outlined" id="standard-basic"
+                            sx={{
+                                "& .MuiOutlinedInput-root": {
+                                    "& .MuiOutlinedInput-notchedOutline": {
+                                        borderColor: "var(--text-color)",
+                                    },
+                                    "&.Mui-focused": {
+                                        "& .MuiOutlinedInput-notchedOutline": {
+                                            borderColor: "var(--text-color)",
+                                        }
+                                    },
+                                    "&:hover:not(.Mui-focused)": {
+                                        "& .MuiOutlinedInput-notchedOutline": {
+                                            borderColor: "var(--text-color)",
+                                        }
+                                    }
+                                },
+                            }}
+                            />
                         </div>
 
                     </div>
                     <div className='rowspace'>
                          <div className='columnspace'>
-                            <TextField inputRef={eventDesc} id="standard-basic" label="Description" variant="standard" fullwidth={true} sx={{input: {color: 'var(--text-color)'}}}/>
+                            <TextField
+                            label="Event Description" inputRef={eventDesc} variant="outlined" id="standard-basic"
+                            sx={{
+                                "& .MuiOutlinedInput-root": {
+                                    "& .MuiOutlinedInput-notchedOutline": {
+                                        borderColor: "var(--text-color)",
+                                    },
+                                    "&.Mui-focused": {
+                                        "& .MuiOutlinedInput-notchedOutline": {
+                                            borderColor: "var(--text-color)",
+                                        }
+                                    },
+                                    "&:hover:not(.Mui-focused)": {
+                                        "& .MuiOutlinedInput-notchedOutline": {
+                                            borderColor: "var(--text-color)",
+                                        }
+                                    }
+                                },
+                            }}
+                            />
                         </div>
                         
                     </div>
@@ -106,17 +154,19 @@ function Events({start, end, onExit}) {
                 
                 <div className='righthalf'>
                     <div className='rowspace'>
-                    <DateTimePicker
-                        body= 'secondary'
-                        label="Start Date"
-                        value={dayjs(start)}
-                        onChange={(eventStart) => setEventStart(eventStart)}
-                        viewRenderers={{
-                            hours: null,
-                            minutes: null,
-                            seconds: null,
-                        }}
-                    />
+                        <div className="columnspace">
+                            <DateTimePicker
+                            body= 'secondary'
+                            label="Start Date"
+                            value={dayjs(start)}
+                            onChange={(eventStart) => setEventStart(eventStart)}
+                            viewRenderers={{
+                                hours: null,
+                                minutes: null,
+                                seconds: null,
+                            }}
+                        />
+                        </div>
                     </div>
                     <div className='rowspace'>
 
@@ -134,7 +184,12 @@ function Events({start, end, onExit}) {
                     </div>
 
                     <div className='rowspace'>
-                    <Select options={options} onChange={handleSelectorChange} defaultValue={{label: "Select a course", value: ""}}/>
+                           <Autocomplete
+                            disablePortal
+                            id="combo-box-demo"
+                            options={options}
+                            renderInput={(params) => <TextField {...params} label="Select a class" />}
+                            /> 
                     </div>
                 </div>
 

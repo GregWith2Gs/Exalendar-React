@@ -59,6 +59,7 @@
     width: 90%;
     height: auto;
     text-align: center;
+    margin: 0.2rem;
 
 }
 
@@ -134,29 +135,18 @@
 }
 
 /*Text Field styling*/
-.MuiTextField-root{
-    border-color: var(--text-color) !important;
-}
-
 .MuiInputBase-input, .MuiFormLabel-root{
     color: var(--text-color) !important;
 }
 
-
-.MuiInputBase-root, .MuiOutlinedInput-root{
-    border-color: green !important;
+/*Class Selector styling*/
+.MuiAutocomplete-popper *{
+    background-color: var(--bg-color);
+    color: var(--text-color);
 }
+
 
 /*Calendar styling*/
-.css-b62m3t-container *{    
-    background-color: var(--event-bg) !important;
-    color: var(--text-color) !important;
-}
-
-.css-tj5bde-Svg:hover{
-    background-color: var(--day-outside-month-range-color) !important;
-}
-
 .MuiDateCalendar-root{
     color: var(--text-color);
     background-color: var(--bg-color);

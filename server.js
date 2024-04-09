@@ -115,9 +115,6 @@ app.get('/auth/discord',async(req,res)=>{
 
 //passport stuff-----------
 
-
-  
-/*
 passport.serializeUser(function(user, done) {
   done(null, user);
 });
@@ -152,9 +149,8 @@ app.get('/logout', function(req, res) {
   res.redirect('/');
 });
 
-
 //-----------
-*/
+
 
 app.listen(port, () => {
   console.log(`Example app listening at http://localhost:${port}`);

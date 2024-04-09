@@ -2,6 +2,7 @@
     --bg-color: #fff;
     --text-color: #000;
     --event-text-color: #000;
+    --main-theme-color: #db1d3d;
   }
 
   html[data-theme='light'] {

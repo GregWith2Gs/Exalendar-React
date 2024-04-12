@@ -1,10 +1,9 @@
 import ToggleImage from '../media/toggle.png';
-import { IconButton } from '@mui/material';
 import '../css/DarkLightToggle.css';
 
 const DarkLightToggle = () => {
     return(
-        <img id="dark-light-toggle" src={ToggleImage} onClick={changeTheme}></img>
+        <img id="dark-light-toggle" src={ToggleImage} onClick={changeTheme} alt='Dark/Light Toggle'></img>
     )
 };
 

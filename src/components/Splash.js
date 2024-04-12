@@ -6,13 +6,7 @@ import '../css/Splash.css';
 
 
 function Splash(){
-  function login() {
-    fetch('localhost:4000/login/discord');
-  }
       return (
-    
-    
-    
         <div className="Splash text-center container-fluid">
           {!localStorage.loggedIn ? (
             <div>
@@ -20,7 +14,7 @@ function Splash(){
           <h3>Welcome to Exalendar's Discord OAuth!</h3>
           <p>Click on the below button to get started!</p>
           <a className="Login-box"
-              onClick={login}
+              href="https://discord.com/oauth2/authorize?client_id=1217203680294469695&response_type=code&redirect_uri=http%3A%2F%2Flocalhost%3A3000%2Fauth%2Fdiscord&scope=email+identify"
           >
           Login with Discord</a>
       </div>

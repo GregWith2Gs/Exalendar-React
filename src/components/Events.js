@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import {DateTimePicker} from '@mui/x-date-pickers';
 import TextField from '@mui/material/TextField';
-import Select from 'react-select';
+import Autocomplete from '@mui/material/Autocomplete';
 import Button from '@mui/material/Button';
 import Radio from '@mui/material/Radio';
 import RadioGroup from '@mui/material/RadioGroup';
@@ -16,6 +16,11 @@ import { Checkbox, FormGroup } from "@mui/material";
 
 
 function Events({start, end, onExit}) {
+
+
+    const options = [
+        'CSCI-1200','CSCI-4970','ECSE-1100',"PHIL-2100"]
+
     //Initialize Event variables and add reactivity
 
     //Name
@@ -72,12 +77,8 @@ function Events({start, end, onExit}) {
 
     const [showRepeats,setShowRepeats] = useState(false);
 
-    const classOptions = [
-        {value: 'CSCI-1100', label: 'CSCI-1100'},
-        {value: 'CSCI-1200', label: 'CSCI-1200'},
-        {value: 'CSCI-2200', label: 'CSCI-2200'},
-        {value: 'CSCI-2500', label: 'CSCI-2500'}
-    ]
+
+    
 
 
     function submitEvent() {
@@ -116,104 +117,171 @@ function Events({start, end, onExit}) {
     return (
         <form className='Form'>
             <div fluid className='MakeEvent'>
-                <div className='lefthalf'>
-                    <div className='rowspace'>
-                        <div className='columnspace'>
-                            <TextField
-                            value={eName} 
-                            onChange={onNameChange}
-                            id="standard-basic"
-                            label="Event Name"
-                            variant="standard" fullwidth={true} />
-                        </div>
-                        
-                        
-                        <div className='exit'>
-                        
-                            <Button 
-                                onClick={() => {
-                                    onExit();
+                <div className='exit'>
+                    <Button 
+                        onClick={() => {
+                            onExit();
+                        }}
+                        variant='contained' 
+                        sx={{width:30, minWidth:0, minHeight:0, padding:0, margin:0, backgroundColor:'#db1d3d', "&:hover":{backgroundColor:'#5c0816'}}}
+                        >
+                        <img style={{ width: '30px', height: '30px'}} src={exit} alt="Logo" />
+                    </Button>
+                </div>
+                <br></br>
+                <div className="gridContainer">
+                    <div className="mainGrid1">
+                        <TextField
+                                label="Event name" inputRef={eventName} variant="outlined" id="standard-basic"
+                                sx={{
+                                    "& .MuiOutlinedInput-root": {
+                                        "& .MuiOutlinedInput-notchedOutline": {
+                                            borderColor: "var(--text-color)",
+                                        },
+                                        "&.Mui-focused": {
+                                            "& .MuiOutlinedInput-notchedOutline": {
+                                                borderColor: "var(--text-color)",
+                                            }
+                                        },
+                                        "&:hover:not(.Mui-focused)": {
+                                            "& .MuiOutlinedInput-notchedOutline": {
+                                                borderColor: "var(--text-color)",
+                                            }
+                                        }
+                                    },
                                 }}
-                                variant='contained' 
-                                sx={{width:30, minWidth:0, minHeight:0, padding:0, margin:0, backgroundColor:'#db1d3d', "&:hover":{backgroundColor:'#5c0816'}}}
-                                >
-                                <img style={{ width: '30px', height: '30px'}} src={exit} alt="Logo" />
-                            </Button>
-                            
-
-                        </div>
-                        
-
+                            />
                     </div>
-                    <div className='rowspace'>
-                        <div className='columnspace'>
-                            <TextField 
-                            value={eType}
-                            onChange={onTypeChange}
-                            id="standard-basic" 
-                            label="Event Type" 
-                            variant="standard" 
-                            fullwidth={true}/>
-                        </div>
-
+                    <div className="mainGrid2">
+                        <TextField
+                            label="Event Type" inputRef={eventType} variant="outlined" id="standard-basic"
+                            sx={{
+                                "& .MuiOutlinedInput-root": {
+                                    "& .MuiOutlinedInput-notchedOutline": {
+                                        borderColor: "var(--text-color)",
+                                    },
+                                    "&.Mui-focused": {
+                                        "& .MuiOutlinedInput-notchedOutline": {
+                                            borderColor: "var(--text-color)",
+                                        }
+                                    },
+                                    "&:hover:not(.Mui-focused)": {
+                                        "& .MuiOutlinedInput-notchedOutline": {
+                                            borderColor: "var(--text-color)",
+                                        }
+                                    }
+                                },
+                            }}
+                        />
                     </div>
-                    <div className='rowspace'>
-                         <div className='columnspace'>
-                            <TextField 
-                            value={eDescription}
-                            onChange={onDescChange}
-                            id="standard-basic" 
-                            label="Description" variant="standard" fullwidth={true}/>
-                        </div>
-                        
+                    <div className="mainGrid3">
+                        <TextField
+                                label="Event Description" inputRef={eventDesc} variant="outlined" id="standard-basic"
+                                sx={{
+                                    "& .MuiOutlinedInput-root": {
+                                        "& .MuiOutlinedInput-notchedOutline": {
+                                            borderColor: "var(--text-color)",
+                                        },
+                                        "&.Mui-focused": {
+                                            "& .MuiOutlinedInput-notchedOutline": {
+                                                borderColor: "var(--text-color)",
+                                            }
+                                        },
+                                        "&:hover:not(.Mui-focused)": {
+                                            "& .MuiOutlinedInput-notchedOutline": {
+                                                borderColor: "var(--text-color)",
+                                            }
+                                        }
+                                    },
+                                }}
+                            />
                     </div>
-
-                    <div className='rowspace'>
-                         <div className='columnspace'>
-                            <TextField 
-                            value={eLocation}
-                            onChange={onLocationChange}
-                            id="standard-basic" 
-                            label="Location" variant="standard" fullwidth={true}/>
-                        </div>
+                    <div className="mainGrid4">
+                        <DateTimePicker
+                                body= 'secondary'
+                                label="Start Date"
+                                value={dayjs(start)}
+                                onChange={(eventStart) => setEventStart(eventStart)}
+                                viewRenderers={{
+                                    hours: null,
+                                    minutes: null,
+                                    seconds: null,
+                                }}
+                                sx={{
+                                    "& .MuiOutlinedInput-root": {
+                                        "& .MuiOutlinedInput-notchedOutline": {
+                                            borderColor: "var(--text-color)",
+                                        },
+                                        "&.Mui-focused": {
+                                            "& .MuiOutlinedInput-notchedOutline": {
+                                                borderColor: "var(--text-color)",
+                                            }
+                                        },
+                                        "&:hover:not(.Mui-focused)": {
+                                            "& .MuiOutlinedInput-notchedOutline": {
+                                                borderColor: "var(--text-color)",
+                                            }
+                                        }
+                                    },
+                                }}
+                        />
                     </div>
-
+                    <div className="mainGrid5">
+                        <DateTimePicker
+                            label="End Date"
+                            value={dayjs(end)}
+                            onChange={(eventEnd) => setEventEnd(eventEnd)}
+                            viewRenderers={{
+                                hours: null,
+                                minutes: null,
+                                seconds: null,
+                            }}
+                            sx={{
+                                "& .MuiOutlinedInput-root": {
+                                    "& .MuiOutlinedInput-notchedOutline": {
+                                        borderColor: "var(--text-color)",
+                                    },
+                                    "&.Mui-focused": {
+                                        "& .MuiOutlinedInput-notchedOutline": {
+                                            borderColor: "var(--text-color)",
+                                        }
+                                    },
+                                    "&:hover:not(.Mui-focused)": {
+                                        "& .MuiOutlinedInput-notchedOutline": {
+                                            borderColor: "var(--text-color)",
+                                        }
+                                    }
+                                },
+                            }}
+                        />
+                    </div>
+                    <div className="mainGrid6">
+                        <Autocomplete
+                            disablePortal
+                            id="combo-box-demo"
+                            options={options}
+                            renderInput={(params) => <TextField {...params} label="Select a class" />}
+                            sx={{
+                                "& .MuiOutlinedInput-root": {
+                                    "& .MuiOutlinedInput-notchedOutline": {
+                                        borderColor: "var(--text-color)",
+                                    },
+                                    "&.Mui-focused": {
+                                        "& .MuiOutlinedInput-notchedOutline": {
+                                            borderColor: "var(--text-color)",
+                                        }
+                                    },
+                                    "&:hover:not(.Mui-focused)": {
+                                        "& .MuiOutlinedInput-notchedOutline": {
+                                            borderColor: "var(--text-color)",
+                                        }
+                                    }
+                                },
+                            }}
+                        /> 
+                    </div>
                 </div>
-                
-                <div className='righthalf'>
-                    <div className='rowspace'>
-                    <DateTimePicker
-                        body= 'secondary'
-                        label="Start Date"
-                        value={dayjs(start)}
-                        onChange={(eventStart) => setEStart(eventStart)}
-                        viewRenderers={{
-                            hours: null,
-                            minutes: null,
-                            seconds: null,
-                        }}
-                    />
-                    </div>
-                    <div className='rowspace'>
 
-                    
-                    <DateTimePicker
-                        label="End Date"
-                        value={dayjs(end)}
-                        onChange={(eventEnd) => setEEnd(eventEnd)}
-                        viewRenderers={{
-                            hours: null,
-                            minutes: null,
-                            seconds: null,
-                        }}
-                    />
-                    </div>
-
-                    <div className='rowspace'>
-                    <Select options={classOptions} onChange={handleSelectorChange} defaultValue={{label: "Select a course", value: ""}}/>
-                    </div>  
-                        
-                </div>
                 <div className='makebutton'>
                     <FormControlLabel control={<Checkbox 
                         style={{color: "white",}} />} 
@@ -233,7 +301,6 @@ function Events({start, end, onExit}) {
                     </Button>
                 </div>
                 
-            </div>
             <div className>
                 <Modal show={showRepeats} onHide={() => setShowRepeats(false)}>
                     <Modal.Header closeButton>

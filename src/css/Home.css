@@ -13,7 +13,11 @@ html {
     padding-left: 25px;
     height: 100%;
     padding-bottom: 10px;
-    
-    background-color: #fff;
-    color: black;
+    overflow-x: hidden;
+    font-family: sans-serif;
+    text-align: center;
+    background-color: var(--bg-color);
+    color: var(--text-color);
+
 }
+

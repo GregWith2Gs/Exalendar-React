@@ -62,6 +62,7 @@
     width: 90%;
     height: auto;
     text-align: center;
+    margin: 0.2rem;
 
 }
 
@@ -76,8 +77,10 @@
     padding: 15px;
     
     border-radius: 10px;
-    border: solid 0.5px black;
-    background-color: rgb(255,255,255);
+    border: solid 0.5px;
+    border-color: var(--event-border-color);
+    background-color: var(--event-bg);
+    color: var(--text-color);
     box-shadow: 10px 10px 10px -2px lightslategray;
     z-index: 10;
 }
@@ -91,7 +94,7 @@
         width: 100%;
         height: 100%;
         padding: 15px;
-        background-color: rgb(174, 174, 174);
+        background-color: var(--event-bg);
         z-index: 10;
     }
 
@@ -133,6 +136,86 @@
     margin-left: 24px;
 }
 
+
+/*Main grid styling*/
+.gridContainer {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    row-gap: 1rem;
+    margin-top: 2rem;
+}
+.mainGrid1 {
+    grid-column-start: 1;
+    grid-column-end: 1;
+    grid-row-start: 1;
+    grid-row-end: 1;
+}
+.mainGrid2 {
+    grid-column-start: 1;
+    grid-column-end: 1;
+    grid-row-start: 2;
+    grid-row-end: 2;
+}
+.mainGrid3 {
+    grid-column-start: 1;
+    grid-column-end: 1;
+    grid-row-start: 3;
+    grid-row-end: 3;
+}
+.mainGrid4 {
+    grid-column-start: 2;
+    grid-column-end: 2;
+    grid-row-start: 1;
+    grid-row-end: 1;
+}
+.mainGrid5 {
+    grid-column-start: 2;
+    grid-column-end: 2;
+    grid-row-start: 2;
+    grid-row-end: 2;
+}
+.mainGrid6 {
+    grid-column-start: 2;
+    grid-column-end: 2;
+    grid-row-start: 3;
+    grid-row-end: 3;
+}
+
+/*Text Field styling*/
+.MuiInputBase-input, .MuiFormLabel-root{
+    color: var(--text-color) !important;
+}
+
+/*Class Selector styling*/
+.MuiAutocomplete-popper *{
+    background-color: var(--bg-color);
+    color: var(--text-color);
+}
+
+
+/*Calendar styling*/
+.MuiDateCalendar-root{
+    color: var(--text-color);
+    background-color: var(--bg-color);
+}
+
+.MuiDayCalendar-weekDayLabel{
+    color: var(--text-color) !important;
+}
+
+/*Day-Date picker styling*/
+.MuiPickersDay-root{
+    color: var(--text-color) !important;
+}
+
+.MuiPickersDay-root:hover{
+    background-color: var(--day-outside-month-range-color) !important;
+}
+
+.Mui-selected{
+    background-color: #db1d3d !important;
+}
+
 #all-day-checkbox{
     margin: 0;
     padding-right: 10px;
@@ -172,5 +255,3 @@
     grid-row-end: 3;
     margin: 0;
 }
-
-

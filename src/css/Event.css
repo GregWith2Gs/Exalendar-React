@@ -36,7 +36,10 @@
 }
 
 .makebutton {
-    display: block;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    gap: 0.5rem;
     height: 30px;
     width: 100%;
     margin-top: 1rem;
@@ -67,7 +70,7 @@
     position: absolute;
     display: flex;
     flex-wrap: wrap;
-    top: 200px;
+    top: 250px;
     left: 50%;
     transform: translate(-50%, -45%);
     width: 600px;
@@ -129,10 +132,10 @@
     border-style: solid;
 }
 
-
 .calendar {
     margin-left: 24px;
 }
+
 
 /*Main grid styling*/
 .gridContainer {
@@ -211,4 +214,44 @@
 
 .Mui-selected{
     background-color: #db1d3d !important;
+}
+
+#all-day-checkbox{
+    margin: 0;
+    padding-right: 10px;
+    background-color: #db1d3d;
+    color: white;
+    border-radius: 5px;
+}
+
+.modal2 {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    row-gap: 10px;
+    
+}
+
+.grid-item-1 {
+    grid-row-start: 1;
+    grid-row-end: 1;
+    margin: 0;
+}
+
+.grid-item-2 {
+    grid-row-start: 2;
+    grid-row-end: 2;
+    margin-top: 0.5rem;
+    margin-bottom: 0;
+}
+
+.grid-item-3 {
+    grid-row-start: 3;
+    grid-row-end: 3;
+    margin: 0;
+}
+
+.grid-item-4 {
+    grid-row-start: 1;
+    grid-row-end: 3;
+    margin: 0;
 }

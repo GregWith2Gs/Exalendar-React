@@ -31,8 +31,10 @@ CREATE TABLE `classes` (
   `class_name` varchar(255) UNIQUE NOT NULL
 );
 
+insert into classes (class_name) values ('CSCI-1100'), ('CSCI-1200'), ('CSCI-2200'), ('CSCI-2500');
+
 CREATE TABLE `events` (
-  `class_id` int,
+  `class_name` varchar(255) UNIQUE NOT NULL,
   `event_id` int PRIMARY KEY NOT NULL AUTO_INCREMENT,
   `event_type` varchar(255) NOT NULL,
   `event_title` varchar(255) NOT NULL,
@@ -57,12 +59,14 @@ ALTER TABLE `user_settings` ADD FOREIGN KEY (`setting_id`) REFERENCES `settings`
 
 ALTER TABLE `user_classes` ADD FOREIGN KEY (`user_id`) REFERENCES `users` (`user_id`);
 
-ALTER TABLE `user_classes` ADD FOREIGN KEY (`class_id`) REFERENCES `classes` (`class_id`);
+ALTER TABLE `user_classes` ADD FOREIGN KEY (`class_id`) REFERENCES `classes` (`class_name`);
 
-ALTER TABLE `events` ADD FOREIGN KEY (`class_id`) REFERENCES `classes` (`class_id`);
+ALTER TABLE `events` ADD FOREIGN KEY (`class_name`) REFERENCES `classes` (`class_name`);
 
 ALTER TABLE `class_admins` ADD FOREIGN KEY (`user_id`) REFERENCES `user_classes` (`user_id`);
 
 ALTER TABLE `class_admins` ADD FOREIGN KEY (`class_id`) REFERENCES `classes` (`class_id`);
+
+DROP TABLE `events`;
 
 #ALTER USER 'root'@'localhost' IDENTIFIED WITH mysql_native_password BY '12345';

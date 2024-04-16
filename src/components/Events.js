@@ -132,7 +132,7 @@ function Events({start, end, onExit}) {
                 <div className="gridContainer">
                     <div className="mainGrid1">
                         <TextField
-                                label="Event name" inputRef={eventName} variant="outlined" id="standard-basic"
+                                label="Event name" inputRef={eName} variant="outlined" id="standard-basic"
                                 sx={{
                                     "& .MuiOutlinedInput-root": {
                                         "& .MuiOutlinedInput-notchedOutline": {
@@ -154,7 +154,7 @@ function Events({start, end, onExit}) {
                     </div>
                     <div className="mainGrid2">
                         <TextField
-                            label="Event Type" inputRef={eventType} variant="outlined" id="standard-basic"
+                            label="Event Type" inputRef={eType} variant="outlined" id="standard-basic"
                             sx={{
                                 "& .MuiOutlinedInput-root": {
                                     "& .MuiOutlinedInput-notchedOutline": {
@@ -176,7 +176,7 @@ function Events({start, end, onExit}) {
                     </div>
                     <div className="mainGrid3">
                         <TextField
-                                label="Event Description" inputRef={eventDesc} variant="outlined" id="standard-basic"
+                                label="Event Description" inputRef={eDescription} variant="outlined" id="standard-basic"
                                 sx={{
                                     "& .MuiOutlinedInput-root": {
                                         "& .MuiOutlinedInput-notchedOutline": {
@@ -201,7 +201,7 @@ function Events({start, end, onExit}) {
                                 body= 'secondary'
                                 label="Start Date"
                                 value={dayjs(start)}
-                                onChange={(eventStart) => setEventStart(eventStart)}
+                                onChange={(eventStart) => setEStart(eventStart)}
                                 viewRenderers={{
                                     hours: null,
                                     minutes: null,
@@ -230,7 +230,7 @@ function Events({start, end, onExit}) {
                         <DateTimePicker
                             label="End Date"
                             value={dayjs(end)}
-                            onChange={(eventEnd) => setEventEnd(eventEnd)}
+                            onChange={(eventEnd) => setEEnd(eventEnd)}
                             viewRenderers={{
                                 hours: null,
                                 minutes: null,
@@ -301,7 +301,7 @@ function Events({start, end, onExit}) {
                     </Button>
                 </div>
                 
-            <div className>
+            <div className="modal2-container">
                 <Modal show={showRepeats} onHide={() => setShowRepeats(false)}>
                     <Modal.Header closeButton>
                     <Modal.Title>Repeating Event</Modal.Title>
@@ -312,7 +312,24 @@ function Events({start, end, onExit}) {
                             value={eInterval}
                             onChange={onIntervalChange}
                             id="standard-basic" 
-                            label="Interval" variant="standard" fullwidth={false}/>
+                            label="Interval" variant="outlined" fullwidth={false}
+                            sx={{
+                                "& .MuiOutlinedInput-root": {
+                                    "& .MuiOutlinedInput-notchedOutline": {
+                                        borderColor: "var(--text-color)",
+                                    },
+                                    "&.Mui-focused": {
+                                        "& .MuiOutlinedInput-notchedOutline": {
+                                            borderColor: "var(--text-color)",
+                                        }
+                                    },
+                                    "&:hover:not(.Mui-focused)": {
+                                        "& .MuiOutlinedInput-notchedOutline": {
+                                            borderColor: "var(--text-color)",
+                                        }
+                                    }
+                                },
+                            }}/>
                         </div>
                         <div className="grid-item-2">
                         <FormLabel>Select Repeat Days</FormLabel>
@@ -336,6 +353,23 @@ function Events({start, end, onExit}) {
                                     hours: null,
                                     minutes: null,
                                     seconds: null,
+                                }}
+                                sx={{
+                                    "& .MuiOutlinedInput-root": {
+                                        "& .MuiOutlinedInput-notchedOutline": {
+                                            borderColor: "var(--text-color)",
+                                        },
+                                        "&.Mui-focused": {
+                                            "& .MuiOutlinedInput-notchedOutline": {
+                                                borderColor: "var(--text-color)",
+                                            }
+                                        },
+                                        "&:hover:not(.Mui-focused)": {
+                                            "& .MuiOutlinedInput-notchedOutline": {
+                                                borderColor: "var(--text-color)",
+                                            }
+                                        }
+                                    },
                                 }}
                             />
                         </div>
@@ -364,7 +398,7 @@ function Events({start, end, onExit}) {
                     </Modal.Footer>
                 </Modal>
             </div>
-            
+            </div>
         </form>
     );
 }

@@ -224,12 +224,26 @@
     border-radius: 5px;
 }
 
+/*Modal Styling*/
+
 .modal2 {
     display: grid;
     grid-template-columns: 1fr 1fr;
     row-gap: 10px;
-    
+    background-color: var(--bg-color);
+    color: var(--text-color);
 }
+
+.modal-header{
+    background-color: var(--bg-color);
+    color: var(--text-color);
+}
+
+.modal-footer{
+    background-color: var(--bg-color) !important;
+    color: var(--text-color) !important;
+}
+
 
 .grid-item-1 {
     grid-row-start: 1;

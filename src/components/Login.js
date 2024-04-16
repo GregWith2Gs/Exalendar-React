@@ -1,17 +1,27 @@
 import React from "react";
-import {Button, Form} from 'react-bootstrap';
-import logo from "../media/1.png";
 import '../css/Login.css';
 
 function Login() {
-    function submit() {
-        
-    }
-
-    return (
-      <div className = "Page">
-        <h3>Welcome to Discord OAuth NodeJS App</h3>
-        <p>Click on the below button to get started!</p>  
-      </div>
-    )
+	function login() {
+		let loginData = {
+			method: 'POST',
+			headers: {
+				'Content-Type': 'application/x-www-form-urlencoded'
+			},
+			body: new URLSearchParams("code")
+		}
+		fetch('http://localhost:4000/', loginData)
+		.then(response => response.json())
+		.then(tokenData => {
+			// Here, tokenData should contain your access token
+			const accessToken = tokenData.access_token;
+			console.log('Access Token:', accessToken);
+		})
+		.catch(error => {
+			console.error('Error exchanging code for token:', error);
+		});
+	}
+	return (
+		login()
+	);
 } export default Login;

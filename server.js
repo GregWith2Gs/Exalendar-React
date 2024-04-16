@@ -41,7 +41,7 @@ connection.connect(err => {
   }
 });
 
-app.get("/", (req, res) => {
+app.get("/calendar", (req, res) => {
     const sql_code = "SELECT * FROM events";
     connection.query(sql_code, function (err, results) {
         if (err) throw err;
@@ -49,7 +49,7 @@ app.get("/", (req, res) => {
     });
 });
 
-app.post("/", (req, res) => {
+app.post("/calendar", (req, res) => {
     let data = req.body;
     res.send('Data Received: ' + JSON.stringify(data));
     const sql_code = `INSERT INTO events (class_name, event_title, event_type, event_description, event_location, event_start, event_end, event_freq, event_end_date, event_interval, event_byday) VALUES (?,?,?,?,?,?,?,?,?,?,?)`;
@@ -75,9 +75,9 @@ passport.use(new DiscordStrategy({
 
 app.use(passport.initialize());
 
-app.get('/login/discord', passport.authenticate('discord'));
+app.get('/auth/discord', passport.authenticate('discord'));
 
-app.get('/auth/discord',async(req,res)=>{
+app.post('/auth/discord',async(req,res)=>{
   console.log("served");
   //im not getting here somehow
   //needs to be fixed, something with discord
@@ -155,7 +155,6 @@ app.get('/logout', function(req, res) {
 });
 
 //-----------
-*/
 
 app.listen(port, () => {
   console.log(`Example app listening at http://localhost:${port}`);

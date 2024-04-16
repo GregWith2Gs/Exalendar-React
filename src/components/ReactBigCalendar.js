@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useCallback } from "react";
-import { Calendar, momentLocalizer } from "react-big-calendar";
+import { Calendar, Views, momentLocalizer } from "react-big-calendar";
 import Events from './Events';
 
 import moment from "moment";
@@ -8,7 +8,9 @@ import "react-big-calendar/lib/css/react-big-calendar.css";
 import withDragAndDrop from 'react-big-calendar/lib/addons/dragAndDrop'
 import 'react-big-calendar/lib/addons/dragAndDrop/styles.css'
 
+import '../css/Calendar.css';
 import { Dayjs } from 'dayjs';
+
 
 moment.locale("en-GB");
 const localizer = momentLocalizer(moment);
@@ -102,7 +104,7 @@ export default function ReactBigCalendar() {
         defaultDate={new Date()}
         defaultView="month"
         events={eventsData}
-        style={{ height: "78.5vh", width: "98%"}}
+        style={{ height: "78.5vh", width: "98%", backgroundColor: "var(--bg-color)", color: "var(--text-color)"}  } //78.5vh
         resizable={true}
         onSelectEvent={(event) => alert(event.description)}
         draggableAccessor={(event) => true}

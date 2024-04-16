@@ -9,6 +9,8 @@ import withDragAndDrop from 'react-big-calendar/lib/addons/dragAndDrop'
 import 'react-big-calendar/lib/addons/dragAndDrop/styles.css'
 
 import '../css/Calendar.css';
+import { Dayjs } from 'dayjs';
+
 
 moment.locale("en-GB");
 const localizer = momentLocalizer(moment);
@@ -18,8 +20,8 @@ const DnDCalendar = withDragAndDrop(Calendar)
 export default function ReactBigCalendar() {
   const [eventsData, setEventsData] = useState();
   const [isOpen, setIsOpen] =useState(false);
-  const [eventStart, setEventStart] = useState(new Date());
-  const [eventEnd, setEventEnd] = useState(new Date());
+  const [eStart, setEStart] = useState(Dayjs);
+  const [eEnd, setEEnd] = useState(Dayjs);
 
   function setEvents(eventData) {
     var data = [];
@@ -79,8 +81,8 @@ export default function ReactBigCalendar() {
     
     console.log(start);
     console.log(end);
-    setEventStart(changeHours(start,12))
-    setEventEnd(changeHours(end,-12))
+    setEStart(changeHours(start,12))
+    setEEnd(changeHours(end,-12))
 
     setIsOpen((isOpen) => !isOpen);
 
@@ -111,7 +113,7 @@ export default function ReactBigCalendar() {
         onSelectSlot={handleSelect}
       />
 
-      {isOpen && <Events start={eventStart} end={eventEnd} onExit={() => closeEvents()} />}
+      {isOpen && <Events start={eStart} end={eEnd} onExit={() => closeEvents()} />}
     </div>
 
     

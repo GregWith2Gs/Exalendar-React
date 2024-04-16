@@ -13,6 +13,7 @@ import exit from '../media/icons8-x-60.png';
 import {Modal} from "react-bootstrap";
 import '../css/Event.css';
 import { Checkbox, FormGroup } from "@mui/material";
+import { Day } from "react-big-calendar";
 
 
 function Events({start, end, onExit}) {
@@ -25,20 +26,23 @@ function Events({start, end, onExit}) {
 
     //Name
     const [eName, setEName] = useState("");
-    const onNameChange = (e: any) => setEName(e.target.value);
+
     //Type
+    const onNameChange = (n: any) => setEName(n.target.value);
+
     const [eType, setEType] = useState('');
     const onTypeChange = (t: any) => setEType(t.target.value);
     //Description
     const [eDescription, setEDescription] = useState('');
     const onDescChange = (d: any) => setEDescription(d.target.value);
+
     //Location
     const [eLocation, setELocation] = useState('');
     const onLocationChange = (l: any) => setELocation(l.target.value);
     //Start Date
-    const [eStart, setEStart] = useState(Dayjs);
+    const [eStart, setEStart] = useState(dayjs(start));
     //End Date
-    const [eEnd, setEEnd] = useState(Dayjs);
+    const [eEnd, setEEnd] = useState(dayjs(start));
     //Class Name
     const [className, setClassName] = useState('');
     const handleSelectorChange = (selectedClass) => {
@@ -196,6 +200,7 @@ function Events({start, end, onExit}) {
                                 }}
                             />
                     </div>
+
                     <div className="mainGrid4">
                         <DateTimePicker
                                 body= 'secondary'
@@ -254,6 +259,7 @@ function Events({start, end, onExit}) {
                                 },
                             }}
                         />
+
                     </div>
                     <div className="mainGrid6">
                         <Autocomplete

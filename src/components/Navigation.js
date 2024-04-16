@@ -10,7 +10,7 @@ import DarkLightToggle from './DarkLightToggle';
 
 
 const tabs = [{
-  route: "/home",
+  route: "/",
   icon: faHome,
   label: "Home",
   target: "_self"
@@ -33,7 +33,7 @@ const Navigation = (props) => {
     <div>
       <nav className="navbar fixed-top" 	role="navigation">
         <div className="container-fluid">
-          <a className="navbar-exalendar m-auto" href="/home" >Exalendar</a>
+          <a className="navbar-exalendar m-auto" href="/" >Exalendar</a>
           <DarkLightToggle/>
         </div>
       </nav>
